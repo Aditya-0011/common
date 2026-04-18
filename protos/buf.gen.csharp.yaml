@@ -1,0 +1,8 @@
+version: v2
+plugins:
+  - local: protoc-gen-csharp
+    out: protos/contracts/csharp
+    opt: paths=source_relative
+  - local: protoc-gen-grpc-csharp
+    out: protos/contracts/csharp
+    opt: paths=source_relative

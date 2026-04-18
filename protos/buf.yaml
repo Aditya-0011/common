@@ -1,0 +1,23 @@
+# For details on buf.yaml configuration, visit https://buf.build/docs/configuration/v2/buf-yaml
+version: v2
+
+modules:
+  - path: auth
+    name: buf.build/Aditya-0011/auth-contracts
+    
+  # - path: wallet
+  #   name: buf.build/Aditya-0011/wallet-contracts
+
+deps:
+  - buf.build/bufbuild/protovalidate
+
+lint:
+  use:
+    - DEFAULT
+  except:
+    - PACKAGE_VERSION_SUFFIX      
+    - PACKAGE_DIRECTORY_MATCH
+
+breaking:
+  use:
+    - FILE
