@@ -29,5 +29,5 @@ jobs:
       - name: Generate Go Code
         run: buf generate protos --template protos/buf.gen.yaml
         
-      - name: Generate C# Code
-        run: buf generate protos --template protos/buf.gen.csharp.yaml
+      # - name: Generate C# Code
+      #   run: buf generate protos --template protos/buf.gen.csharp.yaml
