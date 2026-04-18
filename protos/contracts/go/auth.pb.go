@@ -328,7 +328,7 @@ const file_auth_proto_rawDesc = "" +
 	"\n" +
 	"CreateUser\x12\x17.auth.CreateUserRequest\x1a\x18.auth.CreateUserResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x123\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponseB>Z<github.com/Aditya-0011/commons/protos/contracts/go/auth;authb\x06proto3"
+	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponseB=Z;github.com/Aditya-0011/common/protos/contracts/go/auth;authb\x06proto3"
 
 var (
 	file_auth_proto_rawDescOnce sync.Once

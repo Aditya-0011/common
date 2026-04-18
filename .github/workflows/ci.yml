@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
   workflow_dispatch:
 
 jobs:
@@ -28,6 +28,11 @@ jobs:
 
       - name: Generate Go Code
         run: buf generate protos --template protos/buf.gen.yaml
+        
+      - name: Update Go dependencies
+        working-directory: protos
+        run: |
+          go mod tidy
 
       # - name: Generate C# Code
       #   run: buf generate protos --template protos/buf.gen.csharp.yaml
