@@ -22,8 +22,8 @@ jobs:
       - name: Buf Checks
         uses: bufbuild/buf-action@v1
         with:
+          input: protos
           push: false
-          
           format: false 
 
       - name: Generate Go Code
