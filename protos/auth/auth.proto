@@ -6,19 +6,9 @@ import "buf/validate/validate.proto";
 
 option go_package = "github.com/Aditya-0011/common/protos/contracts/go/auth;auth";
 
-message CreateUserRequest {
-  string email = 1 [(buf.validate.field).string.email = true];
-  string password = 2 [(buf.validate.field).string.min_len = 8];
-}
-
-message CreateUserResponse {
-  int32 user_id = 1;
-}
-
 message LoginRequest {
   string email = 1 [(buf.validate.field).string.email = true];
   string password = 2 [(buf.validate.field).string.min_len = 8];
-  string secret = 3 [(buf.validate.field).string.pattern = "^[0-9]{6}$"];
 }
 
 message LoginResponse {
@@ -34,7 +24,6 @@ message LogoutResponse {
 }
 
 service AuthService {
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
