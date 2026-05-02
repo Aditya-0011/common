@@ -12,16 +12,10 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string session_id = 1;
+  int64 user_id = 1;
+  string user_email = 2;
 }
-
-message LogoutRequest {
-  string session_id = 1 [(buf.validate.field).string.min_len = 1];
-}
-
-message LogoutResponse {}
 
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
-  rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
