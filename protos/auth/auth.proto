@@ -19,9 +19,7 @@ message LogoutRequest {
   string session_id = 1 [(buf.validate.field).string.min_len = 1];
 }
 
-message LogoutResponse {
-  bool success = 1;
-}
+message LogoutResponse {}
 
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
