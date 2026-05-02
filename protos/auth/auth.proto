@@ -18,6 +18,7 @@ message CreateUserResponse {
 message LoginRequest {
   string email = 1 [(buf.validate.field).string.email = true];
   string password = 2 [(buf.validate.field).string.min_len = 8];
+  string secret = 3 [(buf.validate.field).string.pattern = "^[0-9]{6}$"];
 }
 
 message LoginResponse {
