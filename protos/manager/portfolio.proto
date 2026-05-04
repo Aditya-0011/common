@@ -1,0 +1,191 @@
+syntax = "proto3";
+
+package manager;
+
+import "buf/validate/validate.proto";
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/Aditya-0011/common/protos/contracts/go/manager;manager";
+
+enum TechnologyCategory {
+  TECHNOLOGY_CATEGORY_UNSPECIFIED = 0;
+  TECHNOLOGY_CATEGORY_FRONTEND = 1;
+  TECHNOLOGY_CATEGORY_BACKEND = 2;
+  TECHNOLOGY_CATEGORY_DB = 3;
+  TECHNOLOGY_CATEGORY_LANGUAGE = 4;
+  TECHNOLOGY_CATEGORY_TOOL = 5;
+  TECHNOLOGY_CATEGORY_ACADEMICS = 6;
+  TECHNOLOGY_CATEGORY_NONE = 7;
+}
+
+message Technology {
+  int32 id = 1;
+  string name = 2;
+  string image_url = 3;
+  string fallback_image_url = 4;
+  TechnologyCategory category = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message TechnologySummary {
+  int32 id = 1;
+  string name = 2;
+  string image_url = 3;
+  string fallback_image_url = 4;
+}
+
+message GetTechnologiesResponse {
+  repeated Technology technologies = 1;
+}
+
+message TechnologyCreateRequest {
+  int32 user_id = 1;
+  string name = 2 [(buf.validate.field).string.min_len = 1];
+  string image_url = 3 [(buf.validate.field).string.min_len = 1];
+  string fallback_image_url = 4 [(buf.validate.field).string.min_len = 1];
+  TechnologyCategory category = 5 [(buf.validate.field).enum.defined_only = true];
+}
+
+message TechnologyUpdateRequest {
+  int32 user_id = 1;
+  int32 id = 2 [(buf.validate.field).int32.gt = 0];
+  string name = 3 [(buf.validate.field).string.min_len = 1];
+  string image_url = 4 [(buf.validate.field).string.min_len = 1];
+  string fallback_image_url = 5 [(buf.validate.field).string.min_len = 1];
+  TechnologyCategory category = 6 [(buf.validate.field).enum.defined_only = true];
+}
+
+message Project {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  string image_url = 4;
+  optional string project_url = 5;
+  optional string github_url = 6;
+  repeated TechnologySummary technologies = 7;
+  bool featured = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message ProjectSummary {
+  int32 id = 1;
+  string name = 2;
+}
+
+message GetProjectsResponse {
+  repeated Project projects = 1;
+}
+
+message ProjectCreateRequest {
+  int32 user_id = 1;
+  string name = 2 [(buf.validate.field).string.min_len = 1];
+  string description = 3 [(buf.validate.field).string.min_len = 1];
+  string image_url = 4 [(buf.validate.field).string.min_len = 1];
+  optional string project_url = 5 [(buf.validate.field).string.uri = true];
+  optional string github_url = 6 [(buf.validate.field).string.uri = true];
+  repeated int32 technologies = 7 [(buf.validate.field).repeated.items.int32.gt = 0];
+  bool featured = 8;
+}
+
+message ProjectUpdateRequest {
+  int32 user_id = 1;
+  int32 id = 2 [(buf.validate.field).int32.gt = 0];
+  string name = 3 [(buf.validate.field).string.min_len = 1];
+  string description = 4 [(buf.validate.field).string.min_len = 1];
+  string image_url = 5 [(buf.validate.field).string.min_len = 1];
+  optional string project_url = 6 [(buf.validate.field).string.uri = true];
+  optional string github_url = 7 [(buf.validate.field).string.uri = true];
+  repeated int32 technologies = 8 [(buf.validate.field).repeated.items.int32.gt = 0];
+  bool featured = 9;
+}
+
+message Position {
+  int32 id = 1;
+  string role = 2;
+  string start = 3;
+  string end = 4;
+  string work_done = 5;
+  repeated ProjectSummary projects = 6;
+}
+
+message PositionCreate {
+  int32 user_id = 1;
+  string role = 2 [(buf.validate.field).string.min_len = 1];
+  string start = 3 [(buf.validate.field).string.min_len = 1];
+  optional string end = 4;
+  string work_done = 5 [(buf.validate.field).string.min_len = 1];
+  repeated int32 projects = 6 [(buf.validate.field).repeated.items.int32.gt = 0];
+}
+
+message PositionUpdate {
+  int32 user_id = 1;
+  int32 id = 2 [(buf.validate.field).int32.gt = 0];
+  optional string new_id = 3;
+  string role = 4 [(buf.validate.field).string.min_len = 1];
+  string start = 5 [(buf.validate.field).string.min_len = 1];
+  optional string end = 6;
+  string work_done = 7 [(buf.validate.field).string.min_len = 1];
+  repeated int32 projects = 8 [(buf.validate.field).repeated.items.int32.gt = 0];
+}
+
+message Experience {
+  int32 id = 1;
+  string company = 2;
+  string start = 3;
+  string end = 4;
+  string tenure = 5;
+  repeated Position positions = 6;
+  repeated TechnologySummary technologies = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message GetExperiencesResponse {
+  repeated Experience experiences = 1;
+}
+
+message ExperienceCreateRequest {
+  int32 user_id = 1;
+  repeated PositionCreate positions = 2 [(buf.validate.field).repeated.min_items = 1];
+  repeated int32 technologies = 4 [(buf.validate.field).repeated.items.int32.gt = 0];
+  string company = 5 [(buf.validate.field).string.min_len = 1];
+}
+
+message ExperienceUpdateRequest {
+  int32 user_id = 1;
+  int32 id = 2 [(buf.validate.field).int32.gt = 0];
+  repeated PositionUpdate positions = 3 [(buf.validate.field).repeated.min_items = 1];
+  repeated int32 technologies = 5 [(buf.validate.field).repeated.items.int32.gt = 0];
+  string company = 6 [(buf.validate.field).string.min_len = 1];
+}
+
+message Message {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  repeated string message = 4;
+}
+
+message GetMessagesResponse {
+  repeated Message messages = 1;
+}
+
+service PortfolioService {
+  rpc GetMessages(SimpleRequest) returns (GetMessagesResponse);
+  rpc DeleteMessage(DeleteRequest) returns (SimpleResponse);
+
+  rpc GetTechnologies(SimpleRequest) returns (GetTechnologiesResponse);
+  rpc CreateTechnology(TechnologyCreateRequest) returns (SimpleResponse);
+  rpc UpdateTechnology(TechnologyUpdateRequest) returns (SimpleResponse);
+  rpc DeleteTechnology(DeleteRequest) returns (SimpleResponse);
+
+  rpc GetProjects(SimpleRequest) returns (GetProjectsResponse);
+  rpc CreateProject(ProjectCreateRequest) returns (SimpleResponse);
+  rpc UpdateProject(ProjectUpdateRequest) returns (SimpleResponse);
+  rpc DeleteProject(DeleteRequest) returns (SimpleResponse);
+
+  rpc GetExperiences(SimpleRequest) returns (GetExperiencesResponse);
+  rpc CreateExperience(ExperienceCreateRequest) returns (SimpleResponse);
+  rpc UpdateExperience(ExperienceUpdateRequest) returns (SimpleResponse);
+  rpc DeleteExperience(DeleteRequest) returns (SimpleResponse);
+}

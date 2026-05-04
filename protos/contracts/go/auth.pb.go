@@ -76,7 +76,7 @@ func (x *LoginRequest) GetPassword() string {
 
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	UserEmail     string                 `protobuf:"bytes,2,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -112,7 +112,7 @@ func (*LoginResponse) Descriptor() ([]byte, []int) {
 	return file_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *LoginResponse) GetUserId() int64 {
+func (x *LoginResponse) GetUserId() int32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -136,7 +136,7 @@ const file_auth_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x12#\n" +
 	"\bpassword\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\bR\bpassword\"G\n" +
 	"\rLoginResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x1d\n" +
 	"\n" +
 	"user_email\x18\x02 \x01(\tR\tuserEmail2?\n" +
 	"\vAuthService\x120\n" +

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package manager;
+
+import "buf/validate/validate.proto";
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/Aditya-0011/common/protos/contracts/go/manager;manager";
+
+message GetUserDetailsResponse {
+  string about = 1;
+  string cover_image = 2;
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message EditUserDetailsRequest {
+  int32 user_id = 1;
+  string about = 2 [(buf.validate.field).string.min_len = 1];
+  string cover_image = 3 [(buf.validate.field).string.uri = true];
+}
+
+service UserService {
+  rpc GetUserDetails(SimpleRequest) returns (GetUserDetailsResponse);
+  rpc EditUserDetails(EditUserDetailsRequest) returns (SimpleResponse);
+}

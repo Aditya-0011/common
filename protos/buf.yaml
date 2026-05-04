@@ -4,6 +4,9 @@ version: v2
 modules:
   - path: auth
     name: buf.build/Aditya-0011/auth-contracts
+
+  - path: manager
+    name: buf.build/Aditya-0011/manager-contracts
     
   # - path: wallet
   #   name: buf.build/Aditya-0011/wallet-contracts
@@ -17,6 +20,9 @@ lint:
   except:
     - PACKAGE_VERSION_SUFFIX      
     - PACKAGE_DIRECTORY_MATCH
+    - RPC_REQUEST_STANDARD_NAME
+    - RPC_RESPONSE_STANDARD_NAME
+    - RPC_REQUEST_RESPONSE_UNIQUE
 
 breaking:
   use:
