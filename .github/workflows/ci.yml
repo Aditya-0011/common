@@ -30,7 +30,7 @@ jobs:
         run: buf generate protos --template protos/buf.gen.yaml
         
       - name: Update Go dependencies
-        working-directory: protos
+        working-directory: protos/contracts/go
         run: |
           go mod tidy
 

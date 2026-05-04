@@ -1,4 +1,4 @@
-module github.com/Aditya-0011/common/protos
+module github.com/Aditya-0011/common/protos/contracts/go
 
 go 1.25.3
 
