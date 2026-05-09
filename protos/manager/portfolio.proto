@@ -6,7 +6,7 @@ import "buf/validate/validate.proto";
 import "common.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/Aditya-0011/common/protos/contracts/go/manager;manager";
+option go_package = "github.com/Aditya-0011/common/contracts/go/manager;manager";
 
 enum TechnologyCategory {
   TECHNOLOGY_CATEGORY_UNSPECIFIED = 0;

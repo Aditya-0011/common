@@ -140,7 +140,7 @@ const file_auth_proto_rawDesc = "" +
 	"\n" +
 	"user_email\x18\x02 \x01(\tR\tuserEmail2?\n" +
 	"\vAuthService\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponseB=Z;github.com/Aditya-0011/common/protos/contracts/go/auth;authb\x06proto3"
+	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponseB6Z4github.com/Aditya-0011/common/contracts/go/auth;authb\x06proto3"
 
 var (
 	file_auth_proto_rawDescOnce sync.Once

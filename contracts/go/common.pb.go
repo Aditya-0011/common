@@ -173,7 +173,7 @@ const file_common_proto_rawDesc = "" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"A\n" +
 	"\rDeleteRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x17\n" +
-	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02idBCZAgithub.com/Aditya-0011/common/protos/contracts/go/manager;managerb\x06proto3"
+	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02idB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
 
 var (
 	file_common_proto_rawDescOnce sync.Once

@@ -1684,7 +1684,7 @@ const file_portfolio_proto_rawDesc = "" +
 	"\x0eGetExperiences\x12\x16.manager.SimpleRequest\x1a\x1f.manager.GetExperiencesResponse\x12M\n" +
 	"\x10CreateExperience\x12 .manager.ExperienceCreateRequest\x1a\x17.manager.SimpleResponse\x12M\n" +
 	"\x10UpdateExperience\x12 .manager.ExperienceUpdateRequest\x1a\x17.manager.SimpleResponse\x12C\n" +
-	"\x10DeleteExperience\x12\x16.manager.DeleteRequest\x1a\x17.manager.SimpleResponseBCZAgithub.com/Aditya-0011/common/protos/contracts/go/manager;managerb\x06proto3"
+	"\x10DeleteExperience\x12\x16.manager.DeleteRequest\x1a\x17.manager.SimpleResponseB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
 
 var (
 	file_portfolio_proto_rawDescOnce sync.Once

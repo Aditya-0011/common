@@ -30,7 +30,7 @@ jobs:
         run: buf generate protos --template protos/buf.gen.yaml
         
       - name: Update Go dependencies
-        working-directory: protos/contracts/go
+        working-directory: contracts/go
         run: |
           go mod tidy
 
@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add protos/contracts/
+          git add contracts/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

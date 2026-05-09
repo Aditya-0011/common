@@ -4,7 +4,7 @@ package manager;
 
 import "buf/validate/validate.proto";
 
-option go_package = "github.com/Aditya-0011/common/protos/contracts/go/manager;manager";
+option go_package = "github.com/Aditya-0011/common/contracts/go/manager;manager";
 
 message SimpleRequest {
   int32 user_id = 1;

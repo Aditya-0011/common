@@ -162,7 +162,7 @@ const file_user_proto_rawDesc = "" +
 	"coverImage2\xa5\x01\n" +
 	"\vUserService\x12I\n" +
 	"\x0eGetUserDetails\x12\x16.manager.SimpleRequest\x1a\x1f.manager.GetUserDetailsResponse\x12K\n" +
-	"\x0fEditUserDetails\x12\x1f.manager.EditUserDetailsRequest\x1a\x17.manager.SimpleResponseBCZAgithub.com/Aditya-0011/common/protos/contracts/go/manager;managerb\x06proto3"
+	"\x0fEditUserDetails\x12\x1f.manager.EditUserDetailsRequest\x1a\x17.manager.SimpleResponseB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once
