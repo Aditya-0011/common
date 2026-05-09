@@ -1,8 +1,8 @@
 version: v2
 plugins:
   - remote: buf.build/protocolbuffers/go
-    out: contracts/go
-    opt: paths=source_relative
+    out: ../contracts/go
+    opt: module=github.com/Aditya-0011/common/contracts/go
   - remote: buf.build/grpc/go
-    out: contracts/go
-    opt: paths=source_relative
+    out: ../contracts/go
+    opt: module=github.com/Aditya-0011/common/contracts/go
