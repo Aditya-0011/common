@@ -160,7 +160,7 @@ message ExperienceUpdateRequest {
 }
 
 message Message {
-  int32 id = 1;
+  string id = 1;
   string name = 2;
   string email = 3;
   repeated string message = 4;
@@ -170,9 +170,14 @@ message GetMessagesResponse {
   repeated Message messages = 1;
 }
 
+message DeleteMessageRequest {
+  int32 user_id = 1;
+  string id = 2 [(buf.validate.field).string.uuid = true];
+}
+
 service PortfolioService {
   rpc GetMessages(SimpleRequest) returns (GetMessagesResponse);
-  rpc DeleteMessage(DeleteRequest) returns (SimpleResponse);
+  rpc DeleteMessage(DeleteMessageRequest) returns (SimpleResponse);
 
   rpc GetTechnologies(SimpleRequest) returns (GetTechnologiesResponse);
   rpc CreateTechnology(TechnologyCreateRequest) returns (SimpleResponse);
