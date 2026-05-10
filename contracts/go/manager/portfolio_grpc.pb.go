@@ -40,7 +40,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PortfolioServiceClient interface {
 	GetMessages(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetMessagesResponse, error)
-	DeleteMessage(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	DeleteMessage(ctx context.Context, in *DeleteMessageRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	GetTechnologies(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetTechnologiesResponse, error)
 	CreateTechnology(ctx context.Context, in *TechnologyCreateRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	UpdateTechnology(ctx context.Context, in *TechnologyUpdateRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
@@ -73,7 +73,7 @@ func (c *portfolioServiceClient) GetMessages(ctx context.Context, in *SimpleRequ
 	return out, nil
 }
 
-func (c *portfolioServiceClient) DeleteMessage(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+func (c *portfolioServiceClient) DeleteMessage(ctx context.Context, in *DeleteMessageRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SimpleResponse)
 	err := c.cc.Invoke(ctx, PortfolioService_DeleteMessage_FullMethodName, in, out, cOpts...)
@@ -208,7 +208,7 @@ func (c *portfolioServiceClient) DeleteExperience(ctx context.Context, in *Delet
 // for forward compatibility.
 type PortfolioServiceServer interface {
 	GetMessages(context.Context, *SimpleRequest) (*GetMessagesResponse, error)
-	DeleteMessage(context.Context, *DeleteRequest) (*SimpleResponse, error)
+	DeleteMessage(context.Context, *DeleteMessageRequest) (*SimpleResponse, error)
 	GetTechnologies(context.Context, *SimpleRequest) (*GetTechnologiesResponse, error)
 	CreateTechnology(context.Context, *TechnologyCreateRequest) (*SimpleResponse, error)
 	UpdateTechnology(context.Context, *TechnologyUpdateRequest) (*SimpleResponse, error)
@@ -234,7 +234,7 @@ type UnimplementedPortfolioServiceServer struct{}
 func (UnimplementedPortfolioServiceServer) GetMessages(context.Context, *SimpleRequest) (*GetMessagesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetMessages not implemented")
 }
-func (UnimplementedPortfolioServiceServer) DeleteMessage(context.Context, *DeleteRequest) (*SimpleResponse, error) {
+func (UnimplementedPortfolioServiceServer) DeleteMessage(context.Context, *DeleteMessageRequest) (*SimpleResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteMessage not implemented")
 }
 func (UnimplementedPortfolioServiceServer) GetTechnologies(context.Context, *SimpleRequest) (*GetTechnologiesResponse, error) {
@@ -313,7 +313,7 @@ func _PortfolioService_GetMessages_Handler(srv interface{}, ctx context.Context,
 }
 
 func _PortfolioService_DeleteMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteRequest)
+	in := new(DeleteMessageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -325,7 +325,7 @@ func _PortfolioService_DeleteMessage_Handler(srv interface{}, ctx context.Contex
 		FullMethod: PortfolioService_DeleteMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PortfolioServiceServer).DeleteMessage(ctx, req.(*DeleteRequest))
+		return srv.(PortfolioServiceServer).DeleteMessage(ctx, req.(*DeleteMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

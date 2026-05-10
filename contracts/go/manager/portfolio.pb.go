@@ -1413,7 +1413,7 @@ func (x *ExperienceUpdateRequest) GetCompany() string {
 
 type Message struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	Message       []string               `protobuf:"bytes,4,rep,name=message,proto3" json:"message,omitempty"`
@@ -1451,11 +1451,11 @@ func (*Message) Descriptor() ([]byte, []int) {
 	return file_portfolio_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *Message) GetId() int32 {
+func (x *Message) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *Message) GetName() string {
@@ -1521,6 +1521,58 @@ func (x *GetMessagesResponse) GetMessages() []*Message {
 		return x.Messages
 	}
 	return nil
+}
+
+type DeleteMessageRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteMessageRequest) Reset() {
+	*x = DeleteMessageRequest{}
+	mi := &file_portfolio_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteMessageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteMessageRequest) ProtoMessage() {}
+
+func (x *DeleteMessageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_portfolio_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteMessageRequest.ProtoReflect.Descriptor instead.
+func (*DeleteMessageRequest) Descriptor() ([]byte, []int) {
+	return file_portfolio_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *DeleteMessageRequest) GetUserId() int32 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *DeleteMessageRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 var File_portfolio_proto protoreflect.FileDescriptor
@@ -1655,12 +1707,15 @@ const file_portfolio_proto_rawDesc = "" +
 	"\ftechnologies\x18\x05 \x03(\x05B\f\xbaH\t\x92\x01\x06\"\x04\x1a\x02 \x00R\ftechnologies\x12!\n" +
 	"\acompany\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acompany\"]\n" +
 	"\aMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x18\n" +
 	"\amessage\x18\x04 \x03(\tR\amessage\"C\n" +
 	"\x13GetMessagesResponse\x12,\n" +
-	"\bmessages\x18\x01 \x03(\v2\x10.manager.MessageR\bmessages*\x99\x02\n" +
+	"\bmessages\x18\x01 \x03(\v2\x10.manager.MessageR\bmessages\"I\n" +
+	"\x14DeleteMessageRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x18\n" +
+	"\x02id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id*\x99\x02\n" +
 	"\x12TechnologyCategory\x12#\n" +
 	"\x1fTECHNOLOGY_CATEGORY_UNSPECIFIED\x10\x00\x12 \n" +
 	"\x1cTECHNOLOGY_CATEGORY_FRONTEND\x10\x01\x12\x1f\n" +
@@ -1669,10 +1724,10 @@ const file_portfolio_proto_rawDesc = "" +
 	"\x1cTECHNOLOGY_CATEGORY_LANGUAGE\x10\x04\x12\x1c\n" +
 	"\x18TECHNOLOGY_CATEGORY_TOOL\x10\x05\x12!\n" +
 	"\x1dTECHNOLOGY_CATEGORY_ACADEMICS\x10\x06\x12\x1c\n" +
-	"\x18TECHNOLOGY_CATEGORY_NONE\x10\a2\x90\b\n" +
+	"\x18TECHNOLOGY_CATEGORY_NONE\x10\a2\x97\b\n" +
 	"\x10PortfolioService\x12C\n" +
-	"\vGetMessages\x12\x16.manager.SimpleRequest\x1a\x1c.manager.GetMessagesResponse\x12@\n" +
-	"\rDeleteMessage\x12\x16.manager.DeleteRequest\x1a\x17.manager.SimpleResponse\x12K\n" +
+	"\vGetMessages\x12\x16.manager.SimpleRequest\x1a\x1c.manager.GetMessagesResponse\x12G\n" +
+	"\rDeleteMessage\x12\x1d.manager.DeleteMessageRequest\x1a\x17.manager.SimpleResponse\x12K\n" +
 	"\x0fGetTechnologies\x12\x16.manager.SimpleRequest\x1a .manager.GetTechnologiesResponse\x12M\n" +
 	"\x10CreateTechnology\x12 .manager.TechnologyCreateRequest\x1a\x17.manager.SimpleResponse\x12M\n" +
 	"\x10UpdateTechnology\x12 .manager.TechnologyUpdateRequest\x1a\x17.manager.SimpleResponse\x12C\n" +
@@ -1699,7 +1754,7 @@ func file_portfolio_proto_rawDescGZIP() []byte {
 }
 
 var file_portfolio_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_portfolio_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_portfolio_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_portfolio_proto_goTypes = []any{
 	(TechnologyCategory)(0),         // 0: manager.TechnologyCategory
 	(*Technology)(nil),              // 1: manager.Technology
@@ -1721,56 +1776,57 @@ var file_portfolio_proto_goTypes = []any{
 	(*ExperienceUpdateRequest)(nil), // 17: manager.ExperienceUpdateRequest
 	(*Message)(nil),                 // 18: manager.Message
 	(*GetMessagesResponse)(nil),     // 19: manager.GetMessagesResponse
-	(*timestamppb.Timestamp)(nil),   // 20: google.protobuf.Timestamp
-	(*SimpleRequest)(nil),           // 21: manager.SimpleRequest
-	(*DeleteRequest)(nil),           // 22: manager.DeleteRequest
-	(*SimpleResponse)(nil),          // 23: manager.SimpleResponse
+	(*DeleteMessageRequest)(nil),    // 20: manager.DeleteMessageRequest
+	(*timestamppb.Timestamp)(nil),   // 21: google.protobuf.Timestamp
+	(*SimpleRequest)(nil),           // 22: manager.SimpleRequest
+	(*DeleteRequest)(nil),           // 23: manager.DeleteRequest
+	(*SimpleResponse)(nil),          // 24: manager.SimpleResponse
 }
 var file_portfolio_proto_depIdxs = []int32{
 	0,  // 0: manager.Technology.category:type_name -> manager.TechnologyCategory
-	20, // 1: manager.Technology.updated_at:type_name -> google.protobuf.Timestamp
+	21, // 1: manager.Technology.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 2: manager.GetTechnologiesResponse.technologies:type_name -> manager.Technology
 	0,  // 3: manager.TechnologyCreateRequest.category:type_name -> manager.TechnologyCategory
 	0,  // 4: manager.TechnologyUpdateRequest.category:type_name -> manager.TechnologyCategory
 	2,  // 5: manager.Project.technologies:type_name -> manager.TechnologySummary
-	20, // 6: manager.Project.updated_at:type_name -> google.protobuf.Timestamp
+	21, // 6: manager.Project.updated_at:type_name -> google.protobuf.Timestamp
 	6,  // 7: manager.GetProjectsResponse.projects:type_name -> manager.Project
 	7,  // 8: manager.Position.projects:type_name -> manager.ProjectSummary
 	11, // 9: manager.Experience.positions:type_name -> manager.Position
 	2,  // 10: manager.Experience.technologies:type_name -> manager.TechnologySummary
-	20, // 11: manager.Experience.updated_at:type_name -> google.protobuf.Timestamp
+	21, // 11: manager.Experience.updated_at:type_name -> google.protobuf.Timestamp
 	14, // 12: manager.GetExperiencesResponse.experiences:type_name -> manager.Experience
 	12, // 13: manager.ExperienceCreateRequest.positions:type_name -> manager.PositionCreate
 	13, // 14: manager.ExperienceUpdateRequest.positions:type_name -> manager.PositionUpdate
 	18, // 15: manager.GetMessagesResponse.messages:type_name -> manager.Message
-	21, // 16: manager.PortfolioService.GetMessages:input_type -> manager.SimpleRequest
-	22, // 17: manager.PortfolioService.DeleteMessage:input_type -> manager.DeleteRequest
-	21, // 18: manager.PortfolioService.GetTechnologies:input_type -> manager.SimpleRequest
+	22, // 16: manager.PortfolioService.GetMessages:input_type -> manager.SimpleRequest
+	20, // 17: manager.PortfolioService.DeleteMessage:input_type -> manager.DeleteMessageRequest
+	22, // 18: manager.PortfolioService.GetTechnologies:input_type -> manager.SimpleRequest
 	4,  // 19: manager.PortfolioService.CreateTechnology:input_type -> manager.TechnologyCreateRequest
 	5,  // 20: manager.PortfolioService.UpdateTechnology:input_type -> manager.TechnologyUpdateRequest
-	22, // 21: manager.PortfolioService.DeleteTechnology:input_type -> manager.DeleteRequest
-	21, // 22: manager.PortfolioService.GetProjects:input_type -> manager.SimpleRequest
+	23, // 21: manager.PortfolioService.DeleteTechnology:input_type -> manager.DeleteRequest
+	22, // 22: manager.PortfolioService.GetProjects:input_type -> manager.SimpleRequest
 	9,  // 23: manager.PortfolioService.CreateProject:input_type -> manager.ProjectCreateRequest
 	10, // 24: manager.PortfolioService.UpdateProject:input_type -> manager.ProjectUpdateRequest
-	22, // 25: manager.PortfolioService.DeleteProject:input_type -> manager.DeleteRequest
-	21, // 26: manager.PortfolioService.GetExperiences:input_type -> manager.SimpleRequest
+	23, // 25: manager.PortfolioService.DeleteProject:input_type -> manager.DeleteRequest
+	22, // 26: manager.PortfolioService.GetExperiences:input_type -> manager.SimpleRequest
 	16, // 27: manager.PortfolioService.CreateExperience:input_type -> manager.ExperienceCreateRequest
 	17, // 28: manager.PortfolioService.UpdateExperience:input_type -> manager.ExperienceUpdateRequest
-	22, // 29: manager.PortfolioService.DeleteExperience:input_type -> manager.DeleteRequest
+	23, // 29: manager.PortfolioService.DeleteExperience:input_type -> manager.DeleteRequest
 	19, // 30: manager.PortfolioService.GetMessages:output_type -> manager.GetMessagesResponse
-	23, // 31: manager.PortfolioService.DeleteMessage:output_type -> manager.SimpleResponse
+	24, // 31: manager.PortfolioService.DeleteMessage:output_type -> manager.SimpleResponse
 	3,  // 32: manager.PortfolioService.GetTechnologies:output_type -> manager.GetTechnologiesResponse
-	23, // 33: manager.PortfolioService.CreateTechnology:output_type -> manager.SimpleResponse
-	23, // 34: manager.PortfolioService.UpdateTechnology:output_type -> manager.SimpleResponse
-	23, // 35: manager.PortfolioService.DeleteTechnology:output_type -> manager.SimpleResponse
+	24, // 33: manager.PortfolioService.CreateTechnology:output_type -> manager.SimpleResponse
+	24, // 34: manager.PortfolioService.UpdateTechnology:output_type -> manager.SimpleResponse
+	24, // 35: manager.PortfolioService.DeleteTechnology:output_type -> manager.SimpleResponse
 	8,  // 36: manager.PortfolioService.GetProjects:output_type -> manager.GetProjectsResponse
-	23, // 37: manager.PortfolioService.CreateProject:output_type -> manager.SimpleResponse
-	23, // 38: manager.PortfolioService.UpdateProject:output_type -> manager.SimpleResponse
-	23, // 39: manager.PortfolioService.DeleteProject:output_type -> manager.SimpleResponse
+	24, // 37: manager.PortfolioService.CreateProject:output_type -> manager.SimpleResponse
+	24, // 38: manager.PortfolioService.UpdateProject:output_type -> manager.SimpleResponse
+	24, // 39: manager.PortfolioService.DeleteProject:output_type -> manager.SimpleResponse
 	15, // 40: manager.PortfolioService.GetExperiences:output_type -> manager.GetExperiencesResponse
-	23, // 41: manager.PortfolioService.CreateExperience:output_type -> manager.SimpleResponse
-	23, // 42: manager.PortfolioService.UpdateExperience:output_type -> manager.SimpleResponse
-	23, // 43: manager.PortfolioService.DeleteExperience:output_type -> manager.SimpleResponse
+	24, // 41: manager.PortfolioService.CreateExperience:output_type -> manager.SimpleResponse
+	24, // 42: manager.PortfolioService.UpdateExperience:output_type -> manager.SimpleResponse
+	24, // 43: manager.PortfolioService.DeleteExperience:output_type -> manager.SimpleResponse
 	30, // [30:44] is the sub-list for method output_type
 	16, // [16:30] is the sub-list for method input_type
 	16, // [16:16] is the sub-list for extension type_name
@@ -1795,7 +1851,7 @@ func file_portfolio_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_portfolio_proto_rawDesc), len(file_portfolio_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   19,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
