@@ -154,9 +154,9 @@ const file_user_proto_rawDesc = "" +
 	"\vcover_image\x18\x02 \x01(\tR\n" +
 	"coverImage\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"{\n" +
-	"\x16EditUserDetailsRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x1d\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x84\x01\n" +
+	"\x16EditUserDetailsRequest\x12 \n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1d\n" +
 	"\x05about\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05about\x12)\n" +
 	"\vcover_image\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01R\n" +
 	"coverImage2\xa5\x01\n" +

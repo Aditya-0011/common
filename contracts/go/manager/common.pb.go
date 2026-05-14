@@ -166,13 +166,13 @@ var File_common_proto protoreflect.FileDescriptor
 
 const file_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\"(\n" +
-	"\rSimpleRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\"*\n" +
+	"\fcommon.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\"1\n" +
+	"\rSimpleRequest\x12 \n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\"*\n" +
 	"\x0eSimpleResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"A\n" +
-	"\rDeleteRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x17\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"J\n" +
+	"\rDeleteRequest\x12 \n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x17\n" +
 	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02idB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
 
 var (
