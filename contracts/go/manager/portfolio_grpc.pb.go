@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	PortfolioService_GetMessages_FullMethodName      = "/manager.PortfolioService/GetMessages"
+	PortfolioService_AddMessage_FullMethodName       = "/manager.PortfolioService/AddMessage"
 	PortfolioService_DeleteMessage_FullMethodName    = "/manager.PortfolioService/DeleteMessage"
 	PortfolioService_GetTechnologies_FullMethodName  = "/manager.PortfolioService/GetTechnologies"
 	PortfolioService_CreateTechnology_FullMethodName = "/manager.PortfolioService/CreateTechnology"
@@ -40,6 +41,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PortfolioServiceClient interface {
 	GetMessages(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetMessagesResponse, error)
+	AddMessage(ctx context.Context, in *AddMessageRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	DeleteMessage(ctx context.Context, in *DeleteMessageRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	GetTechnologies(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetTechnologiesResponse, error)
 	CreateTechnology(ctx context.Context, in *TechnologyCreateRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
@@ -67,6 +69,16 @@ func (c *portfolioServiceClient) GetMessages(ctx context.Context, in *SimpleRequ
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMessagesResponse)
 	err := c.cc.Invoke(ctx, PortfolioService_GetMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *portfolioServiceClient) AddMessage(ctx context.Context, in *AddMessageRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, PortfolioService_AddMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -208,6 +220,7 @@ func (c *portfolioServiceClient) DeleteExperience(ctx context.Context, in *Delet
 // for forward compatibility.
 type PortfolioServiceServer interface {
 	GetMessages(context.Context, *SimpleRequest) (*GetMessagesResponse, error)
+	AddMessage(context.Context, *AddMessageRequest) (*SimpleResponse, error)
 	DeleteMessage(context.Context, *DeleteMessageRequest) (*SimpleResponse, error)
 	GetTechnologies(context.Context, *SimpleRequest) (*GetTechnologiesResponse, error)
 	CreateTechnology(context.Context, *TechnologyCreateRequest) (*SimpleResponse, error)
@@ -233,6 +246,9 @@ type UnimplementedPortfolioServiceServer struct{}
 
 func (UnimplementedPortfolioServiceServer) GetMessages(context.Context, *SimpleRequest) (*GetMessagesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetMessages not implemented")
+}
+func (UnimplementedPortfolioServiceServer) AddMessage(context.Context, *AddMessageRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddMessage not implemented")
 }
 func (UnimplementedPortfolioServiceServer) DeleteMessage(context.Context, *DeleteMessageRequest) (*SimpleResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteMessage not implemented")
@@ -308,6 +324,24 @@ func _PortfolioService_GetMessages_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PortfolioServiceServer).GetMessages(ctx, req.(*SimpleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PortfolioService_AddMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddMessageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PortfolioServiceServer).AddMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PortfolioService_AddMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PortfolioServiceServer).AddMessage(ctx, req.(*AddMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -556,6 +590,10 @@ var PortfolioService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetMessages",
 			Handler:    _PortfolioService_GetMessages_Handler,
+		},
+		{
+			MethodName: "AddMessage",
+			Handler:    _PortfolioService_AddMessage_Handler,
 		},
 		{
 			MethodName: "DeleteMessage",
