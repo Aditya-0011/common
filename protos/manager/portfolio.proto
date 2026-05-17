@@ -41,18 +41,36 @@ message GetTechnologiesResponse {
 
 message TechnologyCreateRequest {
   int32 user_id = 1;
-  string name = 2 [(buf.validate.field).string.min_len = 1];
-  string image_url = 3 [(buf.validate.field).string.min_len = 1];
-  string fallback_image_url = 4 [(buf.validate.field).string.min_len = 1];
+  string name = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
+  string image_url = 3 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
+  string fallback_image_url = 4 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
   TechnologyCategory category = 5 [(buf.validate.field).enum.defined_only = true];
 }
 
 message TechnologyUpdateRequest {
   int32 user_id = 1;
   int32 id = 2 [(buf.validate.field).int32.gt = 0];
-  string name = 3 [(buf.validate.field).string.min_len = 1];
-  string image_url = 4 [(buf.validate.field).string.min_len = 1];
-  string fallback_image_url = 5 [(buf.validate.field).string.min_len = 1];
+  string name = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
+  string image_url = 4 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
+  string fallback_image_url = 5 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 250
+  ];
   TechnologyCategory category = 6 [(buf.validate.field).enum.defined_only = true];
 }
 
@@ -79,11 +97,23 @@ message GetProjectsResponse {
 
 message ProjectCreateRequest {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
-  string name = 2 [(buf.validate.field).string.min_len = 1];
+  string name = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
   string description = 3 [(buf.validate.field).string.min_len = 1];
-  string image_url = 4 [(buf.validate.field).string.min_len = 1];
-  optional string project_url = 5 [(buf.validate.field).string.uri = true];
-  optional string github_url = 6 [(buf.validate.field).string.uri = true];
+  string image_url = 4 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
+  optional string project_url = 5 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
+  optional string github_url = 6 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
   repeated int32 technologies = 7 [(buf.validate.field).repeated.items.int32.gt = 0];
   bool featured = 8;
 }
@@ -91,11 +121,23 @@ message ProjectCreateRequest {
 message ProjectUpdateRequest {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
   int32 id = 2 [(buf.validate.field).int32.gt = 0];
-  string name = 3 [(buf.validate.field).string.min_len = 1];
+  string name = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
   string description = 4 [(buf.validate.field).string.min_len = 1];
-  string image_url = 5 [(buf.validate.field).string.min_len = 1];
-  optional string project_url = 6 [(buf.validate.field).string.uri = true];
-  optional string github_url = 7 [(buf.validate.field).string.uri = true];
+  string image_url = 5 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
+  optional string project_url = 6 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
+  optional string github_url = 7 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255
+  ];
   repeated int32 technologies = 8 [(buf.validate.field).repeated.items.int32.gt = 0];
   bool featured = 9;
 }
@@ -111,9 +153,18 @@ message Position {
 
 message PositionCreate {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
-  string role = 2 [(buf.validate.field).string.min_len = 1];
-  string start = 3 [(buf.validate.field).string.min_len = 1];
-  optional string end = 4;
+  string role = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 150
+  ];
+  string start = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 100
+  ];
+  optional string end = 4 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 100
+  ];
   string work_done = 5 [(buf.validate.field).string.min_len = 1];
   repeated int32 projects = 6 [(buf.validate.field).repeated.items.int32.gt = 0];
 }
@@ -122,9 +173,18 @@ message PositionUpdate {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
   int32 id = 2 [(buf.validate.field).int32.gt = 0];
   optional string new_id = 3;
-  string role = 4 [(buf.validate.field).string.min_len = 1];
-  string start = 5 [(buf.validate.field).string.min_len = 1];
-  optional string end = 6;
+  string role = 4 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 150
+  ];
+  string start = 5 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 100
+  ];
+  optional string end = 6 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 100
+  ];
   string work_done = 7 [(buf.validate.field).string.min_len = 1];
   repeated int32 projects = 8 [(buf.validate.field).repeated.items.int32.gt = 0];
 }
@@ -148,7 +208,10 @@ message ExperienceCreateRequest {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
   repeated PositionCreate positions = 2 [(buf.validate.field).repeated.min_items = 1];
   repeated int32 technologies = 4 [(buf.validate.field).repeated.items.int32.gt = 0];
-  string company = 5 [(buf.validate.field).string.min_len = 1];
+  string company = 5 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
 }
 
 message ExperienceUpdateRequest {
@@ -156,7 +219,10 @@ message ExperienceUpdateRequest {
   int32 id = 2 [(buf.validate.field).int32.gt = 0];
   repeated PositionUpdate positions = 3 [(buf.validate.field).repeated.min_items = 1];
   repeated int32 technologies = 5 [(buf.validate.field).repeated.items.int32.gt = 0];
-  string company = 6 [(buf.validate.field).string.min_len = 1];
+  string company = 6 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
 }
 
 message Message {
@@ -170,6 +236,22 @@ message GetMessagesResponse {
   repeated Message messages = 1;
 }
 
+message AddMessageRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string name = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 150
+  ];
+  string email = 3 [
+    (buf.validate.field).string.email = true,
+    (buf.validate.field).string.max_len = 150
+  ];
+  string message = 4 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 500
+  ];
+}
+
 message DeleteMessageRequest {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
   string id = 2 [(buf.validate.field).string.uuid = true];
@@ -177,6 +259,7 @@ message DeleteMessageRequest {
 
 service PortfolioService {
   rpc GetMessages(SimpleRequest) returns (GetMessagesResponse);
+  rpc AddMessage(AddMessageRequest) returns (SimpleResponse);
   rpc DeleteMessage(DeleteMessageRequest) returns (SimpleResponse);
 
   rpc GetTechnologies(SimpleRequest) returns (GetTechnologiesResponse);
