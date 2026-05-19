@@ -1026,8 +1026,7 @@ func (x *PositionCreate) GetProjects() []int32 {
 type PositionUpdate struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Id            int32                  `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
-	NewId         *string                `protobuf:"bytes,3,opt,name=new_id,json=newId,proto3,oneof" json:"new_id,omitempty"`
+	Id            *int32                 `protobuf:"varint,2,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	Role          string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
 	Start         string                 `protobuf:"bytes,5,opt,name=start,proto3" json:"start,omitempty"`
 	End           *string                `protobuf:"bytes,6,opt,name=end,proto3,oneof" json:"end,omitempty"`
@@ -1075,17 +1074,10 @@ func (x *PositionUpdate) GetUserId() int32 {
 }
 
 func (x *PositionUpdate) GetId() int32 {
-	if x != nil {
-		return x.Id
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
-}
-
-func (x *PositionUpdate) GetNewId() string {
-	if x != nil && x.NewId != nil {
-		return *x.NewId
-	}
-	return ""
 }
 
 func (x *PositionUpdate) GetRole() string {
@@ -1743,18 +1735,17 @@ const file_portfolio_proto_rawDesc = "" +
 	"\x03end\x18\x04 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dH\x00R\x03end\x88\x01\x01\x12$\n" +
 	"\twork_done\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bworkDone\x12(\n" +
 	"\bprojects\x18\x06 \x03(\x05B\f\xbaH\t\x92\x01\x06\"\x04\x1a\x02 \x00R\bprojectsB\x06\n" +
-	"\x04_end\"\xad\x02\n" +
+	"\x04_end\"\x92\x02\n" +
 	"\x0ePositionUpdate\x12 \n" +
-	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x17\n" +
-	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\x12\x1a\n" +
-	"\x06new_id\x18\x03 \x01(\tH\x00R\x05newId\x88\x01\x01\x12\x1e\n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1c\n" +
+	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00H\x00R\x02id\x88\x01\x01\x12\x1e\n" +
 	"\x04role\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\x96\x01R\x04role\x12\x1f\n" +
 	"\x05start\x18\x05 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x05start\x12 \n" +
 	"\x03end\x18\x06 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dH\x01R\x03end\x88\x01\x01\x12$\n" +
 	"\twork_done\x18\a \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bworkDone\x12(\n" +
-	"\bprojects\x18\b \x03(\x05B\f\xbaH\t\x92\x01\x06\"\x04\x1a\x02 \x00R\bprojectsB\t\n" +
-	"\a_new_idB\x06\n" +
+	"\bprojects\x18\b \x03(\x05B\f\xbaH\t\x92\x01\x06\"\x04\x1a\x02 \x00R\bprojectsB\x05\n" +
+	"\x03_idB\x06\n" +
 	"\x04_end\"\xa2\x02\n" +
 	"\n" +
 	"Experience\x12\x0e\n" +
