@@ -3,6 +3,7 @@ syntax = "proto3";
 package auth;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/Aditya-0011/common/contracts/go/auth;auth";
 
@@ -16,6 +17,27 @@ message LoginResponse {
   string user_email = 2;
 }
 
+message KeyRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+}
+
+message RotateKeyResponse {
+  int32 outcode = 1;
+  string message = 2;
+}
+
+message GetKeyResponse {
+  string key = 1;
+  google.protobuf.Timestamp updated_at = 2;
+}
+
+message ValidateKeyRequest {
+  string key = 1 [(buf.validate.field).string.uuid = true];
+}
+
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
+  rpc RotateKey(KeyRequest) returns (RotateKeyResponse);
+  rpc GetKey(KeyRequest) returns (GetKeyResponse);
+  rpc ValidateKey(ValidateKeyRequest) returns (LoginResponse);
 }
