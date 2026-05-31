@@ -341,9 +341,9 @@ const file_auth_proto_rawDesc = "" +
 	"\x0eGetKeyResponse\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
 	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"0\n" +
-	"\x12ValidateKeyRequest\x12\x1a\n" +
-	"\x03key\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x03key2\xe7\x01\n" +
+	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"&\n" +
+	"\x12ValidateKeyRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key2\xe7\x01\n" +
 	"\vAuthService\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
 	"\tRotateKey\x12\x10.auth.KeyRequest\x1a\x17.auth.RotateKeyResponse\x120\n" +
