@@ -1,34 +1,70 @@
+<div align="center">
+
 # Common Infrastructure Contracts
 
-> [!NOTE]
-> This repository contains the central Protocol Buffers (`.proto`) definitions and generated contracts for all microservices in the infrastructure workspace.
+_Single source of truth for inter-service communication schema_
 
-The `common` repository acts as the single source of truth for inter-service communication schema. It uses [Buf](https://buf.build/) for linting, formatting, and generating client/server stubs in multiple languages (currently Go and C#).
+[![Protobuf](https://img.shields.io/badge/Protobuf-3.21-00add8?style=flat-square)](https://protobuf.dev/)
+[![Buf](https://img.shields.io/badge/Buf-Build-244c5a?style=flat-square)](https://buf.build/)
+[![gRPC](https://img.shields.io/badge/gRPC-Contracts-244c5a?style=flat-square&logo=grpc)](https://grpc.io/)
 
-## Repository Structure
+⭐ If you find this repository useful, star it on GitHub!
 
-- **`protos/`**: The core Protocol Buffer source files, separated by domain (e.g., `auth/`, `manager/`).
-- **`contracts/`**: The generated source code ready for consumption by other services.
-  - `go/`: Contains the generated Go packages (e.g., `github.com/Aditya-0011/common/contracts/go`).
-  - `csharp/`: Contains the generated C# contracts.
+[Overview](#overview) • [Architecture & Tech Stack](#architecture--tech-stack) • [Features](#features) • [Getting Started](#getting-started) • [Polyrepo Local Setup](#polyrepo-local-setup)
 
-## Available Services
+</div>
 
-- **Auth Service**: Definitions for authentication and authorization.
-- **Manager Service**: Definitions for user and portfolio management.
+## Overview
+
+The `common` repository acts as the central Protocol Buffers (`.proto`) definitions and generated contracts for all microservices in the infrastructure workspace. It ensures type-safe and validated communication between services such as `auth` and `manager` by serving as the definitive schema repository.
+
+## Architecture & Tech Stack
+
+- **Schema Definition**: Standard Protocol Buffers v3.
+- **Build Tooling**: Uses [Buf](https://buf.build/) for linting, formatting, breaking change detection, and generating client/server stubs in multiple languages.
+- **Validation**: Integrates `buf.build/go/protovalidate` for defining runtime validation constraints directly inside `.proto` schemas.
+- **Generated Code**: Currently outputs Go packages (for backend microservices) and C# contracts.
+
+### Project Structure
+
+```text
+.
+├── contracts/     # Generated source code ready for consumption
+│   ├── csharp/    # Generated C# contracts
+│   └── go/        # Generated Go packages (github.com/Aditya-0011/common/contracts/go)
+├── protos/        # Core Protocol Buffer source files, separated by domain
+│   ├── auth/      # Auth service definitions
+│   └── manager/   # Manager service definitions
+├── buf.gen.yaml   # Buf generation configuration for Go
+├── buf.gen.csharp.yaml # Buf generation configuration for C#
+└── README.md      # This file
+```
+
+## Features
+
+- 📜 **Centralized Schema**: A single repository for all `.proto` files, preventing duplication across microservices.
+- 🛡️ **Built-in Validation**: Defines payload constraints (e.g., minimum length, string formats) using `protovalidate` annotations.
+- ⚙️ **Automated Generation**: Easy contract compilation for both Go and C# ecosystems.
+- 🚦 **Safe Evolution**: Uses `buf breaking` to prevent accidental breaking changes to APIs.
 
 ## Getting Started
 
 ### Prerequisites
 
-You will need the `buf` CLI to work with the `.proto` files.
+- [Buf CLI](https://buf.build/docs/installation) is required to work with the `.proto` files.
 
-> [!TIP]
-> You can install Buf via Homebrew (`brew install bufbuild/buf/buf`), download it via `npm` or download the binary from their [releases page](https://github.com/bufbuild/buf/releases).
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Aditya-0011/common.git common
+cd common
+```
 
 ### Generating Contracts
 
-To compile the schemas and generate the Go and C# contracts locally, navigate to the `protos` directory and run:
+To compile the schemas locally, navigate to the `protos` directory:
 
 ```bash
 cd protos
@@ -42,7 +78,7 @@ buf generate --template buf.gen.csharp.yaml
 
 ### Linting and Validation
 
-We use `protovalidate` to enforce runtime validation rules directly inside our schemas. To check for linting errors or breaking changes:
+To check for linting errors or breaking changes:
 
 ```bash
 cd protos
@@ -54,21 +90,25 @@ buf lint
 buf breaking --against '.git#branch=main'
 ```
 
-## Consuming the Contracts
+## Polyrepo Local Setup
 
-### Go
+This project uses a polyrepo architecture. Services like `auth` and `manager` live in their own repositories but rely on these common contracts.
 
-Require this module in your Go project:
+To consume the contracts in a Go service:
 
 ```bash
 go get github.com/Aditya-0011/common/contracts/go
 ```
 
-Then, import the generated packages in your microservices:
-
-```go
-import "github.com/Aditya-0011/common/contracts/go/auth"
-```
-
 > [!IMPORTANT]
-> If you are working locally across repositories and making changes to the protos, you may need a `replace` directive in your consumer's `go.mod` file to point to the local filesystem path (e.g., `replace github.com/Aditya-0011/common/contracts/go => ../common/contracts/go`).
+> When developing locally, keep all repositories (`common`, `auth`, `manager`) in the same parent directory. You can use Go Workspaces (`go.work`) in the parent directory to safely resolve the local `common` module without polluting the `go.mod` files of the microservices.
+
+Example local setup:
+
+```text
+infrastructure/
+├── common/
+├── auth/
+├── manager/
+└── go.work # Points to ./common, ./auth, ./manager
+```
