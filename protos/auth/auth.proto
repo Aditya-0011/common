@@ -32,7 +32,7 @@ message GetKeyResponse {
 }
 
 message ValidateKeyRequest {
-  string key = 1 [(buf.validate.field).string.uuid = true];
+  string key = 1;
 }
 
 service AuthService {
