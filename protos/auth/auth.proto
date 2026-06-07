@@ -27,11 +27,6 @@ message KeyRequest {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
 }
 
-message RotateKeyResponse {
-  int32 outcode = 1;
-  string message = 2;
-}
-
 message GetKeyResponse {
   string key = 1;
   google.protobuf.Timestamp updated_at = 2;
@@ -47,7 +42,7 @@ message SimpleResponse {
 
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
-  rpc RotateKey(KeyRequest) returns (RotateKeyResponse);
+  rpc RotateKey(KeyRequest) returns (SimpleResponse);
   rpc GetKey(KeyRequest) returns (GetKeyResponse);
   rpc ValidateKey(ValidateKeyRequest) returns (LoginResponse);
 }
