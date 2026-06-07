@@ -319,15 +319,59 @@ func (x *ValidateKeyRequest) GetKey() string {
 	return ""
 }
 
+type SimpleResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SimpleResponse) Reset() {
+	*x = SimpleResponse{}
+	mi := &file_auth_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SimpleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SimpleResponse) ProtoMessage() {}
+
+func (x *SimpleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SimpleResponse.ProtoReflect.Descriptor instead.
+func (*SimpleResponse) Descriptor() ([]byte, []int) {
+	return file_auth_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *SimpleResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 var File_auth_proto protoreflect.FileDescriptor
 
 const file_auth_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"auth.proto\x12\x04auth\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"R\n" +
-	"\fLoginRequest\x12\x1d\n" +
-	"\x05email\x18\x01 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x12#\n" +
-	"\bpassword\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\bR\bpassword\"G\n" +
+	"auth.proto\x12\x04auth\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"V\n" +
+	"\fLoginRequest\x12\x1f\n" +
+	"\x05email\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x18d`\x01R\x05email\x12%\n" +
+	"\bpassword\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\b\x18dR\bpassword\"G\n" +
 	"\rLoginResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x1d\n" +
 	"\n" +
@@ -343,7 +387,9 @@ const file_auth_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"&\n" +
 	"\x12ValidateKeyRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key2\xe7\x01\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"*\n" +
+	"\x0eSimpleResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage2\xe7\x01\n" +
 	"\vAuthService\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
 	"\tRotateKey\x12\x10.auth.KeyRequest\x1a\x17.auth.RotateKeyResponse\x120\n" +
@@ -362,7 +408,7 @@ func file_auth_proto_rawDescGZIP() []byte {
 	return file_auth_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_auth_proto_goTypes = []any{
 	(*LoginRequest)(nil),          // 0: auth.LoginRequest
 	(*LoginResponse)(nil),         // 1: auth.LoginResponse
@@ -370,10 +416,11 @@ var file_auth_proto_goTypes = []any{
 	(*RotateKeyResponse)(nil),     // 3: auth.RotateKeyResponse
 	(*GetKeyResponse)(nil),        // 4: auth.GetKeyResponse
 	(*ValidateKeyRequest)(nil),    // 5: auth.ValidateKeyRequest
-	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
+	(*SimpleResponse)(nil),        // 6: auth.SimpleResponse
+	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
 }
 var file_auth_proto_depIdxs = []int32{
-	6, // 0: auth.GetKeyResponse.updated_at:type_name -> google.protobuf.Timestamp
+	7, // 0: auth.GetKeyResponse.updated_at:type_name -> google.protobuf.Timestamp
 	0, // 1: auth.AuthService.Login:input_type -> auth.LoginRequest
 	2, // 2: auth.AuthService.RotateKey:input_type -> auth.KeyRequest
 	2, // 3: auth.AuthService.GetKey:input_type -> auth.KeyRequest
@@ -400,7 +447,7 @@ func file_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
