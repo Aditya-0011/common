@@ -8,8 +8,14 @@ import "google/protobuf/timestamp.proto";
 option go_package = "github.com/Aditya-0011/common/contracts/go/auth;auth";
 
 message LoginRequest {
-  string email = 1 [(buf.validate.field).string.email = true];
-  string password = 2 [(buf.validate.field).string.min_len = 8];
+  string email = 1 [
+    (buf.validate.field).string.email = true,
+    (buf.validate.field).string.max_len = 100
+  ];
+  string password = 2 [
+    (buf.validate.field).string.min_len = 8,
+    (buf.validate.field).string.max_len = 100
+  ];
 }
 
 message LoginResponse {
@@ -33,6 +39,10 @@ message GetKeyResponse {
 
 message ValidateKeyRequest {
   string key = 1;
+}
+
+message SimpleResponse {
+  string message = 1;
 }
 
 service AuthService {
