@@ -171,58 +171,6 @@ func (x *KeyRequest) GetUserId() int32 {
 	return 0
 }
 
-type RotateKeyResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Outcode       int32                  `protobuf:"varint,1,opt,name=outcode,proto3" json:"outcode,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RotateKeyResponse) Reset() {
-	*x = RotateKeyResponse{}
-	mi := &file_auth_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RotateKeyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RotateKeyResponse) ProtoMessage() {}
-
-func (x *RotateKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RotateKeyResponse.ProtoReflect.Descriptor instead.
-func (*RotateKeyResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *RotateKeyResponse) GetOutcode() int32 {
-	if x != nil {
-		return x.Outcode
-	}
-	return 0
-}
-
-func (x *RotateKeyResponse) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
 type GetKeyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
@@ -233,7 +181,7 @@ type GetKeyResponse struct {
 
 func (x *GetKeyResponse) Reset() {
 	*x = GetKeyResponse{}
-	mi := &file_auth_proto_msgTypes[4]
+	mi := &file_auth_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -245,7 +193,7 @@ func (x *GetKeyResponse) String() string {
 func (*GetKeyResponse) ProtoMessage() {}
 
 func (x *GetKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[4]
+	mi := &file_auth_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -258,7 +206,7 @@ func (x *GetKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKeyResponse.ProtoReflect.Descriptor instead.
 func (*GetKeyResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{4}
+	return file_auth_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetKeyResponse) GetKey() string {
@@ -284,7 +232,7 @@ type ValidateKeyRequest struct {
 
 func (x *ValidateKeyRequest) Reset() {
 	*x = ValidateKeyRequest{}
-	mi := &file_auth_proto_msgTypes[5]
+	mi := &file_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -296,7 +244,7 @@ func (x *ValidateKeyRequest) String() string {
 func (*ValidateKeyRequest) ProtoMessage() {}
 
 func (x *ValidateKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[5]
+	mi := &file_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -309,7 +257,7 @@ func (x *ValidateKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateKeyRequest.ProtoReflect.Descriptor instead.
 func (*ValidateKeyRequest) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{5}
+	return file_auth_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ValidateKeyRequest) GetKey() string {
@@ -328,7 +276,7 @@ type SimpleResponse struct {
 
 func (x *SimpleResponse) Reset() {
 	*x = SimpleResponse{}
-	mi := &file_auth_proto_msgTypes[6]
+	mi := &file_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -340,7 +288,7 @@ func (x *SimpleResponse) String() string {
 func (*SimpleResponse) ProtoMessage() {}
 
 func (x *SimpleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[6]
+	mi := &file_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -353,7 +301,7 @@ func (x *SimpleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimpleResponse.ProtoReflect.Descriptor instead.
 func (*SimpleResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{6}
+	return file_auth_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SimpleResponse) GetMessage() string {
@@ -378,10 +326,7 @@ const file_auth_proto_rawDesc = "" +
 	"user_email\x18\x02 \x01(\tR\tuserEmail\".\n" +
 	"\n" +
 	"KeyRequest\x12 \n" +
-	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\"G\n" +
-	"\x11RotateKeyResponse\x12\x18\n" +
-	"\aoutcode\x18\x01 \x01(\x05R\aoutcode\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"]\n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\"]\n" +
 	"\x0eGetKeyResponse\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
 	"\n" +
@@ -389,10 +334,10 @@ const file_auth_proto_rawDesc = "" +
 	"\x12ValidateKeyRequest\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\"*\n" +
 	"\x0eSimpleResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\xe7\x01\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage2\xe4\x01\n" +
 	"\vAuthService\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
-	"\tRotateKey\x12\x10.auth.KeyRequest\x1a\x17.auth.RotateKeyResponse\x120\n" +
+	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x123\n" +
+	"\tRotateKey\x12\x10.auth.KeyRequest\x1a\x14.auth.SimpleResponse\x120\n" +
 	"\x06GetKey\x12\x10.auth.KeyRequest\x1a\x14.auth.GetKeyResponse\x12<\n" +
 	"\vValidateKey\x12\x18.auth.ValidateKeyRequest\x1a\x13.auth.LoginResponseB6Z4github.com/Aditya-0011/common/contracts/go/auth;authb\x06proto3"
 
@@ -408,26 +353,25 @@ func file_auth_proto_rawDescGZIP() []byte {
 	return file_auth_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_auth_proto_goTypes = []any{
 	(*LoginRequest)(nil),          // 0: auth.LoginRequest
 	(*LoginResponse)(nil),         // 1: auth.LoginResponse
 	(*KeyRequest)(nil),            // 2: auth.KeyRequest
-	(*RotateKeyResponse)(nil),     // 3: auth.RotateKeyResponse
-	(*GetKeyResponse)(nil),        // 4: auth.GetKeyResponse
-	(*ValidateKeyRequest)(nil),    // 5: auth.ValidateKeyRequest
-	(*SimpleResponse)(nil),        // 6: auth.SimpleResponse
-	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
+	(*GetKeyResponse)(nil),        // 3: auth.GetKeyResponse
+	(*ValidateKeyRequest)(nil),    // 4: auth.ValidateKeyRequest
+	(*SimpleResponse)(nil),        // 5: auth.SimpleResponse
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_auth_proto_depIdxs = []int32{
-	7, // 0: auth.GetKeyResponse.updated_at:type_name -> google.protobuf.Timestamp
+	6, // 0: auth.GetKeyResponse.updated_at:type_name -> google.protobuf.Timestamp
 	0, // 1: auth.AuthService.Login:input_type -> auth.LoginRequest
 	2, // 2: auth.AuthService.RotateKey:input_type -> auth.KeyRequest
 	2, // 3: auth.AuthService.GetKey:input_type -> auth.KeyRequest
-	5, // 4: auth.AuthService.ValidateKey:input_type -> auth.ValidateKeyRequest
+	4, // 4: auth.AuthService.ValidateKey:input_type -> auth.ValidateKeyRequest
 	1, // 5: auth.AuthService.Login:output_type -> auth.LoginResponse
-	3, // 6: auth.AuthService.RotateKey:output_type -> auth.RotateKeyResponse
-	4, // 7: auth.AuthService.GetKey:output_type -> auth.GetKeyResponse
+	5, // 6: auth.AuthService.RotateKey:output_type -> auth.SimpleResponse
+	3, // 7: auth.AuthService.GetKey:output_type -> auth.GetKeyResponse
 	1, // 8: auth.AuthService.ValidateKey:output_type -> auth.LoginResponse
 	5, // [5:9] is the sub-list for method output_type
 	1, // [1:5] is the sub-list for method input_type
@@ -447,7 +391,7 @@ func file_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
