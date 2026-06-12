@@ -8,7 +8,7 @@ A single source of truth for inter-service communication schema.
 
 ## Overview
 
-The `common` repository acts as the central Protocol Buffers (`.proto`) definitions and generated contracts for all microservices in the infrastructure workspace. It ensures type-safe and validated communication between services such as `auth` and `manager` by serving as the definitive schema repository.
+The `common` repository acts as the central Protocol Buffers (`.proto`) schema registry for the developer platform. It ensures type-safe and validated communication between the REST API Gateway and the internal gRPC microservices (`auth` and `manager`). By centralizing the contracts here, the platform guarantees that the Headless Portfolio CMS and the Identity Provider stay strictly synchronized.
 
 ## Architecture & Tech Stack
 
@@ -25,8 +25,8 @@ The `common` repository acts as the central Protocol Buffers (`.proto`) definiti
 │   ├── csharp/    # Generated C# contracts
 │   └── go/        # Generated Go packages (github.com/Aditya-0011/common/contracts/go)
 ├── protos/        # Core Protocol Buffer source files, separated by domain
-│   ├── auth/      # Auth service definitions
-│   └── manager/   # Manager service definitions
+│   ├── auth/      # Auth service definitions (Identity Provider)
+│   └── manager/   # Manager service definitions (Portfolio CMS)
 ├── buf.gen.yaml   # Buf generation configuration for Go
 ├── buf.gen.csharp.yaml # Buf generation configuration for C#
 └── README.md      # This file
@@ -34,10 +34,10 @@ The `common` repository acts as the central Protocol Buffers (`.proto`) definiti
 
 ## Features
 
-- 📜 **Centralized Schema**: A single repository for all `.proto` files, preventing duplication across microservices.
+- 📜 **Centralized Schema**: A single repository for all `.proto` files, preventing duplication across the microservices infrastructure.
 - 🛡️ **Built-in Validation**: Defines payload constraints (e.g., minimum length, string formats) using `protovalidate` annotations.
 - ⚙️ **Automated Generation**: Easy contract compilation for both Go and C# ecosystems.
-- 🚦 **Safe Evolution**: Uses `buf breaking` to prevent accidental breaking changes to APIs.
+- 🚦 **Safe Evolution**: Uses `buf breaking` to prevent accidental breaking changes to the internal APIs.
 
 ## Getting Started
 
