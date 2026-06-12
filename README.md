@@ -1,17 +1,10 @@
-<div align="center">
-
 # Common Infrastructure Contracts
-*Single source of truth for inter-service communication schema*
+
+A single source of truth for inter-service communication schema.
 
 [![Protobuf](https://img.shields.io/badge/Protobuf-3.21-00add8?style=flat-square)](https://protobuf.dev/)
 [![Buf](https://img.shields.io/badge/Buf-Build-244c5a?style=flat-square)](https://buf.build/)
 [![gRPC](https://img.shields.io/badge/gRPC-Contracts-244c5a?style=flat-square&logo=grpc)](https://grpc.io/)
-
-⭐ If you find this repository useful, star it on GitHub!
-
-[Overview](#overview) • [Architecture & Tech Stack](#architecture--tech-stack) • [Features](#features) • [Getting Started](#getting-started) • [Polyrepo Local Setup](#polyrepo-local-setup)
-
-</div>
 
 ## Overview
 
@@ -52,12 +45,22 @@ The `common` repository acts as the central Protocol Buffers (`.proto`) definiti
 
 - [Buf CLI](https://buf.build/docs/installation) is required to work with the `.proto` files.
 
-### Installation
+### Polyrepo Local Setup
 
-Clone the repository:
+This project uses a polyrepo architecture. Services like `auth`, `manager`, and `gateway` rely on these common contracts. To develop locally without issues, clone all repositories side-by-side into the same parent directory so that relative paths resolve correctly.
+
+Example local setup:
+```text
+infrastructure/
+├── common/
+├── auth/
+├── manager/
+└── gateway/
+```
+
+To consume the contracts in a remote Go service:
 ```bash
-git clone https://github.com/Aditya-0011/common.git common
-cd common
+go get github.com/Aditya-0011/common/contracts/go
 ```
 
 ### Generating Contracts
@@ -84,25 +87,4 @@ buf lint
 
 # Check for breaking changes against the main branch
 buf breaking --against '.git#branch=main'
-```
-
-## Polyrepo Local Setup
-
-This project uses a polyrepo architecture. Services like `auth` and `manager` live in their own repositories but rely on these common contracts. 
-
-To consume the contracts in a Go service:
-```bash
-go get github.com/Aditya-0011/common/contracts/go
-```
-
-> [!IMPORTANT]
-> When developing locally, keep all repositories (`common`, `auth`, `manager`) in the same parent directory. You can use Go Workspaces (`go.work`) in the parent directory to safely resolve the local `common` module without polluting the `go.mod` files of the microservices.
-
-Example local setup:
-```text
-infrastructure/
-├── common/
-├── auth/
-├── manager/
-└── go.work # Points to ./common, ./auth, ./manager
 ```
