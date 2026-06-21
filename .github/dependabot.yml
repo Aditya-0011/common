@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/contracts/go"
+    schedule:
+      interval: "weekly"
+
+  # - package-ecosystem: "nuget"
+  #   directory: "/contracts/csharp"
+  #   schedule:
+  #     interval: "weekly"

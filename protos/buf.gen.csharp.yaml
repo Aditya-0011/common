@@ -1,8 +1,13 @@
 version: v2
+inputs:
+  - directory: protos/wallet
+managed:
+  enabled: true
+  override:
+    - file_option: csharp_namespace_prefix
+      value: Contracts
 plugins:
   - remote: buf.build/protocolbuffers/csharp
     out: contracts/csharp
-    opt: paths=source_relative
   - remote: buf.build/grpc/csharp
     out: contracts/csharp
-    opt: paths=source_relative
