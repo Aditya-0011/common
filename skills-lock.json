@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "create-readme": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "skillPath": "skills/create-readme/SKILL.md",
+      "computedHash": "d0ece1b2164ce1376e4ab6e98d6ac079df3a2a94f5f02224362b6a1ce2516ae9"
+    },
+    "protobuf": {
+      "source": "bufbuild/claude-plugins",
+      "sourceType": "github",
+      "skillPath": "plugins/protobuf/skills/protobuf/SKILL.md",
+      "computedHash": "3d9770c72e7521e0c5327a4ff280ab4b23640f84e24e5010c9e520fa6fb45707"
+    }
+  }
+}

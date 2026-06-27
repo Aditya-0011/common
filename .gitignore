@@ -1,3 +1,2 @@
 protos/vendor/*
-.agents
-skills-lock.json
+/.agents
