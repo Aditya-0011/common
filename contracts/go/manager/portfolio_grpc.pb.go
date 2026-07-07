@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: portfolio.proto
+// source: manager/portfolio.proto
 
 package manager
 
@@ -649,5 +649,5 @@ var PortfolioService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "portfolio.proto",
+	Metadata: "manager/portfolio.proto",
 }

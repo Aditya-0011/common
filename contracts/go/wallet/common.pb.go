@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: manager/common.proto
+// source: wallet/common.proto
 
-package manager
+package wallet
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
@@ -31,7 +31,7 @@ type SimpleRequest struct {
 
 func (x *SimpleRequest) Reset() {
 	*x = SimpleRequest{}
-	mi := &file_manager_common_proto_msgTypes[0]
+	mi := &file_wallet_common_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *SimpleRequest) String() string {
 func (*SimpleRequest) ProtoMessage() {}
 
 func (x *SimpleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_manager_common_proto_msgTypes[0]
+	mi := &file_wallet_common_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *SimpleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimpleRequest.ProtoReflect.Descriptor instead.
 func (*SimpleRequest) Descriptor() ([]byte, []int) {
-	return file_manager_common_proto_rawDescGZIP(), []int{0}
+	return file_wallet_common_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *SimpleRequest) GetUserId() int32 {
@@ -75,7 +75,7 @@ type SimpleResponse struct {
 
 func (x *SimpleResponse) Reset() {
 	*x = SimpleResponse{}
-	mi := &file_manager_common_proto_msgTypes[1]
+	mi := &file_wallet_common_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -87,7 +87,7 @@ func (x *SimpleResponse) String() string {
 func (*SimpleResponse) ProtoMessage() {}
 
 func (x *SimpleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_manager_common_proto_msgTypes[1]
+	mi := &file_wallet_common_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -100,7 +100,7 @@ func (x *SimpleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimpleResponse.ProtoReflect.Descriptor instead.
 func (*SimpleResponse) Descriptor() ([]byte, []int) {
-	return file_manager_common_proto_rawDescGZIP(), []int{1}
+	return file_wallet_common_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SimpleResponse) GetMessage() string {
@@ -120,7 +120,7 @@ type DeleteRequest struct {
 
 func (x *DeleteRequest) Reset() {
 	*x = DeleteRequest{}
-	mi := &file_manager_common_proto_msgTypes[2]
+	mi := &file_wallet_common_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -132,7 +132,7 @@ func (x *DeleteRequest) String() string {
 func (*DeleteRequest) ProtoMessage() {}
 
 func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_manager_common_proto_msgTypes[2]
+	mi := &file_wallet_common_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -145,7 +145,7 @@ func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return file_manager_common_proto_rawDescGZIP(), []int{2}
+	return file_wallet_common_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DeleteRequest) GetUserId() int32 {
@@ -162,38 +162,38 @@ func (x *DeleteRequest) GetId() int32 {
 	return 0
 }
 
-var File_manager_common_proto protoreflect.FileDescriptor
+var File_wallet_common_proto protoreflect.FileDescriptor
 
-const file_manager_common_proto_rawDesc = "" +
+const file_wallet_common_proto_rawDesc = "" +
 	"\n" +
-	"\x14manager/common.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\"1\n" +
+	"\x13wallet/common.proto\x12\x06wallet\x1a\x1bbuf/validate/validate.proto\"1\n" +
 	"\rSimpleRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\"*\n" +
 	"\x0eSimpleResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"J\n" +
 	"\rDeleteRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x17\n" +
-	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02idB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
+	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02idBCZ8github.com/Aditya-0011/common/contracts/go/wallet;wallet\xaa\x02\x06Walletb\x06proto3"
 
 var (
-	file_manager_common_proto_rawDescOnce sync.Once
-	file_manager_common_proto_rawDescData []byte
+	file_wallet_common_proto_rawDescOnce sync.Once
+	file_wallet_common_proto_rawDescData []byte
 )
 
-func file_manager_common_proto_rawDescGZIP() []byte {
-	file_manager_common_proto_rawDescOnce.Do(func() {
-		file_manager_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_manager_common_proto_rawDesc), len(file_manager_common_proto_rawDesc)))
+func file_wallet_common_proto_rawDescGZIP() []byte {
+	file_wallet_common_proto_rawDescOnce.Do(func() {
+		file_wallet_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_wallet_common_proto_rawDesc), len(file_wallet_common_proto_rawDesc)))
 	})
-	return file_manager_common_proto_rawDescData
+	return file_wallet_common_proto_rawDescData
 }
 
-var file_manager_common_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_manager_common_proto_goTypes = []any{
-	(*SimpleRequest)(nil),  // 0: manager.SimpleRequest
-	(*SimpleResponse)(nil), // 1: manager.SimpleResponse
-	(*DeleteRequest)(nil),  // 2: manager.DeleteRequest
+var file_wallet_common_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_wallet_common_proto_goTypes = []any{
+	(*SimpleRequest)(nil),  // 0: wallet.SimpleRequest
+	(*SimpleResponse)(nil), // 1: wallet.SimpleResponse
+	(*DeleteRequest)(nil),  // 2: wallet.DeleteRequest
 }
-var file_manager_common_proto_depIdxs = []int32{
+var file_wallet_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -201,26 +201,26 @@ var file_manager_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_manager_common_proto_init() }
-func file_manager_common_proto_init() {
-	if File_manager_common_proto != nil {
+func init() { file_wallet_common_proto_init() }
+func file_wallet_common_proto_init() {
+	if File_wallet_common_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_manager_common_proto_rawDesc), len(file_manager_common_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_wallet_common_proto_rawDesc), len(file_wallet_common_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_manager_common_proto_goTypes,
-		DependencyIndexes: file_manager_common_proto_depIdxs,
-		MessageInfos:      file_manager_common_proto_msgTypes,
+		GoTypes:           file_wallet_common_proto_goTypes,
+		DependencyIndexes: file_wallet_common_proto_depIdxs,
+		MessageInfos:      file_wallet_common_proto_msgTypes,
 	}.Build()
-	File_manager_common_proto = out.File
-	file_manager_common_proto_goTypes = nil
-	file_manager_common_proto_depIdxs = nil
+	File_wallet_common_proto = out.File
+	file_wallet_common_proto_goTypes = nil
+	file_wallet_common_proto_depIdxs = nil
 }
