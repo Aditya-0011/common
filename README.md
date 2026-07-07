@@ -8,7 +8,7 @@ A single source of truth for inter-service communication schemas.
 
 ## Overview
 
-The `common` repository acts as the central Protocol Buffers (`.proto`) schema registry for the platform. It provides type-safe and validated communication between the REST API gateway and the internal gRPC microservices (`auth` and `manager`). Centralizing the contracts ensures that the headless portfolio CMS and the identity provider stay strictly synchronized.
+The `common` repository acts as the central Protocol Buffers (`.proto`) schema registry for the platform. It provides type-safe and validated communication between the REST API gateway and the internal gRPC microservices (`auth`, `manager`, and `wallet`). Centralizing the contracts ensures that the headless portfolio CMS, the identity provider, and the wallet ecosystem stay strictly synchronized across languages.
 
 ## Architecture
 
@@ -17,14 +17,17 @@ This section explains the technologies and physical layout of the contracts repo
 - **Schema definition**: Standard Protocol Buffers v3
 - **Build tooling**: Uses [Buf](https://buf.build/) for linting, formatting, breaking change detection, and generating client and server stubs
 - **Validation**: Integrates `buf.build/go/protovalidate` for defining runtime validation constraints directly inside `.proto` schemas
-- **Generated code**: Outputs Go packages for the backend microservices
+- **Generated code**: Outputs Go packages and C# projects for polyglot backend microservices
 
 ### Project structure
 
 - `contracts/go/`: Generated Go packages (`github.com/Aditya-0011/common/contracts/go`)
+- `contracts/csharp/`: Generated C# contracts
 - `protos/auth/`: Auth service definitions
 - `protos/manager/`: Manager service definitions
-- `buf.gen.yaml`: Buf generation configuration for Go
+- `protos/wallet/`: Wallet service definitions
+- `protos/buf.gen.yaml`: Buf generation configuration for Go
+- `protos/buf.gen.csharp.yaml`: Buf generation configuration for C#
 
 ## Features
 
@@ -32,7 +35,7 @@ This section outlines the capabilities of the schema registry.
 
 - **Centralized schema**: Prevents duplication across the microservices infrastructure.
 - **Built-in validation**: Defines payload constraints using `protovalidate` annotations.
-- **Automated generation**: Compiles contracts into usable code packages.
+- **Automated generation**: Compiles contracts into usable code packages for multiple languages.
 - **Safe evolution**: Uses `buf breaking` to prevent breaking changes to internal APIs.
 
 ## Getting started
@@ -45,14 +48,15 @@ This section explains how to compile the schemas locally.
 
 ### Generating contracts
 
-To compile the schemas locally for Go, navigate to the `protos` directory:
+To compile the schemas locally for Go and C#, navigate to the `protos` directory:
 
 ```bash
 cd protos
 buf generate --template buf.gen.yaml
+buf generate --template buf.gen.csharp.yaml
 ```
 
-To consume the generated contracts in a Go service:
+To consume the generated Go contracts in a Go service:
 
 ```bash
 go get github.com/Aditya-0011/common/contracts/go

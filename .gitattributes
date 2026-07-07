@@ -1,0 +1,2 @@
+contracts/go/**/*.go linguist-generated=false
+contracts/csharp/**/*.cs linguist-generated=false
