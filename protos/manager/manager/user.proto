@@ -3,7 +3,7 @@ syntax = "proto3";
 package manager;
 
 import "buf/validate/validate.proto";
-import "common.proto";
+import "manager/common.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/Aditya-0011/common/contracts/go/manager;manager";

@@ -9,7 +9,8 @@
     <Version>1.0.$(GITHUB_RUN_NUMBER)</Version>
     
     <Authors>Aditya</Authors>
-    <RepositoryUrl>https://github.com/Aditya-0011/contracts</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Aditya-0011/common</RepositoryUrl>
+
   </PropertyGroup>
 
   <ItemGroup>
