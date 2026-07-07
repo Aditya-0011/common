@@ -56,12 +56,15 @@ jobs:
           dotnet pack -c Release
           dotnet nuget push bin/Release/*.nupkg --source github --skip-duplicate
 
-      - name: Create Pull Request for generated code
+      - name: Commit and push generated code
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: peter-evans/create-pull-request@v8
-        with:
-          commit-message: "chore: regenerate Go and C# protobuf contracts"
-          title: "Update Generated Protobuf Contracts"
-          body: "Automatically generated Protobuf contracts from GitHub Actions."
-          branch: "chore/update-contracts"
-          base: "master"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add contracts/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: regenerate Go and C# protobuf contracts [skip ci]"
+            git push
+          fi
