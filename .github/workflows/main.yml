@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Setup Go
         uses: actions/setup-go@v6
@@ -56,12 +58,9 @@ jobs:
           dotnet pack -c Release
           dotnet nuget push bin/Release/*.nupkg --source github --skip-duplicate
 
-      - name: Create Pull Request for generated code
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: peter-evans/create-pull-request@v8
+      - name: Auto-commit Generated Code to PR
+        if: github.event_name == 'pull_request'
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit-message: "chore: regenerate Go and C# protobuf contracts"
-          title: "Update Generated Protobuf Contracts"
-          body: "Automatically generated Protobuf contracts from GitHub Actions."
-          branch: "chore/update-contracts"
-          base: "master"
+          commit_message: "chore: auto-generate protobuf contracts"
+          file_pattern: "contracts/"
