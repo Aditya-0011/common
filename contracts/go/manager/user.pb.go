@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: user.proto
+// source: manager/user.proto
 
 package manager
 
@@ -34,7 +34,7 @@ type GetUserDetailsResponse struct {
 
 func (x *GetUserDetailsResponse) Reset() {
 	*x = GetUserDetailsResponse{}
-	mi := &file_user_proto_msgTypes[0]
+	mi := &file_manager_user_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -46,7 +46,7 @@ func (x *GetUserDetailsResponse) String() string {
 func (*GetUserDetailsResponse) ProtoMessage() {}
 
 func (x *GetUserDetailsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[0]
+	mi := &file_manager_user_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +59,7 @@ func (x *GetUserDetailsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserDetailsResponse.ProtoReflect.Descriptor instead.
 func (*GetUserDetailsResponse) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{0}
+	return file_manager_user_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetUserDetailsResponse) GetAbout() string {
@@ -94,7 +94,7 @@ type EditUserDetailsRequest struct {
 
 func (x *EditUserDetailsRequest) Reset() {
 	*x = EditUserDetailsRequest{}
-	mi := &file_user_proto_msgTypes[1]
+	mi := &file_manager_user_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -106,7 +106,7 @@ func (x *EditUserDetailsRequest) String() string {
 func (*EditUserDetailsRequest) ProtoMessage() {}
 
 func (x *EditUserDetailsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[1]
+	mi := &file_manager_user_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -119,7 +119,7 @@ func (x *EditUserDetailsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EditUserDetailsRequest.ProtoReflect.Descriptor instead.
 func (*EditUserDetailsRequest) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{1}
+	return file_manager_user_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *EditUserDetailsRequest) GetUserId() int32 {
@@ -143,12 +143,11 @@ func (x *EditUserDetailsRequest) GetCoverImage() string {
 	return ""
 }
 
-var File_user_proto protoreflect.FileDescriptor
+var File_manager_user_proto protoreflect.FileDescriptor
 
-const file_user_proto_rawDesc = "" +
+const file_manager_user_proto_rawDesc = "" +
 	"\n" +
-	"\n" +
-	"user.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\x1a\fcommon.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x01\n" +
+	"\x12manager/user.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\x1a\x14manager/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x01\n" +
 	"\x16GetUserDetailsResponse\x12\x14\n" +
 	"\x05about\x18\x01 \x01(\tR\x05about\x12\x1f\n" +
 	"\vcover_image\x18\x02 \x01(\tR\n" +
@@ -165,26 +164,26 @@ const file_user_proto_rawDesc = "" +
 	"\x0fEditUserDetails\x12\x1f.manager.EditUserDetailsRequest\x1a\x17.manager.SimpleResponseB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
 
 var (
-	file_user_proto_rawDescOnce sync.Once
-	file_user_proto_rawDescData []byte
+	file_manager_user_proto_rawDescOnce sync.Once
+	file_manager_user_proto_rawDescData []byte
 )
 
-func file_user_proto_rawDescGZIP() []byte {
-	file_user_proto_rawDescOnce.Do(func() {
-		file_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)))
+func file_manager_user_proto_rawDescGZIP() []byte {
+	file_manager_user_proto_rawDescOnce.Do(func() {
+		file_manager_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_manager_user_proto_rawDesc), len(file_manager_user_proto_rawDesc)))
 	})
-	return file_user_proto_rawDescData
+	return file_manager_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_user_proto_goTypes = []any{
+var file_manager_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_manager_user_proto_goTypes = []any{
 	(*GetUserDetailsResponse)(nil), // 0: manager.GetUserDetailsResponse
 	(*EditUserDetailsRequest)(nil), // 1: manager.EditUserDetailsRequest
 	(*timestamppb.Timestamp)(nil),  // 2: google.protobuf.Timestamp
 	(*SimpleRequest)(nil),          // 3: manager.SimpleRequest
 	(*SimpleResponse)(nil),         // 4: manager.SimpleResponse
 }
-var file_user_proto_depIdxs = []int32{
+var file_manager_user_proto_depIdxs = []int32{
 	2, // 0: manager.GetUserDetailsResponse.updated_at:type_name -> google.protobuf.Timestamp
 	3, // 1: manager.UserService.GetUserDetails:input_type -> manager.SimpleRequest
 	1, // 2: manager.UserService.EditUserDetails:input_type -> manager.EditUserDetailsRequest
@@ -197,27 +196,27 @@ var file_user_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_user_proto_init() }
-func file_user_proto_init() {
-	if File_user_proto != nil {
+func init() { file_manager_user_proto_init() }
+func file_manager_user_proto_init() {
+	if File_manager_user_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_manager_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_manager_user_proto_rawDesc), len(file_manager_user_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_user_proto_goTypes,
-		DependencyIndexes: file_user_proto_depIdxs,
-		MessageInfos:      file_user_proto_msgTypes,
+		GoTypes:           file_manager_user_proto_goTypes,
+		DependencyIndexes: file_manager_user_proto_depIdxs,
+		MessageInfos:      file_manager_user_proto_msgTypes,
 	}.Build()
-	File_user_proto = out.File
-	file_user_proto_goTypes = nil
-	file_user_proto_depIdxs = nil
+	File_manager_user_proto = out.File
+	file_manager_user_proto_goTypes = nil
+	file_manager_user_proto_depIdxs = nil
 }

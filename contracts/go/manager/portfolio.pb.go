@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: portfolio.proto
+// source: manager/portfolio.proto
 
 package manager
 
@@ -71,11 +71,11 @@ func (x TechnologyCategory) String() string {
 }
 
 func (TechnologyCategory) Descriptor() protoreflect.EnumDescriptor {
-	return file_portfolio_proto_enumTypes[0].Descriptor()
+	return file_manager_portfolio_proto_enumTypes[0].Descriptor()
 }
 
 func (TechnologyCategory) Type() protoreflect.EnumType {
-	return &file_portfolio_proto_enumTypes[0]
+	return &file_manager_portfolio_proto_enumTypes[0]
 }
 
 func (x TechnologyCategory) Number() protoreflect.EnumNumber {
@@ -84,7 +84,7 @@ func (x TechnologyCategory) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use TechnologyCategory.Descriptor instead.
 func (TechnologyCategory) EnumDescriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{0}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{0}
 }
 
 type Technology struct {
@@ -101,7 +101,7 @@ type Technology struct {
 
 func (x *Technology) Reset() {
 	*x = Technology{}
-	mi := &file_portfolio_proto_msgTypes[0]
+	mi := &file_manager_portfolio_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -113,7 +113,7 @@ func (x *Technology) String() string {
 func (*Technology) ProtoMessage() {}
 
 func (x *Technology) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[0]
+	mi := &file_manager_portfolio_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -126,7 +126,7 @@ func (x *Technology) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Technology.ProtoReflect.Descriptor instead.
 func (*Technology) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{0}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Technology) GetId() int32 {
@@ -183,7 +183,7 @@ type TechnologySummary struct {
 
 func (x *TechnologySummary) Reset() {
 	*x = TechnologySummary{}
-	mi := &file_portfolio_proto_msgTypes[1]
+	mi := &file_manager_portfolio_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -195,7 +195,7 @@ func (x *TechnologySummary) String() string {
 func (*TechnologySummary) ProtoMessage() {}
 
 func (x *TechnologySummary) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[1]
+	mi := &file_manager_portfolio_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +208,7 @@ func (x *TechnologySummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TechnologySummary.ProtoReflect.Descriptor instead.
 func (*TechnologySummary) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{1}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *TechnologySummary) GetId() int32 {
@@ -248,7 +248,7 @@ type GetTechnologiesResponse struct {
 
 func (x *GetTechnologiesResponse) Reset() {
 	*x = GetTechnologiesResponse{}
-	mi := &file_portfolio_proto_msgTypes[2]
+	mi := &file_manager_portfolio_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -260,7 +260,7 @@ func (x *GetTechnologiesResponse) String() string {
 func (*GetTechnologiesResponse) ProtoMessage() {}
 
 func (x *GetTechnologiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[2]
+	mi := &file_manager_portfolio_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -273,7 +273,7 @@ func (x *GetTechnologiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTechnologiesResponse.ProtoReflect.Descriptor instead.
 func (*GetTechnologiesResponse) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{2}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetTechnologiesResponse) GetTechnologies() []*Technology {
@@ -296,7 +296,7 @@ type TechnologyCreateRequest struct {
 
 func (x *TechnologyCreateRequest) Reset() {
 	*x = TechnologyCreateRequest{}
-	mi := &file_portfolio_proto_msgTypes[3]
+	mi := &file_manager_portfolio_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -308,7 +308,7 @@ func (x *TechnologyCreateRequest) String() string {
 func (*TechnologyCreateRequest) ProtoMessage() {}
 
 func (x *TechnologyCreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[3]
+	mi := &file_manager_portfolio_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -321,7 +321,7 @@ func (x *TechnologyCreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TechnologyCreateRequest.ProtoReflect.Descriptor instead.
 func (*TechnologyCreateRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{3}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *TechnologyCreateRequest) GetUserId() int32 {
@@ -373,7 +373,7 @@ type TechnologyUpdateRequest struct {
 
 func (x *TechnologyUpdateRequest) Reset() {
 	*x = TechnologyUpdateRequest{}
-	mi := &file_portfolio_proto_msgTypes[4]
+	mi := &file_manager_portfolio_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -385,7 +385,7 @@ func (x *TechnologyUpdateRequest) String() string {
 func (*TechnologyUpdateRequest) ProtoMessage() {}
 
 func (x *TechnologyUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[4]
+	mi := &file_manager_portfolio_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -398,7 +398,7 @@ func (x *TechnologyUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TechnologyUpdateRequest.ProtoReflect.Descriptor instead.
 func (*TechnologyUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{4}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *TechnologyUpdateRequest) GetUserId() int32 {
@@ -460,7 +460,7 @@ type Project struct {
 
 func (x *Project) Reset() {
 	*x = Project{}
-	mi := &file_portfolio_proto_msgTypes[5]
+	mi := &file_manager_portfolio_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -472,7 +472,7 @@ func (x *Project) String() string {
 func (*Project) ProtoMessage() {}
 
 func (x *Project) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[5]
+	mi := &file_manager_portfolio_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -485,7 +485,7 @@ func (x *Project) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Project.ProtoReflect.Descriptor instead.
 func (*Project) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{5}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Project) GetId() int32 {
@@ -561,7 +561,7 @@ type ProjectSummary struct {
 
 func (x *ProjectSummary) Reset() {
 	*x = ProjectSummary{}
-	mi := &file_portfolio_proto_msgTypes[6]
+	mi := &file_manager_portfolio_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -573,7 +573,7 @@ func (x *ProjectSummary) String() string {
 func (*ProjectSummary) ProtoMessage() {}
 
 func (x *ProjectSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[6]
+	mi := &file_manager_portfolio_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -586,7 +586,7 @@ func (x *ProjectSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProjectSummary.ProtoReflect.Descriptor instead.
 func (*ProjectSummary) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{6}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ProjectSummary) GetId() int32 {
@@ -612,7 +612,7 @@ type GetProjectsResponse struct {
 
 func (x *GetProjectsResponse) Reset() {
 	*x = GetProjectsResponse{}
-	mi := &file_portfolio_proto_msgTypes[7]
+	mi := &file_manager_portfolio_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -624,7 +624,7 @@ func (x *GetProjectsResponse) String() string {
 func (*GetProjectsResponse) ProtoMessage() {}
 
 func (x *GetProjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[7]
+	mi := &file_manager_portfolio_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -637,7 +637,7 @@ func (x *GetProjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProjectsResponse.ProtoReflect.Descriptor instead.
 func (*GetProjectsResponse) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{7}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetProjectsResponse) GetProjects() []*Project {
@@ -663,7 +663,7 @@ type ProjectCreateRequest struct {
 
 func (x *ProjectCreateRequest) Reset() {
 	*x = ProjectCreateRequest{}
-	mi := &file_portfolio_proto_msgTypes[8]
+	mi := &file_manager_portfolio_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -675,7 +675,7 @@ func (x *ProjectCreateRequest) String() string {
 func (*ProjectCreateRequest) ProtoMessage() {}
 
 func (x *ProjectCreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[8]
+	mi := &file_manager_portfolio_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -688,7 +688,7 @@ func (x *ProjectCreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProjectCreateRequest.ProtoReflect.Descriptor instead.
 func (*ProjectCreateRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{8}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ProjectCreateRequest) GetUserId() int32 {
@@ -764,7 +764,7 @@ type ProjectUpdateRequest struct {
 
 func (x *ProjectUpdateRequest) Reset() {
 	*x = ProjectUpdateRequest{}
-	mi := &file_portfolio_proto_msgTypes[9]
+	mi := &file_manager_portfolio_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -776,7 +776,7 @@ func (x *ProjectUpdateRequest) String() string {
 func (*ProjectUpdateRequest) ProtoMessage() {}
 
 func (x *ProjectUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[9]
+	mi := &file_manager_portfolio_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -789,7 +789,7 @@ func (x *ProjectUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProjectUpdateRequest.ProtoReflect.Descriptor instead.
 func (*ProjectUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{9}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ProjectUpdateRequest) GetUserId() int32 {
@@ -869,7 +869,7 @@ type Position struct {
 
 func (x *Position) Reset() {
 	*x = Position{}
-	mi := &file_portfolio_proto_msgTypes[10]
+	mi := &file_manager_portfolio_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -881,7 +881,7 @@ func (x *Position) String() string {
 func (*Position) ProtoMessage() {}
 
 func (x *Position) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[10]
+	mi := &file_manager_portfolio_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -894,7 +894,7 @@ func (x *Position) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Position.ProtoReflect.Descriptor instead.
 func (*Position) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{10}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Position) GetId() int32 {
@@ -952,7 +952,7 @@ type PositionCreate struct {
 
 func (x *PositionCreate) Reset() {
 	*x = PositionCreate{}
-	mi := &file_portfolio_proto_msgTypes[11]
+	mi := &file_manager_portfolio_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -964,7 +964,7 @@ func (x *PositionCreate) String() string {
 func (*PositionCreate) ProtoMessage() {}
 
 func (x *PositionCreate) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[11]
+	mi := &file_manager_portfolio_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -977,7 +977,7 @@ func (x *PositionCreate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PositionCreate.ProtoReflect.Descriptor instead.
 func (*PositionCreate) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{11}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *PositionCreate) GetRole() string {
@@ -1029,7 +1029,7 @@ type PositionUpdate struct {
 
 func (x *PositionUpdate) Reset() {
 	*x = PositionUpdate{}
-	mi := &file_portfolio_proto_msgTypes[12]
+	mi := &file_manager_portfolio_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1041,7 +1041,7 @@ func (x *PositionUpdate) String() string {
 func (*PositionUpdate) ProtoMessage() {}
 
 func (x *PositionUpdate) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[12]
+	mi := &file_manager_portfolio_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1054,7 +1054,7 @@ func (x *PositionUpdate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PositionUpdate.ProtoReflect.Descriptor instead.
 func (*PositionUpdate) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{12}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *PositionUpdate) GetId() int32 {
@@ -1115,7 +1115,7 @@ type Experience struct {
 
 func (x *Experience) Reset() {
 	*x = Experience{}
-	mi := &file_portfolio_proto_msgTypes[13]
+	mi := &file_manager_portfolio_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1127,7 +1127,7 @@ func (x *Experience) String() string {
 func (*Experience) ProtoMessage() {}
 
 func (x *Experience) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[13]
+	mi := &file_manager_portfolio_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1140,7 +1140,7 @@ func (x *Experience) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Experience.ProtoReflect.Descriptor instead.
 func (*Experience) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{13}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Experience) GetId() int32 {
@@ -1208,7 +1208,7 @@ type GetExperiencesResponse struct {
 
 func (x *GetExperiencesResponse) Reset() {
 	*x = GetExperiencesResponse{}
-	mi := &file_portfolio_proto_msgTypes[14]
+	mi := &file_manager_portfolio_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1220,7 +1220,7 @@ func (x *GetExperiencesResponse) String() string {
 func (*GetExperiencesResponse) ProtoMessage() {}
 
 func (x *GetExperiencesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[14]
+	mi := &file_manager_portfolio_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1233,7 +1233,7 @@ func (x *GetExperiencesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetExperiencesResponse.ProtoReflect.Descriptor instead.
 func (*GetExperiencesResponse) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{14}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetExperiencesResponse) GetExperiences() []*Experience {
@@ -1255,7 +1255,7 @@ type ExperienceCreateRequest struct {
 
 func (x *ExperienceCreateRequest) Reset() {
 	*x = ExperienceCreateRequest{}
-	mi := &file_portfolio_proto_msgTypes[15]
+	mi := &file_manager_portfolio_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1267,7 +1267,7 @@ func (x *ExperienceCreateRequest) String() string {
 func (*ExperienceCreateRequest) ProtoMessage() {}
 
 func (x *ExperienceCreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[15]
+	mi := &file_manager_portfolio_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1280,7 +1280,7 @@ func (x *ExperienceCreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExperienceCreateRequest.ProtoReflect.Descriptor instead.
 func (*ExperienceCreateRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{15}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ExperienceCreateRequest) GetUserId() int32 {
@@ -1324,7 +1324,7 @@ type ExperienceUpdateRequest struct {
 
 func (x *ExperienceUpdateRequest) Reset() {
 	*x = ExperienceUpdateRequest{}
-	mi := &file_portfolio_proto_msgTypes[16]
+	mi := &file_manager_portfolio_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1336,7 +1336,7 @@ func (x *ExperienceUpdateRequest) String() string {
 func (*ExperienceUpdateRequest) ProtoMessage() {}
 
 func (x *ExperienceUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[16]
+	mi := &file_manager_portfolio_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1349,7 +1349,7 @@ func (x *ExperienceUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExperienceUpdateRequest.ProtoReflect.Descriptor instead.
 func (*ExperienceUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{16}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ExperienceUpdateRequest) GetUserId() int32 {
@@ -1399,7 +1399,7 @@ type Message struct {
 
 func (x *Message) Reset() {
 	*x = Message{}
-	mi := &file_portfolio_proto_msgTypes[17]
+	mi := &file_manager_portfolio_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1411,7 +1411,7 @@ func (x *Message) String() string {
 func (*Message) ProtoMessage() {}
 
 func (x *Message) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[17]
+	mi := &file_manager_portfolio_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1424,7 +1424,7 @@ func (x *Message) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Message.ProtoReflect.Descriptor instead.
 func (*Message) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{17}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *Message) GetId() string {
@@ -1464,7 +1464,7 @@ type GetMessagesResponse struct {
 
 func (x *GetMessagesResponse) Reset() {
 	*x = GetMessagesResponse{}
-	mi := &file_portfolio_proto_msgTypes[18]
+	mi := &file_manager_portfolio_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1476,7 +1476,7 @@ func (x *GetMessagesResponse) String() string {
 func (*GetMessagesResponse) ProtoMessage() {}
 
 func (x *GetMessagesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[18]
+	mi := &file_manager_portfolio_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1489,7 +1489,7 @@ func (x *GetMessagesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMessagesResponse.ProtoReflect.Descriptor instead.
 func (*GetMessagesResponse) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{18}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetMessagesResponse) GetMessages() []*Message {
@@ -1511,7 +1511,7 @@ type AddMessageRequest struct {
 
 func (x *AddMessageRequest) Reset() {
 	*x = AddMessageRequest{}
-	mi := &file_portfolio_proto_msgTypes[19]
+	mi := &file_manager_portfolio_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1523,7 +1523,7 @@ func (x *AddMessageRequest) String() string {
 func (*AddMessageRequest) ProtoMessage() {}
 
 func (x *AddMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[19]
+	mi := &file_manager_portfolio_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1536,7 +1536,7 @@ func (x *AddMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddMessageRequest.ProtoReflect.Descriptor instead.
 func (*AddMessageRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{19}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AddMessageRequest) GetUserId() int32 {
@@ -1577,7 +1577,7 @@ type DeleteMessageRequest struct {
 
 func (x *DeleteMessageRequest) Reset() {
 	*x = DeleteMessageRequest{}
-	mi := &file_portfolio_proto_msgTypes[20]
+	mi := &file_manager_portfolio_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1589,7 +1589,7 @@ func (x *DeleteMessageRequest) String() string {
 func (*DeleteMessageRequest) ProtoMessage() {}
 
 func (x *DeleteMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portfolio_proto_msgTypes[20]
+	mi := &file_manager_portfolio_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1602,7 +1602,7 @@ func (x *DeleteMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMessageRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMessageRequest) Descriptor() ([]byte, []int) {
-	return file_portfolio_proto_rawDescGZIP(), []int{20}
+	return file_manager_portfolio_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DeleteMessageRequest) GetUserId() int32 {
@@ -1619,11 +1619,11 @@ func (x *DeleteMessageRequest) GetId() string {
 	return ""
 }
 
-var File_portfolio_proto protoreflect.FileDescriptor
+var File_manager_portfolio_proto protoreflect.FileDescriptor
 
-const file_portfolio_proto_rawDesc = "" +
+const file_manager_portfolio_proto_rawDesc = "" +
 	"\n" +
-	"\x0fportfolio.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\x1a\fcommon.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xef\x01\n" +
+	"\x17manager/portfolio.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\x1a\x14manager/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xef\x01\n" +
 	"\n" +
 	"Technology\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
@@ -1639,16 +1639,16 @@ const file_portfolio_proto_rawDesc = "" +
 	"\timage_url\x18\x03 \x01(\tR\bimageUrl\x12,\n" +
 	"\x12fallback_image_url\x18\x04 \x01(\tR\x10fallbackImageUrl\"R\n" +
 	"\x17GetTechnologiesResponse\x127\n" +
-	"\ftechnologies\x18\x01 \x03(\v2\x13.manager.TechnologyR\ftechnologies\"\xfa\x01\n" +
-	"\x17TechnologyCreateRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x1e\n" +
+	"\ftechnologies\x18\x01 \x03(\v2\x13.manager.TechnologyR\ftechnologies\"\x83\x02\n" +
+	"\x17TechnologyCreateRequest\x12 \n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12(\n" +
 	"\timage_url\x18\x03 \x01(\tB\v\xbaH\br\x06\x18\xff\x01\x88\x01\x01R\bimageUrl\x129\n" +
 	"\x12fallback_image_url\x18\x04 \x01(\tB\v\xbaH\br\x06\x18\xff\x01\x88\x01\x01R\x10fallbackImageUrl\x12A\n" +
-	"\bcategory\x18\x05 \x01(\x0e2\x1b.manager.TechnologyCategoryB\b\xbaH\x05\x82\x01\x02\x10\x01R\bcategory\"\x93\x02\n" +
-	"\x17TechnologyUpdateRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x17\n" +
+	"\bcategory\x18\x05 \x01(\x0e2\x1b.manager.TechnologyCategoryB\b\xbaH\x05\x82\x01\x02\x10\x01R\bcategory\"\x9c\x02\n" +
+	"\x17TechnologyUpdateRequest\x12 \n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x17\n" +
 	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\x12\x1e\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12(\n" +
@@ -1801,20 +1801,20 @@ const file_portfolio_proto_rawDesc = "" +
 	"\x10DeleteExperience\x12\x16.manager.DeleteRequest\x1a\x17.manager.SimpleResponseB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
 
 var (
-	file_portfolio_proto_rawDescOnce sync.Once
-	file_portfolio_proto_rawDescData []byte
+	file_manager_portfolio_proto_rawDescOnce sync.Once
+	file_manager_portfolio_proto_rawDescData []byte
 )
 
-func file_portfolio_proto_rawDescGZIP() []byte {
-	file_portfolio_proto_rawDescOnce.Do(func() {
-		file_portfolio_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_portfolio_proto_rawDesc), len(file_portfolio_proto_rawDesc)))
+func file_manager_portfolio_proto_rawDescGZIP() []byte {
+	file_manager_portfolio_proto_rawDescOnce.Do(func() {
+		file_manager_portfolio_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_manager_portfolio_proto_rawDesc), len(file_manager_portfolio_proto_rawDesc)))
 	})
-	return file_portfolio_proto_rawDescData
+	return file_manager_portfolio_proto_rawDescData
 }
 
-var file_portfolio_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_portfolio_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
-var file_portfolio_proto_goTypes = []any{
+var file_manager_portfolio_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_manager_portfolio_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_manager_portfolio_proto_goTypes = []any{
 	(TechnologyCategory)(0),         // 0: manager.TechnologyCategory
 	(*Technology)(nil),              // 1: manager.Technology
 	(*TechnologySummary)(nil),       // 2: manager.TechnologySummary
@@ -1842,7 +1842,7 @@ var file_portfolio_proto_goTypes = []any{
 	(*DeleteRequest)(nil),           // 24: manager.DeleteRequest
 	(*SimpleResponse)(nil),          // 25: manager.SimpleResponse
 }
-var file_portfolio_proto_depIdxs = []int32{
+var file_manager_portfolio_proto_depIdxs = []int32{
 	0,  // 0: manager.Technology.category:type_name -> manager.TechnologyCategory
 	22, // 1: manager.Technology.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 2: manager.GetTechnologiesResponse.technologies:type_name -> manager.Technology
@@ -1896,33 +1896,33 @@ var file_portfolio_proto_depIdxs = []int32{
 	0,  // [0:16] is the sub-list for field type_name
 }
 
-func init() { file_portfolio_proto_init() }
-func file_portfolio_proto_init() {
-	if File_portfolio_proto != nil {
+func init() { file_manager_portfolio_proto_init() }
+func file_manager_portfolio_proto_init() {
+	if File_manager_portfolio_proto != nil {
 		return
 	}
-	file_common_proto_init()
-	file_portfolio_proto_msgTypes[5].OneofWrappers = []any{}
-	file_portfolio_proto_msgTypes[8].OneofWrappers = []any{}
-	file_portfolio_proto_msgTypes[9].OneofWrappers = []any{}
-	file_portfolio_proto_msgTypes[11].OneofWrappers = []any{}
-	file_portfolio_proto_msgTypes[12].OneofWrappers = []any{}
+	file_manager_common_proto_init()
+	file_manager_portfolio_proto_msgTypes[5].OneofWrappers = []any{}
+	file_manager_portfolio_proto_msgTypes[8].OneofWrappers = []any{}
+	file_manager_portfolio_proto_msgTypes[9].OneofWrappers = []any{}
+	file_manager_portfolio_proto_msgTypes[11].OneofWrappers = []any{}
+	file_manager_portfolio_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_portfolio_proto_rawDesc), len(file_portfolio_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_manager_portfolio_proto_rawDesc), len(file_manager_portfolio_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_portfolio_proto_goTypes,
-		DependencyIndexes: file_portfolio_proto_depIdxs,
-		EnumInfos:         file_portfolio_proto_enumTypes,
-		MessageInfos:      file_portfolio_proto_msgTypes,
+		GoTypes:           file_manager_portfolio_proto_goTypes,
+		DependencyIndexes: file_manager_portfolio_proto_depIdxs,
+		EnumInfos:         file_manager_portfolio_proto_enumTypes,
+		MessageInfos:      file_manager_portfolio_proto_msgTypes,
 	}.Build()
-	File_portfolio_proto = out.File
-	file_portfolio_proto_goTypes = nil
-	file_portfolio_proto_depIdxs = nil
+	File_manager_portfolio_proto = out.File
+	file_manager_portfolio_proto_goTypes = nil
+	file_manager_portfolio_proto_depIdxs = nil
 }
