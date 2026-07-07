@@ -1,4 +1,5 @@
 contracts/go/**/*.go linguist-generated=true
 contracts/csharp/**/*.cs linguist-generated=true
+contracts/csharp/Contracts.csproj linguist-generated=true
 
-*.proto linguist-detectable=true
+**/*.proto linguist-detectable=true
