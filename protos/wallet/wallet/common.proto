@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package wallet;
+
+import "buf/validate/validate.proto";
+
+option csharp_namespace = "Wallet";
+option go_package = "github.com/Aditya-0011/common/contracts/go/wallet;wallet";
+
+message SimpleRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+}
+
+message SimpleResponse {
+  string message = 1;
+}
+
+message DeleteRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 id = 2 [(buf.validate.field).int32.gt = 0];
+}

@@ -2,7 +2,7 @@ version: v2
 inputs:
   - directory: protos/auth
   - directory: protos/manager
-  # - directory: protos/wallet
+  - directory: protos/wallet
 plugins:
   - remote: buf.build/protocolbuffers/go
     out: contracts/go

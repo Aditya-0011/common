@@ -25,10 +25,10 @@ jobs:
         with:
           go-version: '1.26.x'
 
-      # - name: Setup .NET
-      #   uses: actions/setup-dotnet@v5
-      #   with:
-      #     dotnet-version: '10.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
 
       - name: Buf Checks
         uses: bufbuild/buf-action@v1
@@ -45,16 +45,16 @@ jobs:
         run: |
           go mod tidy
 
-      # - name: Generate C# Code
-      #   run: buf generate protos/wallet --template protos/buf.gen.csharp.yaml
+      - name: Generate C# Code
+        run: buf generate protos/wallet --template protos/buf.gen.csharp.yaml
 
-      # - name: Pack and Publish C# NuGet Package
-      #   working-directory: contracts/csharp
-      #   if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      #   run: |
-      #     dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
-      #     dotnet pack -c Release
-      #     dotnet nuget push bin/Release/*.nupkg --source github --skip-duplicate
+      - name: Pack and Publish C# NuGet Package
+        working-directory: contracts/csharp
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+          dotnet pack -c Release
+          dotnet nuget push bin/Release/*.nupkg --source github --skip-duplicate
 
       - name: Commit and push generated code
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'

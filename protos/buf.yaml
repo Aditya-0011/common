@@ -8,15 +8,16 @@ modules:
   - path: manager
     name: buf.build/Aditya-0011/manager-contracts
     
-  # - path: wallet
-  #   name: buf.build/Aditya-0011/wallet-contracts
+  - path: wallet
+    name: buf.build/Aditya-0011/wallet-contracts
 
 deps:
   - buf.build/bufbuild/protovalidate
+  - buf.build/googleapis/googleapis
 
 lint:
   use:
-    - DEFAULT
+    - STANDARD
   except:
     - PACKAGE_VERSION_SUFFIX      
     - PACKAGE_DIRECTORY_MATCH

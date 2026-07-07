@@ -19,8 +19,8 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  int32 user_id = 1;
-  string user_email = 2;
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string user_email = 2 [(buf.validate.field).string.email = true];
 }
 
 message KeyRequest {
