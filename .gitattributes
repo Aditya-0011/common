@@ -1,2 +1,4 @@
-contracts/go/**/*.go linguist-generated=false
-contracts/csharp/**/*.cs linguist-generated=false
+contracts/go/**/*.go linguist-generated=true
+contracts/csharp/**/*.cs linguist-generated=true
+
+*.proto linguist-detectable=true
