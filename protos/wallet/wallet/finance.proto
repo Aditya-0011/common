@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+package wallet;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/decimal.proto";
+import "wallet/common.proto";
+
+option csharp_namespace = "Wallet";
+option go_package = "github.com/Aditya-0011/common/contracts/go/wallet;wallet";
+
+enum CategoryType {
+  CATEGORY_TYPE_UNSPECIFIED = 0;
+  CATEGORY_TYPE_INCOME = 1;
+  CATEGORY_TYPE_EXPENSE = 2;
+}
+
+message Category {
+  int32 id = 1;
+  string name = 2;
+  string icon = 3;
+  CategoryType type = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CategorySummary {
+  int32 id = 1;
+  string name = 2;
+  string icon = 3;
+  CategoryType type = 4;
+}
+
+message GetCategoriesResponse {
+  repeated Category categories = 1;
+}
+
+message CreateCategoryRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string name = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
+  string icon = 3 [(buf.validate.field).string.pattern = "^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$"];
+  CategoryType type = 4 [(buf.validate.field).enum.defined_only = true];
+}
+
+message UpdateCategoryRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 id = 2 [(buf.validate.field).int32.gt = 0];
+  string name = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
+  string icon = 4 [(buf.validate.field).string.pattern = "^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$"];
+  CategoryType type = 5 [(buf.validate.field).enum.defined_only = true];
+}
+
+message Transaction {
+  int32 id = 1;
+  string description = 2;
+  google.type.Decimal amount = 3;
+  CategorySummary category = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message GetTransactionsResponse {
+  repeated Transaction transactions = 1;
+}
+
+message CreateTransactionRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 category_id = 2 [(buf.validate.field).int32.gt = 0];
+  string description = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
+  google.type.Decimal amount = 4 [(buf.validate.field).cel = {
+    id: "amount_gt_zero"
+    message: "amount must be greater than zero"
+    expression: "double(this.value) > 0.0"
+  }];
+}
+
+message UpdateTransactionRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 category_id = 2 [(buf.validate.field).int32.gt = 0];
+  int32 id = 3 [(buf.validate.field).int32.gt = 0];
+  string description = 4 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 255
+  ];
+  google.type.Decimal amount = 5 [(buf.validate.field).cel = {
+    id: "amount_gt_zero"
+    message: "amount must be greater than zero"
+    expression: "double(this.value) > 0.0"
+  }];
+}
+
+message ExportTransactionsRequest {
+  option (buf.validate.message).cel = {
+    id: "date_range_valid"
+    message: "end date must be after or equal to start date"
+    expression: "this.end_date >= this.start_date"
+  };
+
+  google.protobuf.Timestamp start_date = 1 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp end_date = 2 [(buf.validate.field).required = true];
+}
+
+message ExportTransactionsResponse {
+  bytes file_data = 1;
+  string file_name = 2;
+  string content_type = 3;
+}
+
+message TransactionsUpdateHistory {
+  int32 id = 1;
+  google.type.Decimal previous_amount = 2;
+  google.type.Decimal updated_amount = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message GetTransactionsUpdateHistoryRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 transaction_id = 2 [(buf.validate.field).int32.gt = 0];
+}
+
+message GetTransactionsUpdateHistoryResponse {
+  repeated TransactionsUpdateHistory history = 1;
+}
+
+service FinanceService {
+  rpc GetCategories(SimpleRequest) returns (GetCategoriesResponse);
+  rpc CreateCategory(CreateCategoryRequest) returns (SimpleResponse);
+  rpc UpdateCategory(UpdateCategoryRequest) returns (SimpleResponse);
+  rpc DeleteCategory(DeleteRequest) returns (SimpleResponse);
+
+  rpc GetTransactions(SimpleRequest) returns (GetTransactionsResponse);
+  rpc CreateTransaction(CreateTransactionRequest) returns (SimpleResponse);
+  rpc UpdateTransaction(UpdateTransactionRequest) returns (SimpleResponse);
+  rpc DeleteTransaction(DeleteRequest) returns (SimpleResponse);
+
+  rpc ExportTransactions(ExportTransactionsRequest) returns (ExportTransactionsResponse);
+
+  rpc GetTransactionsUpdateHistory(GetTransactionsUpdateHistoryRequest) returns (GetTransactionsUpdateHistoryResponse);
+}

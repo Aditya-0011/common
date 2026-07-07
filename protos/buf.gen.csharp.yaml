@@ -3,6 +3,9 @@ inputs:
   - directory: protos/wallet
 managed:
   enabled: true
+  disable:
+    - module: buf.build/googleapis/googleapis
+    - module: buf.build/bufbuild/protovalidate
   override:
     - file_option: csharp_namespace_prefix
       value: Contracts
