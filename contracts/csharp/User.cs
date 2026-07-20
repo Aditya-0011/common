@@ -24,24 +24,28 @@ namespace Contracts.Wallet {
     static UserReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChF3YWxsZXQvdXNlci5wcm90bxIGd2FsbGV0Ghlnb29nbGUvdHlwZS9kZWNp",
-            "bWFsLnByb3RvGhN3YWxsZXQvY29tbW9uLnByb3RvIpcCChZHZXRVc2VyU3Vt",
-            "bWFyeVJlc3BvbnNlEjMKCmFsbF9pbmNvbWUYASABKAsyFC5nb29nbGUudHlw",
-            "ZS5EZWNpbWFsUglhbGxJbmNvbWUSNQoLYWxsX2V4cGVuc2UYAiABKAsyFC5n",
-            "b29nbGUudHlwZS5EZWNpbWFsUgphbGxFeHBlbnNlEjcKDG1vbnRoX2luY29t",
-            "ZRgDIAEoCzIULmdvb2dsZS50eXBlLkRlY2ltYWxSC21vbnRoSW5jb21lEjkK",
-            "DW1vbnRoX2V4cGVuc2UYBCABKAsyFC5nb29nbGUudHlwZS5EZWNpbWFsUgxt",
-            "b250aEV4cGVuc2USHQoKc3RhcnRfZGF0ZRgFIAEoCVIJc3RhcnREYXRlMlYK",
-            "C1VzZXJTZXJ2aWNlEkcKDkdldFVzZXJTdW1tYXJ5EhUud2FsbGV0LlNpbXBs",
-            "ZVJlcXVlc3QaHi53YWxsZXQuR2V0VXNlclN1bW1hcnlSZXNwb25zZUKTAQoK",
-            "Y29tLndhbGxldEIJVXNlclByb3RvUAFaOGdpdGh1Yi5jb20vQWRpdHlhLTAw",
-            "MTEvY29tbW9uL2NvbnRyYWN0cy9nby93YWxsZXQ7d2FsbGV0ogIDV1hYqgIQ",
-            "Q29udHJhY3RzLldhbGxldMoCBldhbGxldOICEldhbGxldFxHUEJNZXRhZGF0",
-            "YeoCBldhbGxldGIGcHJvdG8z"));
+            "ChF3YWxsZXQvdXNlci5wcm90bxIGd2FsbGV0Gh9nb29nbGUvcHJvdG9idWYv",
+            "dGltZXN0YW1wLnByb3RvGhlnb29nbGUvdHlwZS9kZWNpbWFsLnByb3RvGhN3",
+            "YWxsZXQvY29tbW9uLnByb3RvIqMDChZHZXRVc2VyU3VtbWFyeVJlc3BvbnNl",
+            "EjMKCmFsbF9pbmNvbWUYASABKAsyFC5nb29nbGUudHlwZS5EZWNpbWFsUglh",
+            "bGxJbmNvbWUSNQoLYWxsX2V4cGVuc2UYAiABKAsyFC5nb29nbGUudHlwZS5E",
+            "ZWNpbWFsUgphbGxFeHBlbnNlEjcKDG1vbnRoX2luY29tZRgDIAEoCzIULmdv",
+            "b2dsZS50eXBlLkRlY2ltYWxSC21vbnRoSW5jb21lEjkKDW1vbnRoX2V4cGVu",
+            "c2UYBCABKAsyFC5nb29nbGUudHlwZS5EZWNpbWFsUgxtb250aEV4cGVuc2US",
+            "NQoLd2Vla19pbmNvbWUYBSABKAsyFC5nb29nbGUudHlwZS5EZWNpbWFsUgp3",
+            "ZWVrSW5jb21lEjcKDHdlZWtfZXhwZW5zZRgGIAEoCzIULmdvb2dsZS50eXBl",
+            "LkRlY2ltYWxSC3dlZWtFeHBlbnNlEjkKCnN0YXJ0X2RhdGUYByABKAsyGi5n",
+            "b29nbGUucHJvdG9idWYuVGltZXN0YW1wUglzdGFydERhdGUyVgoLVXNlclNl",
+            "cnZpY2USRwoOR2V0VXNlclN1bW1hcnkSFS53YWxsZXQuU2ltcGxlUmVxdWVz",
+            "dBoeLndhbGxldC5HZXRVc2VyU3VtbWFyeVJlc3BvbnNlQpMBCgpjb20ud2Fs",
+            "bGV0QglVc2VyUHJvdG9QAVo4Z2l0aHViLmNvbS9BZGl0eWEtMDAxMS9jb21t",
+            "b24vY29udHJhY3RzL2dvL3dhbGxldDt3YWxsZXSiAgNXWFiqAhBDb250cmFj",
+            "dHMuV2FsbGV0ygIGV2FsbGV04gISV2FsbGV0XEdQQk1ldGFkYXRh6gIGV2Fs",
+            "bGV0YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Type.DecimalReflection.Descriptor, global::Contracts.Wallet.CommonReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Type.DecimalReflection.Descriptor, global::Contracts.Wallet.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetUserSummaryResponse), global::Contracts.Wallet.GetUserSummaryResponse.Parser, new[]{ "AllIncome", "AllExpense", "MonthIncome", "MonthExpense", "StartDate" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetUserSummaryResponse), global::Contracts.Wallet.GetUserSummaryResponse.Parser, new[]{ "AllIncome", "AllExpense", "MonthIncome", "MonthExpense", "WeekIncome", "WeekExpense", "StartDate" }, null, null, null, null)
           }));
     }
     #endregion
@@ -87,7 +91,9 @@ namespace Contracts.Wallet {
       allExpense_ = other.allExpense_ != null ? other.allExpense_.Clone() : null;
       monthIncome_ = other.monthIncome_ != null ? other.monthIncome_.Clone() : null;
       monthExpense_ = other.monthExpense_ != null ? other.monthExpense_.Clone() : null;
-      startDate_ = other.startDate_;
+      weekIncome_ = other.weekIncome_ != null ? other.weekIncome_.Clone() : null;
+      weekExpense_ = other.weekExpense_ != null ? other.weekExpense_.Clone() : null;
+      startDate_ = other.startDate_ != null ? other.startDate_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -145,15 +151,39 @@ namespace Contracts.Wallet {
       }
     }
 
-    /// <summary>Field number for the "start_date" field.</summary>
-    public const int StartDateFieldNumber = 5;
-    private string startDate_ = "";
+    /// <summary>Field number for the "week_income" field.</summary>
+    public const int WeekIncomeFieldNumber = 5;
+    private global::Google.Type.Decimal weekIncome_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string StartDate {
+    public global::Google.Type.Decimal WeekIncome {
+      get { return weekIncome_; }
+      set {
+        weekIncome_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "week_expense" field.</summary>
+    public const int WeekExpenseFieldNumber = 6;
+    private global::Google.Type.Decimal weekExpense_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Type.Decimal WeekExpense {
+      get { return weekExpense_; }
+      set {
+        weekExpense_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "start_date" field.</summary>
+    public const int StartDateFieldNumber = 7;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp startDate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp StartDate {
       get { return startDate_; }
       set {
-        startDate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        startDate_ = value;
       }
     }
 
@@ -176,7 +206,9 @@ namespace Contracts.Wallet {
       if (!object.Equals(AllExpense, other.AllExpense)) return false;
       if (!object.Equals(MonthIncome, other.MonthIncome)) return false;
       if (!object.Equals(MonthExpense, other.MonthExpense)) return false;
-      if (StartDate != other.StartDate) return false;
+      if (!object.Equals(WeekIncome, other.WeekIncome)) return false;
+      if (!object.Equals(WeekExpense, other.WeekExpense)) return false;
+      if (!object.Equals(StartDate, other.StartDate)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,7 +220,9 @@ namespace Contracts.Wallet {
       if (allExpense_ != null) hash ^= AllExpense.GetHashCode();
       if (monthIncome_ != null) hash ^= MonthIncome.GetHashCode();
       if (monthExpense_ != null) hash ^= MonthExpense.GetHashCode();
-      if (StartDate.Length != 0) hash ^= StartDate.GetHashCode();
+      if (weekIncome_ != null) hash ^= WeekIncome.GetHashCode();
+      if (weekExpense_ != null) hash ^= WeekExpense.GetHashCode();
+      if (startDate_ != null) hash ^= StartDate.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -223,9 +257,17 @@ namespace Contracts.Wallet {
         output.WriteRawTag(34);
         output.WriteMessage(MonthExpense);
       }
-      if (StartDate.Length != 0) {
+      if (weekIncome_ != null) {
         output.WriteRawTag(42);
-        output.WriteString(StartDate);
+        output.WriteMessage(WeekIncome);
+      }
+      if (weekExpense_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(WeekExpense);
+      }
+      if (startDate_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(StartDate);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -253,9 +295,17 @@ namespace Contracts.Wallet {
         output.WriteRawTag(34);
         output.WriteMessage(MonthExpense);
       }
-      if (StartDate.Length != 0) {
+      if (weekIncome_ != null) {
         output.WriteRawTag(42);
-        output.WriteString(StartDate);
+        output.WriteMessage(WeekIncome);
+      }
+      if (weekExpense_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(WeekExpense);
+      }
+      if (startDate_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(StartDate);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -279,8 +329,14 @@ namespace Contracts.Wallet {
       if (monthExpense_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MonthExpense);
       }
-      if (StartDate.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(StartDate);
+      if (weekIncome_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(WeekIncome);
+      }
+      if (weekExpense_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(WeekExpense);
+      }
+      if (startDate_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(StartDate);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -318,8 +374,23 @@ namespace Contracts.Wallet {
         }
         MonthExpense.MergeFrom(other.MonthExpense);
       }
-      if (other.StartDate.Length != 0) {
-        StartDate = other.StartDate;
+      if (other.weekIncome_ != null) {
+        if (weekIncome_ == null) {
+          WeekIncome = new global::Google.Type.Decimal();
+        }
+        WeekIncome.MergeFrom(other.WeekIncome);
+      }
+      if (other.weekExpense_ != null) {
+        if (weekExpense_ == null) {
+          WeekExpense = new global::Google.Type.Decimal();
+        }
+        WeekExpense.MergeFrom(other.WeekExpense);
+      }
+      if (other.startDate_ != null) {
+        if (startDate_ == null) {
+          StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        StartDate.MergeFrom(other.StartDate);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -369,7 +440,24 @@ namespace Contracts.Wallet {
             break;
           }
           case 42: {
-            StartDate = input.ReadString();
+            if (weekIncome_ == null) {
+              WeekIncome = new global::Google.Type.Decimal();
+            }
+            input.ReadMessage(WeekIncome);
+            break;
+          }
+          case 50: {
+            if (weekExpense_ == null) {
+              WeekExpense = new global::Google.Type.Decimal();
+            }
+            input.ReadMessage(WeekExpense);
+            break;
+          }
+          case 58: {
+            if (startDate_ == null) {
+              StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartDate);
             break;
           }
         }
@@ -420,7 +508,24 @@ namespace Contracts.Wallet {
             break;
           }
           case 42: {
-            StartDate = input.ReadString();
+            if (weekIncome_ == null) {
+              WeekIncome = new global::Google.Type.Decimal();
+            }
+            input.ReadMessage(WeekIncome);
+            break;
+          }
+          case 50: {
+            if (weekExpense_ == null) {
+              WeekExpense = new global::Google.Type.Decimal();
+            }
+            input.ReadMessage(WeekExpense);
+            break;
+          }
+          case 58: {
+            if (startDate_ == null) {
+              StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartDate);
             break;
           }
         }

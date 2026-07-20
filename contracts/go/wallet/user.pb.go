@@ -10,6 +10,7 @@ import (
 	decimal "google.golang.org/genproto/googleapis/type/decimal"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -28,7 +29,9 @@ type GetUserSummaryResponse struct {
 	AllExpense    *decimal.Decimal       `protobuf:"bytes,2,opt,name=all_expense,json=allExpense,proto3" json:"all_expense,omitempty"`
 	MonthIncome   *decimal.Decimal       `protobuf:"bytes,3,opt,name=month_income,json=monthIncome,proto3" json:"month_income,omitempty"`
 	MonthExpense  *decimal.Decimal       `protobuf:"bytes,4,opt,name=month_expense,json=monthExpense,proto3" json:"month_expense,omitempty"`
-	StartDate     string                 `protobuf:"bytes,5,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	WeekIncome    *decimal.Decimal       `protobuf:"bytes,5,opt,name=week_income,json=weekIncome,proto3" json:"week_income,omitempty"`
+	WeekExpense   *decimal.Decimal       `protobuf:"bytes,6,opt,name=week_expense,json=weekExpense,proto3" json:"week_expense,omitempty"`
+	StartDate     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -91,27 +94,44 @@ func (x *GetUserSummaryResponse) GetMonthExpense() *decimal.Decimal {
 	return nil
 }
 
-func (x *GetUserSummaryResponse) GetStartDate() string {
+func (x *GetUserSummaryResponse) GetWeekIncome() *decimal.Decimal {
+	if x != nil {
+		return x.WeekIncome
+	}
+	return nil
+}
+
+func (x *GetUserSummaryResponse) GetWeekExpense() *decimal.Decimal {
+	if x != nil {
+		return x.WeekExpense
+	}
+	return nil
+}
+
+func (x *GetUserSummaryResponse) GetStartDate() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartDate
 	}
-	return ""
+	return nil
 }
 
 var File_wallet_user_proto protoreflect.FileDescriptor
 
 const file_wallet_user_proto_rawDesc = "" +
 	"\n" +
-	"\x11wallet/user.proto\x12\x06wallet\x1a\x19google/type/decimal.proto\x1a\x13wallet/common.proto\"\x97\x02\n" +
+	"\x11wallet/user.proto\x12\x06wallet\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x19google/type/decimal.proto\x1a\x13wallet/common.proto\"\xa3\x03\n" +
 	"\x16GetUserSummaryResponse\x123\n" +
 	"\n" +
 	"all_income\x18\x01 \x01(\v2\x14.google.type.DecimalR\tallIncome\x125\n" +
 	"\vall_expense\x18\x02 \x01(\v2\x14.google.type.DecimalR\n" +
 	"allExpense\x127\n" +
 	"\fmonth_income\x18\x03 \x01(\v2\x14.google.type.DecimalR\vmonthIncome\x129\n" +
-	"\rmonth_expense\x18\x04 \x01(\v2\x14.google.type.DecimalR\fmonthExpense\x12\x1d\n" +
+	"\rmonth_expense\x18\x04 \x01(\v2\x14.google.type.DecimalR\fmonthExpense\x125\n" +
+	"\vweek_income\x18\x05 \x01(\v2\x14.google.type.DecimalR\n" +
+	"weekIncome\x127\n" +
+	"\fweek_expense\x18\x06 \x01(\v2\x14.google.type.DecimalR\vweekExpense\x129\n" +
 	"\n" +
-	"start_date\x18\x05 \x01(\tR\tstartDate2V\n" +
+	"start_date\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate2V\n" +
 	"\vUserService\x12G\n" +
 	"\x0eGetUserSummary\x12\x15.wallet.SimpleRequest\x1a\x1e.wallet.GetUserSummaryResponseBCZ8github.com/Aditya-0011/common/contracts/go/wallet;wallet\xaa\x02\x06Walletb\x06proto3"
 
@@ -131,20 +151,24 @@ var file_wallet_user_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_wallet_user_proto_goTypes = []any{
 	(*GetUserSummaryResponse)(nil), // 0: wallet.GetUserSummaryResponse
 	(*decimal.Decimal)(nil),        // 1: google.type.Decimal
-	(*SimpleRequest)(nil),          // 2: wallet.SimpleRequest
+	(*timestamppb.Timestamp)(nil),  // 2: google.protobuf.Timestamp
+	(*SimpleRequest)(nil),          // 3: wallet.SimpleRequest
 }
 var file_wallet_user_proto_depIdxs = []int32{
 	1, // 0: wallet.GetUserSummaryResponse.all_income:type_name -> google.type.Decimal
 	1, // 1: wallet.GetUserSummaryResponse.all_expense:type_name -> google.type.Decimal
 	1, // 2: wallet.GetUserSummaryResponse.month_income:type_name -> google.type.Decimal
 	1, // 3: wallet.GetUserSummaryResponse.month_expense:type_name -> google.type.Decimal
-	2, // 4: wallet.UserService.GetUserSummary:input_type -> wallet.SimpleRequest
-	0, // 5: wallet.UserService.GetUserSummary:output_type -> wallet.GetUserSummaryResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	1, // 4: wallet.GetUserSummaryResponse.week_income:type_name -> google.type.Decimal
+	1, // 5: wallet.GetUserSummaryResponse.week_expense:type_name -> google.type.Decimal
+	2, // 6: wallet.GetUserSummaryResponse.start_date:type_name -> google.protobuf.Timestamp
+	3, // 7: wallet.UserService.GetUserSummary:input_type -> wallet.SimpleRequest
+	0, // 8: wallet.UserService.GetUserSummary:output_type -> wallet.GetUserSummaryResponse
+	8, // [8:9] is the sub-list for method output_type
+	7, // [7:8] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_wallet_user_proto_init() }
