@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package wallet;
 
+import "google/protobuf/timestamp.proto";
 import "google/type/decimal.proto";
 import "wallet/common.proto";
 
@@ -13,7 +14,9 @@ message GetUserSummaryResponse {
   google.type.Decimal all_expense = 2;
   google.type.Decimal month_income = 3;
   google.type.Decimal month_expense = 4;
-  string start_date = 5;
+  google.type.Decimal week_income = 5;
+  google.type.Decimal week_expense = 6;
+  google.protobuf.Timestamp start_date = 7;
 }
 
 service UserService {
