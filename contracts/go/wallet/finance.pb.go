@@ -497,6 +497,90 @@ func (x *Transaction) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type GetTransactionsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	Type          *CategoryType          `protobuf:"varint,3,opt,name=type,proto3,enum=wallet.CategoryType,oneof" json:"type,omitempty"`
+	CategoryId    *int32                 `protobuf:"varint,4,opt,name=category_id,json=categoryId,proto3,oneof" json:"category_id,omitempty"`
+	StartDate     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_date,json=startDate,proto3,oneof" json:"start_date,omitempty"`
+	EndDate       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=end_date,json=endDate,proto3,oneof" json:"end_date,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTransactionsRequest) Reset() {
+	*x = GetTransactionsRequest{}
+	mi := &file_wallet_finance_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTransactionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTransactionsRequest) ProtoMessage() {}
+
+func (x *GetTransactionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_wallet_finance_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTransactionsRequest.ProtoReflect.Descriptor instead.
+func (*GetTransactionsRequest) Descriptor() ([]byte, []int) {
+	return file_wallet_finance_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetTransactionsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *GetTransactionsRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *GetTransactionsRequest) GetType() CategoryType {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return CategoryType_CATEGORY_TYPE_UNSPECIFIED
+}
+
+func (x *GetTransactionsRequest) GetCategoryId() int32 {
+	if x != nil && x.CategoryId != nil {
+		return *x.CategoryId
+	}
+	return 0
+}
+
+func (x *GetTransactionsRequest) GetStartDate() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartDate
+	}
+	return nil
+}
+
+func (x *GetTransactionsRequest) GetEndDate() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndDate
+	}
+	return nil
+}
+
 type GetTransactionsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Transactions  []*Transaction         `protobuf:"bytes,1,rep,name=transactions,proto3" json:"transactions,omitempty"`
@@ -506,7 +590,7 @@ type GetTransactionsResponse struct {
 
 func (x *GetTransactionsResponse) Reset() {
 	*x = GetTransactionsResponse{}
-	mi := &file_wallet_finance_proto_msgTypes[6]
+	mi := &file_wallet_finance_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -518,7 +602,7 @@ func (x *GetTransactionsResponse) String() string {
 func (*GetTransactionsResponse) ProtoMessage() {}
 
 func (x *GetTransactionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[6]
+	mi := &file_wallet_finance_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -531,7 +615,7 @@ func (x *GetTransactionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTransactionsResponse.ProtoReflect.Descriptor instead.
 func (*GetTransactionsResponse) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{6}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetTransactionsResponse) GetTransactions() []*Transaction {
@@ -553,7 +637,7 @@ type CreateTransactionRequest struct {
 
 func (x *CreateTransactionRequest) Reset() {
 	*x = CreateTransactionRequest{}
-	mi := &file_wallet_finance_proto_msgTypes[7]
+	mi := &file_wallet_finance_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -565,7 +649,7 @@ func (x *CreateTransactionRequest) String() string {
 func (*CreateTransactionRequest) ProtoMessage() {}
 
 func (x *CreateTransactionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[7]
+	mi := &file_wallet_finance_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,7 +662,7 @@ func (x *CreateTransactionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTransactionRequest.ProtoReflect.Descriptor instead.
 func (*CreateTransactionRequest) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{7}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CreateTransactionRequest) GetUserId() int32 {
@@ -622,7 +706,7 @@ type UpdateTransactionRequest struct {
 
 func (x *UpdateTransactionRequest) Reset() {
 	*x = UpdateTransactionRequest{}
-	mi := &file_wallet_finance_proto_msgTypes[8]
+	mi := &file_wallet_finance_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -634,7 +718,7 @@ func (x *UpdateTransactionRequest) String() string {
 func (*UpdateTransactionRequest) ProtoMessage() {}
 
 func (x *UpdateTransactionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[8]
+	mi := &file_wallet_finance_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -647,7 +731,7 @@ func (x *UpdateTransactionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTransactionRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTransactionRequest) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{8}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateTransactionRequest) GetUserId() int32 {
@@ -695,7 +779,7 @@ type ExportTransactionsRequest struct {
 
 func (x *ExportTransactionsRequest) Reset() {
 	*x = ExportTransactionsRequest{}
-	mi := &file_wallet_finance_proto_msgTypes[9]
+	mi := &file_wallet_finance_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -707,7 +791,7 @@ func (x *ExportTransactionsRequest) String() string {
 func (*ExportTransactionsRequest) ProtoMessage() {}
 
 func (x *ExportTransactionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[9]
+	mi := &file_wallet_finance_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -720,7 +804,7 @@ func (x *ExportTransactionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExportTransactionsRequest.ProtoReflect.Descriptor instead.
 func (*ExportTransactionsRequest) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{9}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ExportTransactionsRequest) GetStartDate() *timestamppb.Timestamp {
@@ -748,7 +832,7 @@ type ExportTransactionsResponse struct {
 
 func (x *ExportTransactionsResponse) Reset() {
 	*x = ExportTransactionsResponse{}
-	mi := &file_wallet_finance_proto_msgTypes[10]
+	mi := &file_wallet_finance_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -760,7 +844,7 @@ func (x *ExportTransactionsResponse) String() string {
 func (*ExportTransactionsResponse) ProtoMessage() {}
 
 func (x *ExportTransactionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[10]
+	mi := &file_wallet_finance_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -773,7 +857,7 @@ func (x *ExportTransactionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExportTransactionsResponse.ProtoReflect.Descriptor instead.
 func (*ExportTransactionsResponse) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{10}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ExportTransactionsResponse) GetFileData() []byte {
@@ -813,7 +897,7 @@ type TransactionsUpdateHistory struct {
 
 func (x *TransactionsUpdateHistory) Reset() {
 	*x = TransactionsUpdateHistory{}
-	mi := &file_wallet_finance_proto_msgTypes[11]
+	mi := &file_wallet_finance_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -825,7 +909,7 @@ func (x *TransactionsUpdateHistory) String() string {
 func (*TransactionsUpdateHistory) ProtoMessage() {}
 
 func (x *TransactionsUpdateHistory) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[11]
+	mi := &file_wallet_finance_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -838,7 +922,7 @@ func (x *TransactionsUpdateHistory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransactionsUpdateHistory.ProtoReflect.Descriptor instead.
 func (*TransactionsUpdateHistory) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{11}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *TransactionsUpdateHistory) GetId() int32 {
@@ -907,7 +991,7 @@ type GetTransactionsUpdateHistoryRequest struct {
 
 func (x *GetTransactionsUpdateHistoryRequest) Reset() {
 	*x = GetTransactionsUpdateHistoryRequest{}
-	mi := &file_wallet_finance_proto_msgTypes[12]
+	mi := &file_wallet_finance_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -919,7 +1003,7 @@ func (x *GetTransactionsUpdateHistoryRequest) String() string {
 func (*GetTransactionsUpdateHistoryRequest) ProtoMessage() {}
 
 func (x *GetTransactionsUpdateHistoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[12]
+	mi := &file_wallet_finance_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -932,7 +1016,7 @@ func (x *GetTransactionsUpdateHistoryRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetTransactionsUpdateHistoryRequest.ProtoReflect.Descriptor instead.
 func (*GetTransactionsUpdateHistoryRequest) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{12}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetTransactionsUpdateHistoryRequest) GetUserId() int32 {
@@ -958,7 +1042,7 @@ type GetTransactionsUpdateHistoryResponse struct {
 
 func (x *GetTransactionsUpdateHistoryResponse) Reset() {
 	*x = GetTransactionsUpdateHistoryResponse{}
-	mi := &file_wallet_finance_proto_msgTypes[13]
+	mi := &file_wallet_finance_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -970,7 +1054,7 @@ func (x *GetTransactionsUpdateHistoryResponse) String() string {
 func (*GetTransactionsUpdateHistoryResponse) ProtoMessage() {}
 
 func (x *GetTransactionsUpdateHistoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_wallet_finance_proto_msgTypes[13]
+	mi := &file_wallet_finance_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -983,7 +1067,7 @@ func (x *GetTransactionsUpdateHistoryResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetTransactionsUpdateHistoryResponse.ProtoReflect.Descriptor instead.
 func (*GetTransactionsUpdateHistoryResponse) Descriptor() ([]byte, []int) {
-	return file_wallet_finance_proto_rawDescGZIP(), []int{13}
+	return file_wallet_finance_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetTransactionsUpdateHistoryResponse) GetHistory() []*TransactionsUpdateHistory {
@@ -1037,7 +1121,21 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"R\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xdb\x03\n" +
+	"\x16GetTransactionsRequest\x12\x1d\n" +
+	"\x05limit\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02(\x01R\x05limit\x12\x1f\n" +
+	"\x06offset\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02(\x01R\x06offset\x127\n" +
+	"\x04type\x18\x03 \x01(\x0e2\x14.wallet.CategoryTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04type\x88\x01\x01\x12-\n" +
+	"\vcategory_id\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02(\x01H\x01R\n" +
+	"categoryId\x88\x01\x01\x12>\n" +
+	"\n" +
+	"start_date\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampH\x02R\tstartDate\x88\x01\x01\x12:\n" +
+	"\bend_date\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampH\x03R\aendDate\x88\x01\x01:h\xbaHe\x1ac\n" +
+	"\x10date_range_valid\x12-end date must be after or equal to start date\x1a this.end_date >= this.start_dateB\a\n" +
+	"\x05_typeB\x0e\n" +
+	"\f_category_idB\r\n" +
+	"\v_start_dateB\v\n" +
+	"\t_end_date\"R\n" +
 	"\x17GetTransactionsResponse\x127\n" +
 	"\ftransactions\x18\x01 \x03(\v2\x13.wallet.TransactionR\ftransactions\"\x97\x02\n" +
 	"\x18CreateTransactionRequest\x12 \n" +
@@ -1084,13 +1182,13 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\fCategoryType\x12\x1d\n" +
 	"\x19CATEGORY_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
 	"\x14CATEGORY_TYPE_INCOME\x10\x01\x12\x19\n" +
-	"\x15CATEGORY_TYPE_EXPENSE\x10\x022\xaf\x06\n" +
+	"\x15CATEGORY_TYPE_EXPENSE\x10\x022\xb8\x06\n" +
 	"\x0eFinanceService\x12E\n" +
 	"\rGetCategories\x12\x15.wallet.SimpleRequest\x1a\x1d.wallet.GetCategoriesResponse\x12G\n" +
 	"\x0eCreateCategory\x12\x1d.wallet.CreateCategoryRequest\x1a\x16.wallet.SimpleResponse\x12G\n" +
 	"\x0eUpdateCategory\x12\x1d.wallet.UpdateCategoryRequest\x1a\x16.wallet.SimpleResponse\x12?\n" +
-	"\x0eDeleteCategory\x12\x15.wallet.DeleteRequest\x1a\x16.wallet.SimpleResponse\x12I\n" +
-	"\x0fGetTransactions\x12\x15.wallet.SimpleRequest\x1a\x1f.wallet.GetTransactionsResponse\x12M\n" +
+	"\x0eDeleteCategory\x12\x15.wallet.DeleteRequest\x1a\x16.wallet.SimpleResponse\x12R\n" +
+	"\x0fGetTransactions\x12\x1e.wallet.GetTransactionsRequest\x1a\x1f.wallet.GetTransactionsResponse\x12M\n" +
 	"\x11CreateTransaction\x12 .wallet.CreateTransactionRequest\x1a\x16.wallet.SimpleResponse\x12M\n" +
 	"\x11UpdateTransaction\x12 .wallet.UpdateTransactionRequest\x1a\x16.wallet.SimpleResponse\x12B\n" +
 	"\x11DeleteTransaction\x12\x15.wallet.DeleteRequest\x1a\x16.wallet.SimpleResponse\x12[\n" +
@@ -1110,7 +1208,7 @@ func file_wallet_finance_proto_rawDescGZIP() []byte {
 }
 
 var file_wallet_finance_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_wallet_finance_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_wallet_finance_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_wallet_finance_proto_goTypes = []any{
 	(CategoryType)(0),                            // 0: wallet.CategoryType
 	(*Category)(nil),                             // 1: wallet.Category
@@ -1119,68 +1217,72 @@ var file_wallet_finance_proto_goTypes = []any{
 	(*CreateCategoryRequest)(nil),                // 4: wallet.CreateCategoryRequest
 	(*UpdateCategoryRequest)(nil),                // 5: wallet.UpdateCategoryRequest
 	(*Transaction)(nil),                          // 6: wallet.Transaction
-	(*GetTransactionsResponse)(nil),              // 7: wallet.GetTransactionsResponse
-	(*CreateTransactionRequest)(nil),             // 8: wallet.CreateTransactionRequest
-	(*UpdateTransactionRequest)(nil),             // 9: wallet.UpdateTransactionRequest
-	(*ExportTransactionsRequest)(nil),            // 10: wallet.ExportTransactionsRequest
-	(*ExportTransactionsResponse)(nil),           // 11: wallet.ExportTransactionsResponse
-	(*TransactionsUpdateHistory)(nil),            // 12: wallet.TransactionsUpdateHistory
-	(*GetTransactionsUpdateHistoryRequest)(nil),  // 13: wallet.GetTransactionsUpdateHistoryRequest
-	(*GetTransactionsUpdateHistoryResponse)(nil), // 14: wallet.GetTransactionsUpdateHistoryResponse
-	(*timestamppb.Timestamp)(nil),                // 15: google.protobuf.Timestamp
-	(*decimal.Decimal)(nil),                      // 16: google.type.Decimal
-	(*SimpleRequest)(nil),                        // 17: wallet.SimpleRequest
-	(*DeleteRequest)(nil),                        // 18: wallet.DeleteRequest
-	(*SimpleResponse)(nil),                       // 19: wallet.SimpleResponse
+	(*GetTransactionsRequest)(nil),               // 7: wallet.GetTransactionsRequest
+	(*GetTransactionsResponse)(nil),              // 8: wallet.GetTransactionsResponse
+	(*CreateTransactionRequest)(nil),             // 9: wallet.CreateTransactionRequest
+	(*UpdateTransactionRequest)(nil),             // 10: wallet.UpdateTransactionRequest
+	(*ExportTransactionsRequest)(nil),            // 11: wallet.ExportTransactionsRequest
+	(*ExportTransactionsResponse)(nil),           // 12: wallet.ExportTransactionsResponse
+	(*TransactionsUpdateHistory)(nil),            // 13: wallet.TransactionsUpdateHistory
+	(*GetTransactionsUpdateHistoryRequest)(nil),  // 14: wallet.GetTransactionsUpdateHistoryRequest
+	(*GetTransactionsUpdateHistoryResponse)(nil), // 15: wallet.GetTransactionsUpdateHistoryResponse
+	(*timestamppb.Timestamp)(nil),                // 16: google.protobuf.Timestamp
+	(*decimal.Decimal)(nil),                      // 17: google.type.Decimal
+	(*SimpleRequest)(nil),                        // 18: wallet.SimpleRequest
+	(*DeleteRequest)(nil),                        // 19: wallet.DeleteRequest
+	(*SimpleResponse)(nil),                       // 20: wallet.SimpleResponse
 }
 var file_wallet_finance_proto_depIdxs = []int32{
 	0,  // 0: wallet.Category.type:type_name -> wallet.CategoryType
-	15, // 1: wallet.Category.created_at:type_name -> google.protobuf.Timestamp
-	15, // 2: wallet.Category.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 1: wallet.Category.created_at:type_name -> google.protobuf.Timestamp
+	16, // 2: wallet.Category.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: wallet.CategorySummary.type:type_name -> wallet.CategoryType
 	1,  // 4: wallet.GetCategoriesResponse.categories:type_name -> wallet.Category
 	0,  // 5: wallet.CreateCategoryRequest.type:type_name -> wallet.CategoryType
 	0,  // 6: wallet.UpdateCategoryRequest.type:type_name -> wallet.CategoryType
-	16, // 7: wallet.Transaction.amount:type_name -> google.type.Decimal
+	17, // 7: wallet.Transaction.amount:type_name -> google.type.Decimal
 	2,  // 8: wallet.Transaction.category:type_name -> wallet.CategorySummary
-	15, // 9: wallet.Transaction.created_at:type_name -> google.protobuf.Timestamp
-	15, // 10: wallet.Transaction.updated_at:type_name -> google.protobuf.Timestamp
-	6,  // 11: wallet.GetTransactionsResponse.transactions:type_name -> wallet.Transaction
-	16, // 12: wallet.CreateTransactionRequest.amount:type_name -> google.type.Decimal
-	16, // 13: wallet.UpdateTransactionRequest.amount:type_name -> google.type.Decimal
-	15, // 14: wallet.ExportTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
-	15, // 15: wallet.ExportTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
-	2,  // 16: wallet.TransactionsUpdateHistory.previous_category:type_name -> wallet.CategorySummary
-	2,  // 17: wallet.TransactionsUpdateHistory.current_category:type_name -> wallet.CategorySummary
-	16, // 18: wallet.TransactionsUpdateHistory.previous_amount:type_name -> google.type.Decimal
-	16, // 19: wallet.TransactionsUpdateHistory.current_amount:type_name -> google.type.Decimal
-	15, // 20: wallet.TransactionsUpdateHistory.created_at:type_name -> google.protobuf.Timestamp
-	12, // 21: wallet.GetTransactionsUpdateHistoryResponse.history:type_name -> wallet.TransactionsUpdateHistory
-	17, // 22: wallet.FinanceService.GetCategories:input_type -> wallet.SimpleRequest
-	4,  // 23: wallet.FinanceService.CreateCategory:input_type -> wallet.CreateCategoryRequest
-	5,  // 24: wallet.FinanceService.UpdateCategory:input_type -> wallet.UpdateCategoryRequest
-	18, // 25: wallet.FinanceService.DeleteCategory:input_type -> wallet.DeleteRequest
-	17, // 26: wallet.FinanceService.GetTransactions:input_type -> wallet.SimpleRequest
-	8,  // 27: wallet.FinanceService.CreateTransaction:input_type -> wallet.CreateTransactionRequest
-	9,  // 28: wallet.FinanceService.UpdateTransaction:input_type -> wallet.UpdateTransactionRequest
-	18, // 29: wallet.FinanceService.DeleteTransaction:input_type -> wallet.DeleteRequest
-	10, // 30: wallet.FinanceService.ExportTransactions:input_type -> wallet.ExportTransactionsRequest
-	13, // 31: wallet.FinanceService.GetTransactionsUpdateHistory:input_type -> wallet.GetTransactionsUpdateHistoryRequest
-	3,  // 32: wallet.FinanceService.GetCategories:output_type -> wallet.GetCategoriesResponse
-	19, // 33: wallet.FinanceService.CreateCategory:output_type -> wallet.SimpleResponse
-	19, // 34: wallet.FinanceService.UpdateCategory:output_type -> wallet.SimpleResponse
-	19, // 35: wallet.FinanceService.DeleteCategory:output_type -> wallet.SimpleResponse
-	7,  // 36: wallet.FinanceService.GetTransactions:output_type -> wallet.GetTransactionsResponse
-	19, // 37: wallet.FinanceService.CreateTransaction:output_type -> wallet.SimpleResponse
-	19, // 38: wallet.FinanceService.UpdateTransaction:output_type -> wallet.SimpleResponse
-	19, // 39: wallet.FinanceService.DeleteTransaction:output_type -> wallet.SimpleResponse
-	11, // 40: wallet.FinanceService.ExportTransactions:output_type -> wallet.ExportTransactionsResponse
-	14, // 41: wallet.FinanceService.GetTransactionsUpdateHistory:output_type -> wallet.GetTransactionsUpdateHistoryResponse
-	32, // [32:42] is the sub-list for method output_type
-	22, // [22:32] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	16, // 9: wallet.Transaction.created_at:type_name -> google.protobuf.Timestamp
+	16, // 10: wallet.Transaction.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 11: wallet.GetTransactionsRequest.type:type_name -> wallet.CategoryType
+	16, // 12: wallet.GetTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
+	16, // 13: wallet.GetTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
+	6,  // 14: wallet.GetTransactionsResponse.transactions:type_name -> wallet.Transaction
+	17, // 15: wallet.CreateTransactionRequest.amount:type_name -> google.type.Decimal
+	17, // 16: wallet.UpdateTransactionRequest.amount:type_name -> google.type.Decimal
+	16, // 17: wallet.ExportTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
+	16, // 18: wallet.ExportTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
+	2,  // 19: wallet.TransactionsUpdateHistory.previous_category:type_name -> wallet.CategorySummary
+	2,  // 20: wallet.TransactionsUpdateHistory.current_category:type_name -> wallet.CategorySummary
+	17, // 21: wallet.TransactionsUpdateHistory.previous_amount:type_name -> google.type.Decimal
+	17, // 22: wallet.TransactionsUpdateHistory.current_amount:type_name -> google.type.Decimal
+	16, // 23: wallet.TransactionsUpdateHistory.created_at:type_name -> google.protobuf.Timestamp
+	13, // 24: wallet.GetTransactionsUpdateHistoryResponse.history:type_name -> wallet.TransactionsUpdateHistory
+	18, // 25: wallet.FinanceService.GetCategories:input_type -> wallet.SimpleRequest
+	4,  // 26: wallet.FinanceService.CreateCategory:input_type -> wallet.CreateCategoryRequest
+	5,  // 27: wallet.FinanceService.UpdateCategory:input_type -> wallet.UpdateCategoryRequest
+	19, // 28: wallet.FinanceService.DeleteCategory:input_type -> wallet.DeleteRequest
+	7,  // 29: wallet.FinanceService.GetTransactions:input_type -> wallet.GetTransactionsRequest
+	9,  // 30: wallet.FinanceService.CreateTransaction:input_type -> wallet.CreateTransactionRequest
+	10, // 31: wallet.FinanceService.UpdateTransaction:input_type -> wallet.UpdateTransactionRequest
+	19, // 32: wallet.FinanceService.DeleteTransaction:input_type -> wallet.DeleteRequest
+	11, // 33: wallet.FinanceService.ExportTransactions:input_type -> wallet.ExportTransactionsRequest
+	14, // 34: wallet.FinanceService.GetTransactionsUpdateHistory:input_type -> wallet.GetTransactionsUpdateHistoryRequest
+	3,  // 35: wallet.FinanceService.GetCategories:output_type -> wallet.GetCategoriesResponse
+	20, // 36: wallet.FinanceService.CreateCategory:output_type -> wallet.SimpleResponse
+	20, // 37: wallet.FinanceService.UpdateCategory:output_type -> wallet.SimpleResponse
+	20, // 38: wallet.FinanceService.DeleteCategory:output_type -> wallet.SimpleResponse
+	8,  // 39: wallet.FinanceService.GetTransactions:output_type -> wallet.GetTransactionsResponse
+	20, // 40: wallet.FinanceService.CreateTransaction:output_type -> wallet.SimpleResponse
+	20, // 41: wallet.FinanceService.UpdateTransaction:output_type -> wallet.SimpleResponse
+	20, // 42: wallet.FinanceService.DeleteTransaction:output_type -> wallet.SimpleResponse
+	12, // 43: wallet.FinanceService.ExportTransactions:output_type -> wallet.ExportTransactionsResponse
+	15, // 44: wallet.FinanceService.GetTransactionsUpdateHistory:output_type -> wallet.GetTransactionsUpdateHistoryResponse
+	35, // [35:45] is the sub-list for method output_type
+	25, // [25:35] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_wallet_finance_proto_init() }
@@ -1189,13 +1291,14 @@ func file_wallet_finance_proto_init() {
 		return
 	}
 	file_wallet_common_proto_init()
+	file_wallet_finance_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_wallet_finance_proto_rawDesc), len(file_wallet_finance_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   14,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

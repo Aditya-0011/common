@@ -37,7 +37,7 @@ jobs:
         with:
           input: protos
           push: false
-          format: true 
+          format: false 
           breaking: false
 
       - name: Generate Go Code
