@@ -118,9 +118,13 @@ message ExportTransactionsResponse {
 
 message TransactionsUpdateHistory {
   int32 id = 1;
-  google.type.Decimal previous_amount = 2;
-  google.type.Decimal updated_amount = 3;
-  google.protobuf.Timestamp created_at = 4;
+  CategorySummary previous_category = 2;
+  CategorySummary current_category = 3;
+  string previous_description = 4;
+  string current_description = 5;
+  google.type.Decimal previous_amount = 6;
+  google.type.Decimal current_amount = 7;
+  google.protobuf.Timestamp created_at = 8;
 }
 
 message GetTransactionsUpdateHistoryRequest {
