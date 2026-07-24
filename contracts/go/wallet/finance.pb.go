@@ -798,13 +798,17 @@ func (x *ExportTransactionsResponse) GetContentType() string {
 }
 
 type TransactionsUpdateHistory struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PreviousAmount *decimal.Decimal       `protobuf:"bytes,2,opt,name=previous_amount,json=previousAmount,proto3" json:"previous_amount,omitempty"`
-	UpdatedAmount  *decimal.Decimal       `protobuf:"bytes,3,opt,name=updated_amount,json=updatedAmount,proto3" json:"updated_amount,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	Id                  int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PreviousCategory    *CategorySummary       `protobuf:"bytes,2,opt,name=previous_category,json=previousCategory,proto3" json:"previous_category,omitempty"`
+	CurrentCategory     *CategorySummary       `protobuf:"bytes,3,opt,name=current_category,json=currentCategory,proto3" json:"current_category,omitempty"`
+	PreviousDescription string                 `protobuf:"bytes,4,opt,name=previous_description,json=previousDescription,proto3" json:"previous_description,omitempty"`
+	CurrentDescription  string                 `protobuf:"bytes,5,opt,name=current_description,json=currentDescription,proto3" json:"current_description,omitempty"`
+	PreviousAmount      *decimal.Decimal       `protobuf:"bytes,6,opt,name=previous_amount,json=previousAmount,proto3" json:"previous_amount,omitempty"`
+	CurrentAmount       *decimal.Decimal       `protobuf:"bytes,7,opt,name=current_amount,json=currentAmount,proto3" json:"current_amount,omitempty"`
+	CreatedAt           *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *TransactionsUpdateHistory) Reset() {
@@ -844,6 +848,34 @@ func (x *TransactionsUpdateHistory) GetId() int32 {
 	return 0
 }
 
+func (x *TransactionsUpdateHistory) GetPreviousCategory() *CategorySummary {
+	if x != nil {
+		return x.PreviousCategory
+	}
+	return nil
+}
+
+func (x *TransactionsUpdateHistory) GetCurrentCategory() *CategorySummary {
+	if x != nil {
+		return x.CurrentCategory
+	}
+	return nil
+}
+
+func (x *TransactionsUpdateHistory) GetPreviousDescription() string {
+	if x != nil {
+		return x.PreviousDescription
+	}
+	return ""
+}
+
+func (x *TransactionsUpdateHistory) GetCurrentDescription() string {
+	if x != nil {
+		return x.CurrentDescription
+	}
+	return ""
+}
+
 func (x *TransactionsUpdateHistory) GetPreviousAmount() *decimal.Decimal {
 	if x != nil {
 		return x.PreviousAmount
@@ -851,9 +883,9 @@ func (x *TransactionsUpdateHistory) GetPreviousAmount() *decimal.Decimal {
 	return nil
 }
 
-func (x *TransactionsUpdateHistory) GetUpdatedAmount() *decimal.Decimal {
+func (x *TransactionsUpdateHistory) GetCurrentAmount() *decimal.Decimal {
 	if x != nil {
-		return x.UpdatedAmount
+		return x.CurrentAmount
 	}
 	return nil
 }
@@ -1033,13 +1065,17 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\x1aExportTransactionsResponse\x12\x1b\n" +
 	"\tfile_data\x18\x01 \x01(\fR\bfileData\x12\x1b\n" +
 	"\tfile_name\x18\x02 \x01(\tR\bfileName\x12!\n" +
-	"\fcontent_type\x18\x03 \x01(\tR\vcontentType\"\xe2\x01\n" +
+	"\fcontent_type\x18\x03 \x01(\tR\vcontentType\"\xd0\x03\n" +
 	"\x19TransactionsUpdateHistory\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12=\n" +
-	"\x0fprevious_amount\x18\x02 \x01(\v2\x14.google.type.DecimalR\x0epreviousAmount\x12;\n" +
-	"\x0eupdated_amount\x18\x03 \x01(\v2\x14.google.type.DecimalR\rupdatedAmount\x129\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12D\n" +
+	"\x11previous_category\x18\x02 \x01(\v2\x17.wallet.CategorySummaryR\x10previousCategory\x12B\n" +
+	"\x10current_category\x18\x03 \x01(\v2\x17.wallet.CategorySummaryR\x0fcurrentCategory\x121\n" +
+	"\x14previous_description\x18\x04 \x01(\tR\x13previousDescription\x12/\n" +
+	"\x13current_description\x18\x05 \x01(\tR\x12currentDescription\x12=\n" +
+	"\x0fprevious_amount\x18\x06 \x01(\v2\x14.google.type.DecimalR\x0epreviousAmount\x12;\n" +
+	"\x0ecurrent_amount\x18\a \x01(\v2\x14.google.type.DecimalR\rcurrentAmount\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"w\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"w\n" +
 	"#GetTransactionsUpdateHistoryRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12.\n" +
 	"\x0etransaction_id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\rtransactionId\"c\n" +
@@ -1114,35 +1150,37 @@ var file_wallet_finance_proto_depIdxs = []int32{
 	16, // 13: wallet.UpdateTransactionRequest.amount:type_name -> google.type.Decimal
 	15, // 14: wallet.ExportTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
 	15, // 15: wallet.ExportTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
-	16, // 16: wallet.TransactionsUpdateHistory.previous_amount:type_name -> google.type.Decimal
-	16, // 17: wallet.TransactionsUpdateHistory.updated_amount:type_name -> google.type.Decimal
-	15, // 18: wallet.TransactionsUpdateHistory.created_at:type_name -> google.protobuf.Timestamp
-	12, // 19: wallet.GetTransactionsUpdateHistoryResponse.history:type_name -> wallet.TransactionsUpdateHistory
-	17, // 20: wallet.FinanceService.GetCategories:input_type -> wallet.SimpleRequest
-	4,  // 21: wallet.FinanceService.CreateCategory:input_type -> wallet.CreateCategoryRequest
-	5,  // 22: wallet.FinanceService.UpdateCategory:input_type -> wallet.UpdateCategoryRequest
-	18, // 23: wallet.FinanceService.DeleteCategory:input_type -> wallet.DeleteRequest
-	17, // 24: wallet.FinanceService.GetTransactions:input_type -> wallet.SimpleRequest
-	8,  // 25: wallet.FinanceService.CreateTransaction:input_type -> wallet.CreateTransactionRequest
-	9,  // 26: wallet.FinanceService.UpdateTransaction:input_type -> wallet.UpdateTransactionRequest
-	18, // 27: wallet.FinanceService.DeleteTransaction:input_type -> wallet.DeleteRequest
-	10, // 28: wallet.FinanceService.ExportTransactions:input_type -> wallet.ExportTransactionsRequest
-	13, // 29: wallet.FinanceService.GetTransactionsUpdateHistory:input_type -> wallet.GetTransactionsUpdateHistoryRequest
-	3,  // 30: wallet.FinanceService.GetCategories:output_type -> wallet.GetCategoriesResponse
-	19, // 31: wallet.FinanceService.CreateCategory:output_type -> wallet.SimpleResponse
-	19, // 32: wallet.FinanceService.UpdateCategory:output_type -> wallet.SimpleResponse
-	19, // 33: wallet.FinanceService.DeleteCategory:output_type -> wallet.SimpleResponse
-	7,  // 34: wallet.FinanceService.GetTransactions:output_type -> wallet.GetTransactionsResponse
-	19, // 35: wallet.FinanceService.CreateTransaction:output_type -> wallet.SimpleResponse
-	19, // 36: wallet.FinanceService.UpdateTransaction:output_type -> wallet.SimpleResponse
-	19, // 37: wallet.FinanceService.DeleteTransaction:output_type -> wallet.SimpleResponse
-	11, // 38: wallet.FinanceService.ExportTransactions:output_type -> wallet.ExportTransactionsResponse
-	14, // 39: wallet.FinanceService.GetTransactionsUpdateHistory:output_type -> wallet.GetTransactionsUpdateHistoryResponse
-	30, // [30:40] is the sub-list for method output_type
-	20, // [20:30] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	2,  // 16: wallet.TransactionsUpdateHistory.previous_category:type_name -> wallet.CategorySummary
+	2,  // 17: wallet.TransactionsUpdateHistory.current_category:type_name -> wallet.CategorySummary
+	16, // 18: wallet.TransactionsUpdateHistory.previous_amount:type_name -> google.type.Decimal
+	16, // 19: wallet.TransactionsUpdateHistory.current_amount:type_name -> google.type.Decimal
+	15, // 20: wallet.TransactionsUpdateHistory.created_at:type_name -> google.protobuf.Timestamp
+	12, // 21: wallet.GetTransactionsUpdateHistoryResponse.history:type_name -> wallet.TransactionsUpdateHistory
+	17, // 22: wallet.FinanceService.GetCategories:input_type -> wallet.SimpleRequest
+	4,  // 23: wallet.FinanceService.CreateCategory:input_type -> wallet.CreateCategoryRequest
+	5,  // 24: wallet.FinanceService.UpdateCategory:input_type -> wallet.UpdateCategoryRequest
+	18, // 25: wallet.FinanceService.DeleteCategory:input_type -> wallet.DeleteRequest
+	17, // 26: wallet.FinanceService.GetTransactions:input_type -> wallet.SimpleRequest
+	8,  // 27: wallet.FinanceService.CreateTransaction:input_type -> wallet.CreateTransactionRequest
+	9,  // 28: wallet.FinanceService.UpdateTransaction:input_type -> wallet.UpdateTransactionRequest
+	18, // 29: wallet.FinanceService.DeleteTransaction:input_type -> wallet.DeleteRequest
+	10, // 30: wallet.FinanceService.ExportTransactions:input_type -> wallet.ExportTransactionsRequest
+	13, // 31: wallet.FinanceService.GetTransactionsUpdateHistory:input_type -> wallet.GetTransactionsUpdateHistoryRequest
+	3,  // 32: wallet.FinanceService.GetCategories:output_type -> wallet.GetCategoriesResponse
+	19, // 33: wallet.FinanceService.CreateCategory:output_type -> wallet.SimpleResponse
+	19, // 34: wallet.FinanceService.UpdateCategory:output_type -> wallet.SimpleResponse
+	19, // 35: wallet.FinanceService.DeleteCategory:output_type -> wallet.SimpleResponse
+	7,  // 36: wallet.FinanceService.GetTransactions:output_type -> wallet.GetTransactionsResponse
+	19, // 37: wallet.FinanceService.CreateTransaction:output_type -> wallet.SimpleResponse
+	19, // 38: wallet.FinanceService.UpdateTransaction:output_type -> wallet.SimpleResponse
+	19, // 39: wallet.FinanceService.DeleteTransaction:output_type -> wallet.SimpleResponse
+	11, // 40: wallet.FinanceService.ExportTransactions:output_type -> wallet.ExportTransactionsResponse
+	14, // 41: wallet.FinanceService.GetTransactionsUpdateHistory:output_type -> wallet.GetTransactionsUpdateHistoryResponse
+	32, // [32:42] is the sub-list for method output_type
+	22, // [22:32] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_wallet_finance_proto_init() }
