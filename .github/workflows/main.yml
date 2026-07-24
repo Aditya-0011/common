@@ -37,7 +37,8 @@ jobs:
         with:
           input: protos
           push: false
-          format: false 
+          format: true 
+          breaking: false
 
       - name: Generate Go Code
         run: buf generate protos --template protos/buf.gen.yaml
