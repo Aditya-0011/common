@@ -58,6 +58,8 @@ namespace Contracts.Wallet {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Contracts.Wallet.DeleteRequest> __Marshaller_wallet_DeleteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Contracts.Wallet.DeleteRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Contracts.Wallet.GetTransactionsRequest> __Marshaller_wallet_GetTransactionsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Contracts.Wallet.GetTransactionsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Contracts.Wallet.GetTransactionsResponse> __Marshaller_wallet_GetTransactionsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Contracts.Wallet.GetTransactionsResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Contracts.Wallet.CreateTransactionRequest> __Marshaller_wallet_CreateTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Contracts.Wallet.CreateTransactionRequest.Parser));
@@ -105,11 +107,11 @@ namespace Contracts.Wallet {
         __Marshaller_wallet_SimpleResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Contracts.Wallet.SimpleRequest, global::Contracts.Wallet.GetTransactionsResponse> __Method_GetTransactions = new grpc::Method<global::Contracts.Wallet.SimpleRequest, global::Contracts.Wallet.GetTransactionsResponse>(
+    static readonly grpc::Method<global::Contracts.Wallet.GetTransactionsRequest, global::Contracts.Wallet.GetTransactionsResponse> __Method_GetTransactions = new grpc::Method<global::Contracts.Wallet.GetTransactionsRequest, global::Contracts.Wallet.GetTransactionsResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetTransactions",
-        __Marshaller_wallet_SimpleRequest,
+        __Marshaller_wallet_GetTransactionsRequest,
         __Marshaller_wallet_GetTransactionsResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -187,7 +189,7 @@ namespace Contracts.Wallet {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Contracts.Wallet.GetTransactionsResponse> GetTransactions(global::Contracts.Wallet.SimpleRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Contracts.Wallet.GetTransactionsResponse> GetTransactions(global::Contracts.Wallet.GetTransactionsRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -332,22 +334,22 @@ namespace Contracts.Wallet {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteCategory, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Contracts.Wallet.GetTransactionsResponse GetTransactions(global::Contracts.Wallet.SimpleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::Contracts.Wallet.GetTransactionsResponse GetTransactions(global::Contracts.Wallet.GetTransactionsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetTransactions(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Contracts.Wallet.GetTransactionsResponse GetTransactions(global::Contracts.Wallet.SimpleRequest request, grpc::CallOptions options)
+      public virtual global::Contracts.Wallet.GetTransactionsResponse GetTransactions(global::Contracts.Wallet.GetTransactionsRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_GetTransactions, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Contracts.Wallet.GetTransactionsResponse> GetTransactionsAsync(global::Contracts.Wallet.SimpleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::Contracts.Wallet.GetTransactionsResponse> GetTransactionsAsync(global::Contracts.Wallet.GetTransactionsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetTransactionsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Contracts.Wallet.GetTransactionsResponse> GetTransactionsAsync(global::Contracts.Wallet.SimpleRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::Contracts.Wallet.GetTransactionsResponse> GetTransactionsAsync(global::Contracts.Wallet.GetTransactionsRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetTransactions, null, options, request);
       }
@@ -488,7 +490,7 @@ namespace Contracts.Wallet {
       serviceBinder.AddMethod(__Method_CreateCategory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.CreateCategoryRequest, global::Contracts.Wallet.SimpleResponse>(serviceImpl.CreateCategory));
       serviceBinder.AddMethod(__Method_UpdateCategory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.UpdateCategoryRequest, global::Contracts.Wallet.SimpleResponse>(serviceImpl.UpdateCategory));
       serviceBinder.AddMethod(__Method_DeleteCategory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.DeleteRequest, global::Contracts.Wallet.SimpleResponse>(serviceImpl.DeleteCategory));
-      serviceBinder.AddMethod(__Method_GetTransactions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.SimpleRequest, global::Contracts.Wallet.GetTransactionsResponse>(serviceImpl.GetTransactions));
+      serviceBinder.AddMethod(__Method_GetTransactions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.GetTransactionsRequest, global::Contracts.Wallet.GetTransactionsResponse>(serviceImpl.GetTransactions));
       serviceBinder.AddMethod(__Method_CreateTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.CreateTransactionRequest, global::Contracts.Wallet.SimpleResponse>(serviceImpl.CreateTransaction));
       serviceBinder.AddMethod(__Method_UpdateTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.UpdateTransactionRequest, global::Contracts.Wallet.SimpleResponse>(serviceImpl.UpdateTransaction));
       serviceBinder.AddMethod(__Method_DeleteTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Contracts.Wallet.DeleteRequest, global::Contracts.Wallet.SimpleResponse>(serviceImpl.DeleteTransaction));
