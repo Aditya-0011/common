@@ -66,6 +66,21 @@ message Transaction {
   google.protobuf.Timestamp updated_at = 6;
 }
 
+message GetTransactionsRequest {
+  option (buf.validate.message).cel = {
+    id: "date_range_valid"
+    message: "end date must be after or equal to start date"
+    expression: "this.end_date >= this.start_date"
+  };
+
+  int32 limit = 1 [(buf.validate.field).int32.gte = 1];
+  int32 offset = 2 [(buf.validate.field).int32.gte = 1];
+  optional CategoryType type = 3 [(buf.validate.field).enum.defined_only = true];
+  optional int32 category_id = 4 [(buf.validate.field).int32.gte = 1];
+  optional google.protobuf.Timestamp start_date = 5;
+  optional google.protobuf.Timestamp end_date = 6;
+}
+
 message GetTransactionsResponse {
   repeated Transaction transactions = 1;
 }
@@ -142,7 +157,7 @@ service FinanceService {
   rpc UpdateCategory(UpdateCategoryRequest) returns (SimpleResponse);
   rpc DeleteCategory(DeleteRequest) returns (SimpleResponse);
 
-  rpc GetTransactions(SimpleRequest) returns (GetTransactionsResponse);
+  rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
   rpc CreateTransaction(CreateTransactionRequest) returns (SimpleResponse);
   rpc UpdateTransaction(UpdateTransactionRequest) returns (SimpleResponse);
   rpc DeleteTransaction(DeleteRequest) returns (SimpleResponse);
