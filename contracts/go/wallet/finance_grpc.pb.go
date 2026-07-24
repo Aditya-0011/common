@@ -39,7 +39,7 @@ type FinanceServiceClient interface {
 	CreateCategory(ctx context.Context, in *CreateCategoryRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	UpdateCategory(ctx context.Context, in *UpdateCategoryRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	DeleteCategory(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
-	GetTransactions(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error)
+	GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error)
 	CreateTransaction(ctx context.Context, in *CreateTransactionRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	UpdateTransaction(ctx context.Context, in *UpdateTransactionRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	DeleteTransaction(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
@@ -95,7 +95,7 @@ func (c *financeServiceClient) DeleteCategory(ctx context.Context, in *DeleteReq
 	return out, nil
 }
 
-func (c *financeServiceClient) GetTransactions(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error) {
+func (c *financeServiceClient) GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetTransactionsResponse)
 	err := c.cc.Invoke(ctx, FinanceService_GetTransactions_FullMethodName, in, out, cOpts...)
@@ -163,7 +163,7 @@ type FinanceServiceServer interface {
 	CreateCategory(context.Context, *CreateCategoryRequest) (*SimpleResponse, error)
 	UpdateCategory(context.Context, *UpdateCategoryRequest) (*SimpleResponse, error)
 	DeleteCategory(context.Context, *DeleteRequest) (*SimpleResponse, error)
-	GetTransactions(context.Context, *SimpleRequest) (*GetTransactionsResponse, error)
+	GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error)
 	CreateTransaction(context.Context, *CreateTransactionRequest) (*SimpleResponse, error)
 	UpdateTransaction(context.Context, *UpdateTransactionRequest) (*SimpleResponse, error)
 	DeleteTransaction(context.Context, *DeleteRequest) (*SimpleResponse, error)
@@ -191,7 +191,7 @@ func (UnimplementedFinanceServiceServer) UpdateCategory(context.Context, *Update
 func (UnimplementedFinanceServiceServer) DeleteCategory(context.Context, *DeleteRequest) (*SimpleResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteCategory not implemented")
 }
-func (UnimplementedFinanceServiceServer) GetTransactions(context.Context, *SimpleRequest) (*GetTransactionsResponse, error) {
+func (UnimplementedFinanceServiceServer) GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetTransactions not implemented")
 }
 func (UnimplementedFinanceServiceServer) CreateTransaction(context.Context, *CreateTransactionRequest) (*SimpleResponse, error) {
@@ -303,7 +303,7 @@ func _FinanceService_DeleteCategory_Handler(srv interface{}, ctx context.Context
 }
 
 func _FinanceService_GetTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SimpleRequest)
+	in := new(GetTransactionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -315,7 +315,7 @@ func _FinanceService_GetTransactions_Handler(srv interface{}, ctx context.Contex
 		FullMethod: FinanceService_GetTransactions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FinanceServiceServer).GetTransactions(ctx, req.(*SimpleRequest))
+		return srv.(FinanceServiceServer).GetTransactions(ctx, req.(*GetTransactionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

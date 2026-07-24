@@ -55,70 +55,80 @@ namespace Contracts.Wallet {
             "dGVnb3J5U3VtbWFyeVIIY2F0ZWdvcnkSOQoKY3JlYXRlZF9hdBgFIAEoCzIa",
             "Lmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRh",
             "dGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJdXBk",
-            "YXRlZEF0IlIKF0dldFRyYW5zYWN0aW9uc1Jlc3BvbnNlEjcKDHRyYW5zYWN0",
-            "aW9ucxgBIAMoCzITLndhbGxldC5UcmFuc2FjdGlvblIMdHJhbnNhY3Rpb25z",
-            "IpcCChhDcmVhdGVUcmFuc2FjdGlvblJlcXVlc3QSIAoHdXNlcl9pZBgBIAEo",
-            "BUIHukgEGgIgAFIGdXNlcklkEigKC2NhdGVnb3J5X2lkGAIgASgFQge6SAQa",
-            "AiAAUgpjYXRlZ29yeUlkEiwKC2Rlc2NyaXB0aW9uGAMgASgJQgq6SAdyBRAB",
-            "GP8BUgtkZXNjcmlwdGlvbhKAAQoGYW1vdW50GAQgASgLMhQuZ29vZ2xlLnR5",
-            "cGUuRGVjaW1hbEJSukhPugFMCg5hbW91bnRfZ3RfemVybxIgYW1vdW50IG11",
-            "c3QgYmUgZ3JlYXRlciB0aGFuIHplcm8aGGRvdWJsZSh0aGlzLnZhbHVlKSA+",
-            "IDAuMFIGYW1vdW50IrACChhVcGRhdGVUcmFuc2FjdGlvblJlcXVlc3QSIAoH",
-            "dXNlcl9pZBgBIAEoBUIHukgEGgIgAFIGdXNlcklkEigKC2NhdGVnb3J5X2lk",
-            "GAIgASgFQge6SAQaAiAAUgpjYXRlZ29yeUlkEhcKAmlkGAMgASgFQge6SAQa",
-            "AiAAUgJpZBIsCgtkZXNjcmlwdGlvbhgEIAEoCUIKukgHcgUQARj/AVILZGVz",
-            "Y3JpcHRpb24SgAEKBmFtb3VudBgFIAEoCzIULmdvb2dsZS50eXBlLkRlY2lt",
-            "YWxCUrpIT7oBTAoOYW1vdW50X2d0X3plcm8SIGFtb3VudCBtdXN0IGJlIGdy",
-            "ZWF0ZXIgdGhhbiB6ZXJvGhhkb3VibGUodGhpcy52YWx1ZSkgPiAwLjBSBmFt",
-            "b3VudCKHAgoZRXhwb3J0VHJhbnNhY3Rpb25zUmVxdWVzdBJBCgpzdGFydF9k",
-            "YXRlGAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEB",
-            "UglzdGFydERhdGUSPQoIZW5kX2RhdGUYAiABKAsyGi5nb29nbGUucHJvdG9i",
-            "dWYuVGltZXN0YW1wQga6SAPIAQFSB2VuZERhdGU6aLpIZRpjChBkYXRlX3Jh",
-            "bmdlX3ZhbGlkEi1lbmQgZGF0ZSBtdXN0IGJlIGFmdGVyIG9yIGVxdWFsIHRv",
-            "IHN0YXJ0IGRhdGUaIHRoaXMuZW5kX2RhdGUgPj0gdGhpcy5zdGFydF9kYXRl",
-            "InkKGkV4cG9ydFRyYW5zYWN0aW9uc1Jlc3BvbnNlEhsKCWZpbGVfZGF0YRgB",
-            "IAEoDFIIZmlsZURhdGESGwoJZmlsZV9uYW1lGAIgASgJUghmaWxlTmFtZRIh",
-            "Cgxjb250ZW50X3R5cGUYAyABKAlSC2NvbnRlbnRUeXBlItADChlUcmFuc2Fj",
-            "dGlvbnNVcGRhdGVIaXN0b3J5Eg4KAmlkGAEgASgFUgJpZBJEChFwcmV2aW91",
-            "c19jYXRlZ29yeRgCIAEoCzIXLndhbGxldC5DYXRlZ29yeVN1bW1hcnlSEHBy",
-            "ZXZpb3VzQ2F0ZWdvcnkSQgoQY3VycmVudF9jYXRlZ29yeRgDIAEoCzIXLndh",
-            "bGxldC5DYXRlZ29yeVN1bW1hcnlSD2N1cnJlbnRDYXRlZ29yeRIxChRwcmV2",
-            "aW91c19kZXNjcmlwdGlvbhgEIAEoCVITcHJldmlvdXNEZXNjcmlwdGlvbhIv",
-            "ChNjdXJyZW50X2Rlc2NyaXB0aW9uGAUgASgJUhJjdXJyZW50RGVzY3JpcHRp",
-            "b24SPQoPcHJldmlvdXNfYW1vdW50GAYgASgLMhQuZ29vZ2xlLnR5cGUuRGVj",
-            "aW1hbFIOcHJldmlvdXNBbW91bnQSOwoOY3VycmVudF9hbW91bnQYByABKAsy",
-            "FC5nb29nbGUudHlwZS5EZWNpbWFsUg1jdXJyZW50QW1vdW50EjkKCmNyZWF0",
-            "ZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVh",
-            "dGVkQXQidwojR2V0VHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9yeVJlcXVlc3QS",
-            "IAoHdXNlcl9pZBgBIAEoBUIHukgEGgIgAFIGdXNlcklkEi4KDnRyYW5zYWN0",
-            "aW9uX2lkGAIgASgFQge6SAQaAiAAUg10cmFuc2FjdGlvbklkImMKJEdldFRy",
-            "YW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlSZXNwb25zZRI7CgdoaXN0b3J5GAEg",
-            "AygLMiEud2FsbGV0LlRyYW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlSB2hpc3Rv",
-            "cnkqYgoMQ2F0ZWdvcnlUeXBlEh0KGUNBVEVHT1JZX1RZUEVfVU5TUEVDSUZJ",
-            "RUQQABIYChRDQVRFR09SWV9UWVBFX0lOQ09NRRABEhkKFUNBVEVHT1JZX1RZ",
-            "UEVfRVhQRU5TRRACMq8GCg5GaW5hbmNlU2VydmljZRJFCg1HZXRDYXRlZ29y",
-            "aWVzEhUud2FsbGV0LlNpbXBsZVJlcXVlc3QaHS53YWxsZXQuR2V0Q2F0ZWdv",
-            "cmllc1Jlc3BvbnNlEkcKDkNyZWF0ZUNhdGVnb3J5Eh0ud2FsbGV0LkNyZWF0",
-            "ZUNhdGVnb3J5UmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRJHCg5V",
-            "cGRhdGVDYXRlZ29yeRIdLndhbGxldC5VcGRhdGVDYXRlZ29yeVJlcXVlc3Qa",
-            "Fi53YWxsZXQuU2ltcGxlUmVzcG9uc2USPwoORGVsZXRlQ2F0ZWdvcnkSFS53",
-            "YWxsZXQuRGVsZXRlUmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRJJ",
-            "Cg9HZXRUcmFuc2FjdGlvbnMSFS53YWxsZXQuU2ltcGxlUmVxdWVzdBofLndh",
-            "bGxldC5HZXRUcmFuc2FjdGlvbnNSZXNwb25zZRJNChFDcmVhdGVUcmFuc2Fj",
-            "dGlvbhIgLndhbGxldC5DcmVhdGVUcmFuc2FjdGlvblJlcXVlc3QaFi53YWxs",
-            "ZXQuU2ltcGxlUmVzcG9uc2USTQoRVXBkYXRlVHJhbnNhY3Rpb24SIC53YWxs",
-            "ZXQuVXBkYXRlVHJhbnNhY3Rpb25SZXF1ZXN0GhYud2FsbGV0LlNpbXBsZVJl",
-            "c3BvbnNlEkIKEURlbGV0ZVRyYW5zYWN0aW9uEhUud2FsbGV0LkRlbGV0ZVJl",
-            "cXVlc3QaFi53YWxsZXQuU2ltcGxlUmVzcG9uc2USWwoSRXhwb3J0VHJhbnNh",
-            "Y3Rpb25zEiEud2FsbGV0LkV4cG9ydFRyYW5zYWN0aW9uc1JlcXVlc3QaIi53",
-            "YWxsZXQuRXhwb3J0VHJhbnNhY3Rpb25zUmVzcG9uc2USeQocR2V0VHJhbnNh",
-            "Y3Rpb25zVXBkYXRlSGlzdG9yeRIrLndhbGxldC5HZXRUcmFuc2FjdGlvbnNV",
-            "cGRhdGVIaXN0b3J5UmVxdWVzdBosLndhbGxldC5HZXRUcmFuc2FjdGlvbnNV",
-            "cGRhdGVIaXN0b3J5UmVzcG9uc2VClgEKCmNvbS53YWxsZXRCDEZpbmFuY2VQ",
-            "cm90b1ABWjhnaXRodWIuY29tL0FkaXR5YS0wMDExL2NvbW1vbi9jb250cmFj",
-            "dHMvZ28vd2FsbGV0O3dhbGxldKICA1dYWKoCEENvbnRyYWN0cy5XYWxsZXTK",
-            "AgZXYWxsZXTiAhJXYWxsZXRcR1BCTWV0YWRhdGHqAgZXYWxsZXRiBnByb3Rv",
-            "Mw=="));
+            "YXRlZEF0ItsDChZHZXRUcmFuc2FjdGlvbnNSZXF1ZXN0Eh0KBWxpbWl0GAEg",
+            "ASgFQge6SAQaAigBUgVsaW1pdBIfCgZvZmZzZXQYAiABKAVCB7pIBBoCKAFS",
+            "Bm9mZnNldBI3CgR0eXBlGAMgASgOMhQud2FsbGV0LkNhdGVnb3J5VHlwZUII",
+            "ukgFggECEAFIAFIEdHlwZYgBARItCgtjYXRlZ29yeV9pZBgEIAEoBUIHukgE",
+            "GgIoAUgBUgpjYXRlZ29yeUlkiAEBEj4KCnN0YXJ0X2RhdGUYBSABKAsyGi5n",
+            "b29nbGUucHJvdG9idWYuVGltZXN0YW1wSAJSCXN0YXJ0RGF0ZYgBARI6Cghl",
+            "bmRfZGF0ZRgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIA1IH",
+            "ZW5kRGF0ZYgBATpoukhlGmMKEGRhdGVfcmFuZ2VfdmFsaWQSLWVuZCBkYXRl",
+            "IG11c3QgYmUgYWZ0ZXIgb3IgZXF1YWwgdG8gc3RhcnQgZGF0ZRogdGhpcy5l",
+            "bmRfZGF0ZSA+PSB0aGlzLnN0YXJ0X2RhdGVCBwoFX3R5cGVCDgoMX2NhdGVn",
+            "b3J5X2lkQg0KC19zdGFydF9kYXRlQgsKCV9lbmRfZGF0ZSJSChdHZXRUcmFu",
+            "c2FjdGlvbnNSZXNwb25zZRI3Cgx0cmFuc2FjdGlvbnMYASADKAsyEy53YWxs",
+            "ZXQuVHJhbnNhY3Rpb25SDHRyYW5zYWN0aW9ucyKXAgoYQ3JlYXRlVHJhbnNh",
+            "Y3Rpb25SZXF1ZXN0EiAKB3VzZXJfaWQYASABKAVCB7pIBBoCIABSBnVzZXJJ",
+            "ZBIoCgtjYXRlZ29yeV9pZBgCIAEoBUIHukgEGgIgAFIKY2F0ZWdvcnlJZBIs",
+            "CgtkZXNjcmlwdGlvbhgDIAEoCUIKukgHcgUQARj/AVILZGVzY3JpcHRpb24S",
+            "gAEKBmFtb3VudBgEIAEoCzIULmdvb2dsZS50eXBlLkRlY2ltYWxCUrpIT7oB",
+            "TAoOYW1vdW50X2d0X3plcm8SIGFtb3VudCBtdXN0IGJlIGdyZWF0ZXIgdGhh",
+            "biB6ZXJvGhhkb3VibGUodGhpcy52YWx1ZSkgPiAwLjBSBmFtb3VudCKwAgoY",
+            "VXBkYXRlVHJhbnNhY3Rpb25SZXF1ZXN0EiAKB3VzZXJfaWQYASABKAVCB7pI",
+            "BBoCIABSBnVzZXJJZBIoCgtjYXRlZ29yeV9pZBgCIAEoBUIHukgEGgIgAFIK",
+            "Y2F0ZWdvcnlJZBIXCgJpZBgDIAEoBUIHukgEGgIgAFICaWQSLAoLZGVzY3Jp",
+            "cHRpb24YBCABKAlCCrpIB3IFEAEY/wFSC2Rlc2NyaXB0aW9uEoABCgZhbW91",
+            "bnQYBSABKAsyFC5nb29nbGUudHlwZS5EZWNpbWFsQlK6SE+6AUwKDmFtb3Vu",
+            "dF9ndF96ZXJvEiBhbW91bnQgbXVzdCBiZSBncmVhdGVyIHRoYW4gemVybxoY",
+            "ZG91YmxlKHRoaXMudmFsdWUpID4gMC4wUgZhbW91bnQihwIKGUV4cG9ydFRy",
+            "YW5zYWN0aW9uc1JlcXVlc3QSQQoKc3RhcnRfZGF0ZRgBIAEoCzIaLmdvb2ds",
+            "ZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBAVIJc3RhcnREYXRlEj0KCGVu",
+            "ZF9kYXRlGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgD",
+            "yAEBUgdlbmREYXRlOmi6SGUaYwoQZGF0ZV9yYW5nZV92YWxpZBItZW5kIGRh",
+            "dGUgbXVzdCBiZSBhZnRlciBvciBlcXVhbCB0byBzdGFydCBkYXRlGiB0aGlz",
+            "LmVuZF9kYXRlID49IHRoaXMuc3RhcnRfZGF0ZSJ5ChpFeHBvcnRUcmFuc2Fj",
+            "dGlvbnNSZXNwb25zZRIbCglmaWxlX2RhdGEYASABKAxSCGZpbGVEYXRhEhsK",
+            "CWZpbGVfbmFtZRgCIAEoCVIIZmlsZU5hbWUSIQoMY29udGVudF90eXBlGAMg",
+            "ASgJUgtjb250ZW50VHlwZSLQAwoZVHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9y",
+            "eRIOCgJpZBgBIAEoBVICaWQSRAoRcHJldmlvdXNfY2F0ZWdvcnkYAiABKAsy",
+            "Fy53YWxsZXQuQ2F0ZWdvcnlTdW1tYXJ5UhBwcmV2aW91c0NhdGVnb3J5EkIK",
+            "EGN1cnJlbnRfY2F0ZWdvcnkYAyABKAsyFy53YWxsZXQuQ2F0ZWdvcnlTdW1t",
+            "YXJ5Ug9jdXJyZW50Q2F0ZWdvcnkSMQoUcHJldmlvdXNfZGVzY3JpcHRpb24Y",
+            "BCABKAlSE3ByZXZpb3VzRGVzY3JpcHRpb24SLwoTY3VycmVudF9kZXNjcmlw",
+            "dGlvbhgFIAEoCVISY3VycmVudERlc2NyaXB0aW9uEj0KD3ByZXZpb3VzX2Ft",
+            "b3VudBgGIAEoCzIULmdvb2dsZS50eXBlLkRlY2ltYWxSDnByZXZpb3VzQW1v",
+            "dW50EjsKDmN1cnJlbnRfYW1vdW50GAcgASgLMhQuZ29vZ2xlLnR5cGUuRGVj",
+            "aW1hbFINY3VycmVudEFtb3VudBI5CgpjcmVhdGVkX2F0GAggASgLMhouZ29v",
+            "Z2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0IncKI0dldFRyYW5z",
+            "YWN0aW9uc1VwZGF0ZUhpc3RvcnlSZXF1ZXN0EiAKB3VzZXJfaWQYASABKAVC",
+            "B7pIBBoCIABSBnVzZXJJZBIuCg50cmFuc2FjdGlvbl9pZBgCIAEoBUIHukgE",
+            "GgIgAFINdHJhbnNhY3Rpb25JZCJjCiRHZXRUcmFuc2FjdGlvbnNVcGRhdGVI",
+            "aXN0b3J5UmVzcG9uc2USOwoHaGlzdG9yeRgBIAMoCzIhLndhbGxldC5UcmFu",
+            "c2FjdGlvbnNVcGRhdGVIaXN0b3J5UgdoaXN0b3J5KmIKDENhdGVnb3J5VHlw",
+            "ZRIdChlDQVRFR09SWV9UWVBFX1VOU1BFQ0lGSUVEEAASGAoUQ0FURUdPUllf",
+            "VFlQRV9JTkNPTUUQARIZChVDQVRFR09SWV9UWVBFX0VYUEVOU0UQAjK4BgoO",
+            "RmluYW5jZVNlcnZpY2USRQoNR2V0Q2F0ZWdvcmllcxIVLndhbGxldC5TaW1w",
+            "bGVSZXF1ZXN0Gh0ud2FsbGV0LkdldENhdGVnb3JpZXNSZXNwb25zZRJHCg5D",
+            "cmVhdGVDYXRlZ29yeRIdLndhbGxldC5DcmVhdGVDYXRlZ29yeVJlcXVlc3Qa",
+            "Fi53YWxsZXQuU2ltcGxlUmVzcG9uc2USRwoOVXBkYXRlQ2F0ZWdvcnkSHS53",
+            "YWxsZXQuVXBkYXRlQ2F0ZWdvcnlSZXF1ZXN0GhYud2FsbGV0LlNpbXBsZVJl",
+            "c3BvbnNlEj8KDkRlbGV0ZUNhdGVnb3J5EhUud2FsbGV0LkRlbGV0ZVJlcXVl",
+            "c3QaFi53YWxsZXQuU2ltcGxlUmVzcG9uc2USUgoPR2V0VHJhbnNhY3Rpb25z",
+            "Eh4ud2FsbGV0LkdldFRyYW5zYWN0aW9uc1JlcXVlc3QaHy53YWxsZXQuR2V0",
+            "VHJhbnNhY3Rpb25zUmVzcG9uc2USTQoRQ3JlYXRlVHJhbnNhY3Rpb24SIC53",
+            "YWxsZXQuQ3JlYXRlVHJhbnNhY3Rpb25SZXF1ZXN0GhYud2FsbGV0LlNpbXBs",
+            "ZVJlc3BvbnNlEk0KEVVwZGF0ZVRyYW5zYWN0aW9uEiAud2FsbGV0LlVwZGF0",
+            "ZVRyYW5zYWN0aW9uUmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRJC",
+            "ChFEZWxldGVUcmFuc2FjdGlvbhIVLndhbGxldC5EZWxldGVSZXF1ZXN0GhYu",
+            "d2FsbGV0LlNpbXBsZVJlc3BvbnNlElsKEkV4cG9ydFRyYW5zYWN0aW9ucxIh",
+            "LndhbGxldC5FeHBvcnRUcmFuc2FjdGlvbnNSZXF1ZXN0GiIud2FsbGV0LkV4",
+            "cG9ydFRyYW5zYWN0aW9uc1Jlc3BvbnNlEnkKHEdldFRyYW5zYWN0aW9uc1Vw",
+            "ZGF0ZUhpc3RvcnkSKy53YWxsZXQuR2V0VHJhbnNhY3Rpb25zVXBkYXRlSGlz",
+            "dG9yeVJlcXVlc3QaLC53YWxsZXQuR2V0VHJhbnNhY3Rpb25zVXBkYXRlSGlz",
+            "dG9yeVJlc3BvbnNlQpYBCgpjb20ud2FsbGV0QgxGaW5hbmNlUHJvdG9QAVo4",
+            "Z2l0aHViLmNvbS9BZGl0eWEtMDAxMS9jb21tb24vY29udHJhY3RzL2dvL3dh",
+            "bGxldDt3YWxsZXSiAgNXWFiqAhBDb250cmFjdHMuV2FsbGV0ygIGV2FsbGV0",
+            "4gISV2FsbGV0XEdQQk1ldGFkYXRh6gIGV2FsbGV0YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Buf.Validate.ValidateReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Type.DecimalReflection.Descriptor, global::Contracts.Wallet.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Contracts.Wallet.CategoryType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -128,6 +138,7 @@ namespace Contracts.Wallet {
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.CreateCategoryRequest), global::Contracts.Wallet.CreateCategoryRequest.Parser, new[]{ "UserId", "Name", "Icon", "Type" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.UpdateCategoryRequest), global::Contracts.Wallet.UpdateCategoryRequest.Parser, new[]{ "UserId", "Id", "Name", "Icon", "Type" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.Transaction), global::Contracts.Wallet.Transaction.Parser, new[]{ "Id", "Description", "Amount", "Category", "CreatedAt", "UpdatedAt" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetTransactionsRequest), global::Contracts.Wallet.GetTransactionsRequest.Parser, new[]{ "Limit", "Offset", "Type", "CategoryId", "StartDate", "EndDate" }, new[]{ "Type", "CategoryId", "StartDate", "EndDate" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetTransactionsResponse), global::Contracts.Wallet.GetTransactionsResponse.Parser, new[]{ "Transactions" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.CreateTransactionRequest), global::Contracts.Wallet.CreateTransactionRequest.Parser, new[]{ "UserId", "CategoryId", "Description", "Amount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.UpdateTransactionRequest), global::Contracts.Wallet.UpdateTransactionRequest.Parser, new[]{ "UserId", "CategoryId", "Id", "Description", "Amount" }, null, null, null, null),
@@ -2123,6 +2134,439 @@ namespace Contracts.Wallet {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetTransactionsRequest : pb::IMessage<GetTransactionsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetTransactionsRequest> _parser = new pb::MessageParser<GetTransactionsRequest>(() => new GetTransactionsRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetTransactionsRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTransactionsRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTransactionsRequest(GetTransactionsRequest other) : this() {
+      _hasBits0 = other._hasBits0;
+      limit_ = other.limit_;
+      offset_ = other.offset_;
+      type_ = other.type_;
+      categoryId_ = other.categoryId_;
+      startDate_ = other.startDate_ != null ? other.startDate_.Clone() : null;
+      endDate_ = other.endDate_ != null ? other.endDate_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTransactionsRequest Clone() {
+      return new GetTransactionsRequest(this);
+    }
+
+    /// <summary>Field number for the "limit" field.</summary>
+    public const int LimitFieldNumber = 1;
+    private int limit_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Limit {
+      get { return limit_; }
+      set {
+        limit_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "offset" field.</summary>
+    public const int OffsetFieldNumber = 2;
+    private int offset_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Offset {
+      get { return offset_; }
+      set {
+        offset_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 3;
+    private readonly static global::Contracts.Wallet.CategoryType TypeDefaultValue = global::Contracts.Wallet.CategoryType.Unspecified;
+
+    private global::Contracts.Wallet.CategoryType type_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Contracts.Wallet.CategoryType Type {
+      get { if ((_hasBits0 & 1) != 0) { return type_; } else { return TypeDefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        type_ = value;
+      }
+    }
+    /// <summary>Gets whether the "type" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasType {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "type" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearType() {
+      _hasBits0 &= ~1;
+    }
+
+    /// <summary>Field number for the "category_id" field.</summary>
+    public const int CategoryIdFieldNumber = 4;
+    private readonly static int CategoryIdDefaultValue = 0;
+
+    private int categoryId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CategoryId {
+      get { if ((_hasBits0 & 2) != 0) { return categoryId_; } else { return CategoryIdDefaultValue; } }
+      set {
+        _hasBits0 |= 2;
+        categoryId_ = value;
+      }
+    }
+    /// <summary>Gets whether the "category_id" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasCategoryId {
+      get { return (_hasBits0 & 2) != 0; }
+    }
+    /// <summary>Clears the value of the "category_id" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearCategoryId() {
+      _hasBits0 &= ~2;
+    }
+
+    /// <summary>Field number for the "start_date" field.</summary>
+    public const int StartDateFieldNumber = 5;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp startDate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp StartDate {
+      get { return startDate_; }
+      set {
+        startDate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "end_date" field.</summary>
+    public const int EndDateFieldNumber = 6;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp endDate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp EndDate {
+      get { return endDate_; }
+      set {
+        endDate_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetTransactionsRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetTransactionsRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Limit != other.Limit) return false;
+      if (Offset != other.Offset) return false;
+      if (Type != other.Type) return false;
+      if (CategoryId != other.CategoryId) return false;
+      if (!object.Equals(StartDate, other.StartDate)) return false;
+      if (!object.Equals(EndDate, other.EndDate)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Limit != 0) hash ^= Limit.GetHashCode();
+      if (Offset != 0) hash ^= Offset.GetHashCode();
+      if (HasType) hash ^= Type.GetHashCode();
+      if (HasCategoryId) hash ^= CategoryId.GetHashCode();
+      if (startDate_ != null) hash ^= StartDate.GetHashCode();
+      if (endDate_ != null) hash ^= EndDate.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Limit != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Limit);
+      }
+      if (Offset != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Offset);
+      }
+      if (HasType) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Type);
+      }
+      if (HasCategoryId) {
+        output.WriteRawTag(32);
+        output.WriteInt32(CategoryId);
+      }
+      if (startDate_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(StartDate);
+      }
+      if (endDate_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(EndDate);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Limit != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Limit);
+      }
+      if (Offset != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Offset);
+      }
+      if (HasType) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Type);
+      }
+      if (HasCategoryId) {
+        output.WriteRawTag(32);
+        output.WriteInt32(CategoryId);
+      }
+      if (startDate_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(StartDate);
+      }
+      if (endDate_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(EndDate);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Limit != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Limit);
+      }
+      if (Offset != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Offset);
+      }
+      if (HasType) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (HasCategoryId) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CategoryId);
+      }
+      if (startDate_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(StartDate);
+      }
+      if (endDate_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EndDate);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetTransactionsRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Limit != 0) {
+        Limit = other.Limit;
+      }
+      if (other.Offset != 0) {
+        Offset = other.Offset;
+      }
+      if (other.HasType) {
+        Type = other.Type;
+      }
+      if (other.HasCategoryId) {
+        CategoryId = other.CategoryId;
+      }
+      if (other.startDate_ != null) {
+        if (startDate_ == null) {
+          StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        StartDate.MergeFrom(other.StartDate);
+      }
+      if (other.endDate_ != null) {
+        if (endDate_ == null) {
+          EndDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        EndDate.MergeFrom(other.EndDate);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Limit = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Offset = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Type = (global::Contracts.Wallet.CategoryType) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            CategoryId = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            if (startDate_ == null) {
+              StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartDate);
+            break;
+          }
+          case 50: {
+            if (endDate_ == null) {
+              EndDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndDate);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Limit = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Offset = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Type = (global::Contracts.Wallet.CategoryType) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            CategoryId = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            if (startDate_ == null) {
+              StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartDate);
+            break;
+          }
+          case 50: {
+            if (endDate_ == null) {
+              EndDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndDate);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class GetTransactionsResponse : pb::IMessage<GetTransactionsResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2137,7 +2581,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2324,7 +2768,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2642,7 +3086,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2997,7 +3441,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3250,7 +3694,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3522,7 +3966,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4024,7 +4468,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4259,7 +4703,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Contracts.Wallet.FinanceReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
