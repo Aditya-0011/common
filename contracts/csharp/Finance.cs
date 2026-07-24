@@ -78,41 +78,47 @@ namespace Contracts.Wallet {
             "IHN0YXJ0IGRhdGUaIHRoaXMuZW5kX2RhdGUgPj0gdGhpcy5zdGFydF9kYXRl",
             "InkKGkV4cG9ydFRyYW5zYWN0aW9uc1Jlc3BvbnNlEhsKCWZpbGVfZGF0YRgB",
             "IAEoDFIIZmlsZURhdGESGwoJZmlsZV9uYW1lGAIgASgJUghmaWxlTmFtZRIh",
-            "Cgxjb250ZW50X3R5cGUYAyABKAlSC2NvbnRlbnRUeXBlIuIBChlUcmFuc2Fj",
-            "dGlvbnNVcGRhdGVIaXN0b3J5Eg4KAmlkGAEgASgFUgJpZBI9Cg9wcmV2aW91",
-            "c19hbW91bnQYAiABKAsyFC5nb29nbGUudHlwZS5EZWNpbWFsUg5wcmV2aW91",
-            "c0Ftb3VudBI7Cg51cGRhdGVkX2Ftb3VudBgDIAEoCzIULmdvb2dsZS50eXBl",
-            "LkRlY2ltYWxSDXVwZGF0ZWRBbW91bnQSOQoKY3JlYXRlZF9hdBgEIAEoCzIa",
-            "Lmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdCJ3CiNHZXRU",
-            "cmFuc2FjdGlvbnNVcGRhdGVIaXN0b3J5UmVxdWVzdBIgCgd1c2VyX2lkGAEg",
-            "ASgFQge6SAQaAiAAUgZ1c2VySWQSLgoOdHJhbnNhY3Rpb25faWQYAiABKAVC",
-            "B7pIBBoCIABSDXRyYW5zYWN0aW9uSWQiYwokR2V0VHJhbnNhY3Rpb25zVXBk",
-            "YXRlSGlzdG9yeVJlc3BvbnNlEjsKB2hpc3RvcnkYASADKAsyIS53YWxsZXQu",
-            "VHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9yeVIHaGlzdG9yeSpiCgxDYXRlZ29y",
-            "eVR5cGUSHQoZQ0FURUdPUllfVFlQRV9VTlNQRUNJRklFRBAAEhgKFENBVEVH",
-            "T1JZX1RZUEVfSU5DT01FEAESGQoVQ0FURUdPUllfVFlQRV9FWFBFTlNFEAIy",
-            "rwYKDkZpbmFuY2VTZXJ2aWNlEkUKDUdldENhdGVnb3JpZXMSFS53YWxsZXQu",
-            "U2ltcGxlUmVxdWVzdBodLndhbGxldC5HZXRDYXRlZ29yaWVzUmVzcG9uc2US",
-            "RwoOQ3JlYXRlQ2F0ZWdvcnkSHS53YWxsZXQuQ3JlYXRlQ2F0ZWdvcnlSZXF1",
-            "ZXN0GhYud2FsbGV0LlNpbXBsZVJlc3BvbnNlEkcKDlVwZGF0ZUNhdGVnb3J5",
-            "Eh0ud2FsbGV0LlVwZGF0ZUNhdGVnb3J5UmVxdWVzdBoWLndhbGxldC5TaW1w",
-            "bGVSZXNwb25zZRI/Cg5EZWxldGVDYXRlZ29yeRIVLndhbGxldC5EZWxldGVS",
-            "ZXF1ZXN0GhYud2FsbGV0LlNpbXBsZVJlc3BvbnNlEkkKD0dldFRyYW5zYWN0",
-            "aW9ucxIVLndhbGxldC5TaW1wbGVSZXF1ZXN0Gh8ud2FsbGV0LkdldFRyYW5z",
-            "YWN0aW9uc1Jlc3BvbnNlEk0KEUNyZWF0ZVRyYW5zYWN0aW9uEiAud2FsbGV0",
-            "LkNyZWF0ZVRyYW5zYWN0aW9uUmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNw",
-            "b25zZRJNChFVcGRhdGVUcmFuc2FjdGlvbhIgLndhbGxldC5VcGRhdGVUcmFu",
-            "c2FjdGlvblJlcXVlc3QaFi53YWxsZXQuU2ltcGxlUmVzcG9uc2USQgoRRGVs",
-            "ZXRlVHJhbnNhY3Rpb24SFS53YWxsZXQuRGVsZXRlUmVxdWVzdBoWLndhbGxl",
-            "dC5TaW1wbGVSZXNwb25zZRJbChJFeHBvcnRUcmFuc2FjdGlvbnMSIS53YWxs",
-            "ZXQuRXhwb3J0VHJhbnNhY3Rpb25zUmVxdWVzdBoiLndhbGxldC5FeHBvcnRU",
-            "cmFuc2FjdGlvbnNSZXNwb25zZRJ5ChxHZXRUcmFuc2FjdGlvbnNVcGRhdGVI",
-            "aXN0b3J5Eisud2FsbGV0LkdldFRyYW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlS",
-            "ZXF1ZXN0Giwud2FsbGV0LkdldFRyYW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlS",
-            "ZXNwb25zZUKWAQoKY29tLndhbGxldEIMRmluYW5jZVByb3RvUAFaOGdpdGh1",
-            "Yi5jb20vQWRpdHlhLTAwMTEvY29tbW9uL2NvbnRyYWN0cy9nby93YWxsZXQ7",
-            "d2FsbGV0ogIDV1hYqgIQQ29udHJhY3RzLldhbGxldMoCBldhbGxldOICEldh",
-            "bGxldFxHUEJNZXRhZGF0YeoCBldhbGxldGIGcHJvdG8z"));
+            "Cgxjb250ZW50X3R5cGUYAyABKAlSC2NvbnRlbnRUeXBlItADChlUcmFuc2Fj",
+            "dGlvbnNVcGRhdGVIaXN0b3J5Eg4KAmlkGAEgASgFUgJpZBJEChFwcmV2aW91",
+            "c19jYXRlZ29yeRgCIAEoCzIXLndhbGxldC5DYXRlZ29yeVN1bW1hcnlSEHBy",
+            "ZXZpb3VzQ2F0ZWdvcnkSQgoQY3VycmVudF9jYXRlZ29yeRgDIAEoCzIXLndh",
+            "bGxldC5DYXRlZ29yeVN1bW1hcnlSD2N1cnJlbnRDYXRlZ29yeRIxChRwcmV2",
+            "aW91c19kZXNjcmlwdGlvbhgEIAEoCVITcHJldmlvdXNEZXNjcmlwdGlvbhIv",
+            "ChNjdXJyZW50X2Rlc2NyaXB0aW9uGAUgASgJUhJjdXJyZW50RGVzY3JpcHRp",
+            "b24SPQoPcHJldmlvdXNfYW1vdW50GAYgASgLMhQuZ29vZ2xlLnR5cGUuRGVj",
+            "aW1hbFIOcHJldmlvdXNBbW91bnQSOwoOY3VycmVudF9hbW91bnQYByABKAsy",
+            "FC5nb29nbGUudHlwZS5EZWNpbWFsUg1jdXJyZW50QW1vdW50EjkKCmNyZWF0",
+            "ZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVh",
+            "dGVkQXQidwojR2V0VHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9yeVJlcXVlc3QS",
+            "IAoHdXNlcl9pZBgBIAEoBUIHukgEGgIgAFIGdXNlcklkEi4KDnRyYW5zYWN0",
+            "aW9uX2lkGAIgASgFQge6SAQaAiAAUg10cmFuc2FjdGlvbklkImMKJEdldFRy",
+            "YW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlSZXNwb25zZRI7CgdoaXN0b3J5GAEg",
+            "AygLMiEud2FsbGV0LlRyYW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlSB2hpc3Rv",
+            "cnkqYgoMQ2F0ZWdvcnlUeXBlEh0KGUNBVEVHT1JZX1RZUEVfVU5TUEVDSUZJ",
+            "RUQQABIYChRDQVRFR09SWV9UWVBFX0lOQ09NRRABEhkKFUNBVEVHT1JZX1RZ",
+            "UEVfRVhQRU5TRRACMq8GCg5GaW5hbmNlU2VydmljZRJFCg1HZXRDYXRlZ29y",
+            "aWVzEhUud2FsbGV0LlNpbXBsZVJlcXVlc3QaHS53YWxsZXQuR2V0Q2F0ZWdv",
+            "cmllc1Jlc3BvbnNlEkcKDkNyZWF0ZUNhdGVnb3J5Eh0ud2FsbGV0LkNyZWF0",
+            "ZUNhdGVnb3J5UmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRJHCg5V",
+            "cGRhdGVDYXRlZ29yeRIdLndhbGxldC5VcGRhdGVDYXRlZ29yeVJlcXVlc3Qa",
+            "Fi53YWxsZXQuU2ltcGxlUmVzcG9uc2USPwoORGVsZXRlQ2F0ZWdvcnkSFS53",
+            "YWxsZXQuRGVsZXRlUmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRJJ",
+            "Cg9HZXRUcmFuc2FjdGlvbnMSFS53YWxsZXQuU2ltcGxlUmVxdWVzdBofLndh",
+            "bGxldC5HZXRUcmFuc2FjdGlvbnNSZXNwb25zZRJNChFDcmVhdGVUcmFuc2Fj",
+            "dGlvbhIgLndhbGxldC5DcmVhdGVUcmFuc2FjdGlvblJlcXVlc3QaFi53YWxs",
+            "ZXQuU2ltcGxlUmVzcG9uc2USTQoRVXBkYXRlVHJhbnNhY3Rpb24SIC53YWxs",
+            "ZXQuVXBkYXRlVHJhbnNhY3Rpb25SZXF1ZXN0GhYud2FsbGV0LlNpbXBsZVJl",
+            "c3BvbnNlEkIKEURlbGV0ZVRyYW5zYWN0aW9uEhUud2FsbGV0LkRlbGV0ZVJl",
+            "cXVlc3QaFi53YWxsZXQuU2ltcGxlUmVzcG9uc2USWwoSRXhwb3J0VHJhbnNh",
+            "Y3Rpb25zEiEud2FsbGV0LkV4cG9ydFRyYW5zYWN0aW9uc1JlcXVlc3QaIi53",
+            "YWxsZXQuRXhwb3J0VHJhbnNhY3Rpb25zUmVzcG9uc2USeQocR2V0VHJhbnNh",
+            "Y3Rpb25zVXBkYXRlSGlzdG9yeRIrLndhbGxldC5HZXRUcmFuc2FjdGlvbnNV",
+            "cGRhdGVIaXN0b3J5UmVxdWVzdBosLndhbGxldC5HZXRUcmFuc2FjdGlvbnNV",
+            "cGRhdGVIaXN0b3J5UmVzcG9uc2VClgEKCmNvbS53YWxsZXRCDEZpbmFuY2VQ",
+            "cm90b1ABWjhnaXRodWIuY29tL0FkaXR5YS0wMDExL2NvbW1vbi9jb250cmFj",
+            "dHMvZ28vd2FsbGV0O3dhbGxldKICA1dYWKoCEENvbnRyYWN0cy5XYWxsZXTK",
+            "AgZXYWxsZXTiAhJXYWxsZXRcR1BCTWV0YWRhdGHqAgZXYWxsZXRiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Buf.Validate.ValidateReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Type.DecimalReflection.Descriptor, global::Contracts.Wallet.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Contracts.Wallet.CategoryType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -127,7 +133,7 @@ namespace Contracts.Wallet {
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.UpdateTransactionRequest), global::Contracts.Wallet.UpdateTransactionRequest.Parser, new[]{ "UserId", "CategoryId", "Id", "Description", "Amount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.ExportTransactionsRequest), global::Contracts.Wallet.ExportTransactionsRequest.Parser, new[]{ "StartDate", "EndDate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.ExportTransactionsResponse), global::Contracts.Wallet.ExportTransactionsResponse.Parser, new[]{ "FileData", "FileName", "ContentType" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.TransactionsUpdateHistory), global::Contracts.Wallet.TransactionsUpdateHistory.Parser, new[]{ "Id", "PreviousAmount", "UpdatedAmount", "CreatedAt" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.TransactionsUpdateHistory), global::Contracts.Wallet.TransactionsUpdateHistory.Parser, new[]{ "Id", "PreviousCategory", "CurrentCategory", "PreviousDescription", "CurrentDescription", "PreviousAmount", "CurrentAmount", "CreatedAt" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetTransactionsUpdateHistoryRequest), global::Contracts.Wallet.GetTransactionsUpdateHistoryRequest.Parser, new[]{ "UserId", "TransactionId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetTransactionsUpdateHistoryResponse), global::Contracts.Wallet.GetTransactionsUpdateHistoryResponse.Parser, new[]{ "History" }, null, null, null, null)
           }));
@@ -3537,8 +3543,12 @@ namespace Contracts.Wallet {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TransactionsUpdateHistory(TransactionsUpdateHistory other) : this() {
       id_ = other.id_;
+      previousCategory_ = other.previousCategory_ != null ? other.previousCategory_.Clone() : null;
+      currentCategory_ = other.currentCategory_ != null ? other.currentCategory_.Clone() : null;
+      previousDescription_ = other.previousDescription_;
+      currentDescription_ = other.currentDescription_;
       previousAmount_ = other.previousAmount_ != null ? other.previousAmount_.Clone() : null;
-      updatedAmount_ = other.updatedAmount_ != null ? other.updatedAmount_.Clone() : null;
+      currentAmount_ = other.currentAmount_ != null ? other.currentAmount_.Clone() : null;
       createdAt_ = other.createdAt_ != null ? other.createdAt_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -3561,8 +3571,56 @@ namespace Contracts.Wallet {
       }
     }
 
+    /// <summary>Field number for the "previous_category" field.</summary>
+    public const int PreviousCategoryFieldNumber = 2;
+    private global::Contracts.Wallet.CategorySummary previousCategory_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Contracts.Wallet.CategorySummary PreviousCategory {
+      get { return previousCategory_; }
+      set {
+        previousCategory_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "current_category" field.</summary>
+    public const int CurrentCategoryFieldNumber = 3;
+    private global::Contracts.Wallet.CategorySummary currentCategory_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Contracts.Wallet.CategorySummary CurrentCategory {
+      get { return currentCategory_; }
+      set {
+        currentCategory_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "previous_description" field.</summary>
+    public const int PreviousDescriptionFieldNumber = 4;
+    private string previousDescription_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PreviousDescription {
+      get { return previousDescription_; }
+      set {
+        previousDescription_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "current_description" field.</summary>
+    public const int CurrentDescriptionFieldNumber = 5;
+    private string currentDescription_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string CurrentDescription {
+      get { return currentDescription_; }
+      set {
+        currentDescription_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "previous_amount" field.</summary>
-    public const int PreviousAmountFieldNumber = 2;
+    public const int PreviousAmountFieldNumber = 6;
     private global::Google.Type.Decimal previousAmount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3573,20 +3631,20 @@ namespace Contracts.Wallet {
       }
     }
 
-    /// <summary>Field number for the "updated_amount" field.</summary>
-    public const int UpdatedAmountFieldNumber = 3;
-    private global::Google.Type.Decimal updatedAmount_;
+    /// <summary>Field number for the "current_amount" field.</summary>
+    public const int CurrentAmountFieldNumber = 7;
+    private global::Google.Type.Decimal currentAmount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Type.Decimal UpdatedAmount {
-      get { return updatedAmount_; }
+    public global::Google.Type.Decimal CurrentAmount {
+      get { return currentAmount_; }
       set {
-        updatedAmount_ = value;
+        currentAmount_ = value;
       }
     }
 
     /// <summary>Field number for the "created_at" field.</summary>
-    public const int CreatedAtFieldNumber = 4;
+    public const int CreatedAtFieldNumber = 8;
     private global::Google.Protobuf.WellKnownTypes.Timestamp createdAt_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3613,8 +3671,12 @@ namespace Contracts.Wallet {
         return true;
       }
       if (Id != other.Id) return false;
+      if (!object.Equals(PreviousCategory, other.PreviousCategory)) return false;
+      if (!object.Equals(CurrentCategory, other.CurrentCategory)) return false;
+      if (PreviousDescription != other.PreviousDescription) return false;
+      if (CurrentDescription != other.CurrentDescription) return false;
       if (!object.Equals(PreviousAmount, other.PreviousAmount)) return false;
-      if (!object.Equals(UpdatedAmount, other.UpdatedAmount)) return false;
+      if (!object.Equals(CurrentAmount, other.CurrentAmount)) return false;
       if (!object.Equals(CreatedAt, other.CreatedAt)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3624,8 +3686,12 @@ namespace Contracts.Wallet {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
+      if (previousCategory_ != null) hash ^= PreviousCategory.GetHashCode();
+      if (currentCategory_ != null) hash ^= CurrentCategory.GetHashCode();
+      if (PreviousDescription.Length != 0) hash ^= PreviousDescription.GetHashCode();
+      if (CurrentDescription.Length != 0) hash ^= CurrentDescription.GetHashCode();
       if (previousAmount_ != null) hash ^= PreviousAmount.GetHashCode();
-      if (updatedAmount_ != null) hash ^= UpdatedAmount.GetHashCode();
+      if (currentAmount_ != null) hash ^= CurrentAmount.GetHashCode();
       if (createdAt_ != null) hash ^= CreatedAt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3649,16 +3715,32 @@ namespace Contracts.Wallet {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      if (previousAmount_ != null) {
+      if (previousCategory_ != null) {
         output.WriteRawTag(18);
+        output.WriteMessage(PreviousCategory);
+      }
+      if (currentCategory_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CurrentCategory);
+      }
+      if (PreviousDescription.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PreviousDescription);
+      }
+      if (CurrentDescription.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(CurrentDescription);
+      }
+      if (previousAmount_ != null) {
+        output.WriteRawTag(50);
         output.WriteMessage(PreviousAmount);
       }
-      if (updatedAmount_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(UpdatedAmount);
+      if (currentAmount_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(CurrentAmount);
       }
       if (createdAt_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(CreatedAt);
       }
       if (_unknownFields != null) {
@@ -3675,16 +3757,32 @@ namespace Contracts.Wallet {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      if (previousAmount_ != null) {
+      if (previousCategory_ != null) {
         output.WriteRawTag(18);
+        output.WriteMessage(PreviousCategory);
+      }
+      if (currentCategory_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CurrentCategory);
+      }
+      if (PreviousDescription.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PreviousDescription);
+      }
+      if (CurrentDescription.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(CurrentDescription);
+      }
+      if (previousAmount_ != null) {
+        output.WriteRawTag(50);
         output.WriteMessage(PreviousAmount);
       }
-      if (updatedAmount_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(UpdatedAmount);
+      if (currentAmount_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(CurrentAmount);
       }
       if (createdAt_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(CreatedAt);
       }
       if (_unknownFields != null) {
@@ -3700,11 +3798,23 @@ namespace Contracts.Wallet {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
+      if (previousCategory_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PreviousCategory);
+      }
+      if (currentCategory_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CurrentCategory);
+      }
+      if (PreviousDescription.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PreviousDescription);
+      }
+      if (CurrentDescription.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CurrentDescription);
+      }
       if (previousAmount_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PreviousAmount);
       }
-      if (updatedAmount_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpdatedAmount);
+      if (currentAmount_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CurrentAmount);
       }
       if (createdAt_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreatedAt);
@@ -3724,17 +3834,35 @@ namespace Contracts.Wallet {
       if (other.Id != 0) {
         Id = other.Id;
       }
+      if (other.previousCategory_ != null) {
+        if (previousCategory_ == null) {
+          PreviousCategory = new global::Contracts.Wallet.CategorySummary();
+        }
+        PreviousCategory.MergeFrom(other.PreviousCategory);
+      }
+      if (other.currentCategory_ != null) {
+        if (currentCategory_ == null) {
+          CurrentCategory = new global::Contracts.Wallet.CategorySummary();
+        }
+        CurrentCategory.MergeFrom(other.CurrentCategory);
+      }
+      if (other.PreviousDescription.Length != 0) {
+        PreviousDescription = other.PreviousDescription;
+      }
+      if (other.CurrentDescription.Length != 0) {
+        CurrentDescription = other.CurrentDescription;
+      }
       if (other.previousAmount_ != null) {
         if (previousAmount_ == null) {
           PreviousAmount = new global::Google.Type.Decimal();
         }
         PreviousAmount.MergeFrom(other.PreviousAmount);
       }
-      if (other.updatedAmount_ != null) {
-        if (updatedAmount_ == null) {
-          UpdatedAmount = new global::Google.Type.Decimal();
+      if (other.currentAmount_ != null) {
+        if (currentAmount_ == null) {
+          CurrentAmount = new global::Google.Type.Decimal();
         }
-        UpdatedAmount.MergeFrom(other.UpdatedAmount);
+        CurrentAmount.MergeFrom(other.CurrentAmount);
       }
       if (other.createdAt_ != null) {
         if (createdAt_ == null) {
@@ -3766,20 +3894,42 @@ namespace Contracts.Wallet {
             break;
           }
           case 18: {
+            if (previousCategory_ == null) {
+              PreviousCategory = new global::Contracts.Wallet.CategorySummary();
+            }
+            input.ReadMessage(PreviousCategory);
+            break;
+          }
+          case 26: {
+            if (currentCategory_ == null) {
+              CurrentCategory = new global::Contracts.Wallet.CategorySummary();
+            }
+            input.ReadMessage(CurrentCategory);
+            break;
+          }
+          case 34: {
+            PreviousDescription = input.ReadString();
+            break;
+          }
+          case 42: {
+            CurrentDescription = input.ReadString();
+            break;
+          }
+          case 50: {
             if (previousAmount_ == null) {
               PreviousAmount = new global::Google.Type.Decimal();
             }
             input.ReadMessage(PreviousAmount);
             break;
           }
-          case 26: {
-            if (updatedAmount_ == null) {
-              UpdatedAmount = new global::Google.Type.Decimal();
+          case 58: {
+            if (currentAmount_ == null) {
+              CurrentAmount = new global::Google.Type.Decimal();
             }
-            input.ReadMessage(UpdatedAmount);
+            input.ReadMessage(CurrentAmount);
             break;
           }
-          case 34: {
+          case 66: {
             if (createdAt_ == null) {
               CreatedAt = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
@@ -3810,20 +3960,42 @@ namespace Contracts.Wallet {
             break;
           }
           case 18: {
+            if (previousCategory_ == null) {
+              PreviousCategory = new global::Contracts.Wallet.CategorySummary();
+            }
+            input.ReadMessage(PreviousCategory);
+            break;
+          }
+          case 26: {
+            if (currentCategory_ == null) {
+              CurrentCategory = new global::Contracts.Wallet.CategorySummary();
+            }
+            input.ReadMessage(CurrentCategory);
+            break;
+          }
+          case 34: {
+            PreviousDescription = input.ReadString();
+            break;
+          }
+          case 42: {
+            CurrentDescription = input.ReadString();
+            break;
+          }
+          case 50: {
             if (previousAmount_ == null) {
               PreviousAmount = new global::Google.Type.Decimal();
             }
             input.ReadMessage(PreviousAmount);
             break;
           }
-          case 26: {
-            if (updatedAmount_ == null) {
-              UpdatedAmount = new global::Google.Type.Decimal();
+          case 58: {
+            if (currentAmount_ == null) {
+              CurrentAmount = new global::Google.Type.Decimal();
             }
-            input.ReadMessage(UpdatedAmount);
+            input.ReadMessage(CurrentAmount);
             break;
           }
-          case 34: {
+          case 66: {
             if (createdAt_ == null) {
               CreatedAt = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
