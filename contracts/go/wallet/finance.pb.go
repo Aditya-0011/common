@@ -1129,7 +1129,7 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf9\x03\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xac\x04\n" +
 	"\x16GetTransactionsRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1d\n" +
 	"\x05limit\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x05limit\x12\x1b\n" +
@@ -1139,8 +1139,8 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"categoryId\x88\x01\x01\x12>\n" +
 	"\n" +
 	"start_date\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampH\x02R\tstartDate\x88\x01\x01\x12:\n" +
-	"\bend_date\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x03R\aendDate\x88\x01\x01:h\xbaHe\x1ac\n" +
-	"\x10date_range_valid\x12-end date must be after or equal to start date\x1a this.end_date >= this.start_dateB\a\n" +
+	"\bend_date\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x03R\aendDate\x88\x01\x01:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
+	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_dateB\a\n" +
 	"\x05_typeB\x0e\n" +
 	"\f_category_idB\r\n" +
 	"\v_start_dateB\v\n" +
@@ -1163,12 +1163,12 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdescription\x12\x80\x01\n" +
 	"\x06amount\x18\x05 \x01(\v2\x14.google.type.DecimalBR\xbaHO\xba\x01L\n" +
-	"\x0eamount_gt_zero\x12 amount must be greater than zero\x1a\x18double(this.value) > 0.0R\x06amount\"\x87\x02\n" +
+	"\x0eamount_gt_zero\x12 amount must be greater than zero\x1a\x18double(this.value) > 0.0R\x06amount\"\xba\x02\n" +
 	"\x19ExportTransactionsRequest\x12A\n" +
 	"\n" +
 	"start_date\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartDate\x12=\n" +
-	"\bend_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:h\xbaHe\x1ac\n" +
-	"\x10date_range_valid\x12-end date must be after or equal to start date\x1a this.end_date >= this.start_date\"y\n" +
+	"\bend_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
+	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_date\"y\n" +
 	"\x1aExportTransactionsResponse\x12\x1b\n" +
 	"\tfile_data\x18\x01 \x01(\fR\bfileData\x12\x1b\n" +
 	"\tfile_name\x18\x02 \x01(\tR\bfileName\x12!\n" +
