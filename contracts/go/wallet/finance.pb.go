@@ -1171,12 +1171,11 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdescription\x12\x80\x01\n" +
 	"\x06amount\x18\x05 \x01(\v2\x14.google.type.DecimalBR\xbaHO\xba\x01L\n" +
-	"\x0eamount_gt_zero\x12 amount must be greater than zero\x1a\x18double(this.value) > 0.0R\x06amount\"\xdc\x02\n" +
-	"\x19ExportTransactionsRequest\x12 \n" +
-	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12A\n" +
+	"\x0eamount_gt_zero\x12 amount must be greater than zero\x1a\x18double(this.value) > 0.0R\x06amount\"\xba\x02\n" +
+	"\x19ExportTransactionsRequest\x12A\n" +
 	"\n" +
-	"start_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartDate\x12=\n" +
-	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
+	"start_date\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartDate\x12=\n" +
+	"\bend_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
 	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_date\"y\n" +
 	"\x1aExportTransactionsResponse\x12\x1b\n" +
 	"\tfile_data\x18\x01 \x01(\fR\bfileData\x12\x1b\n" +
