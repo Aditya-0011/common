@@ -121,9 +121,9 @@ message ExportTransactionsRequest {
     message: "end date must be after or equal to start date"
     expression: "!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_date"
   };
-
-  google.protobuf.Timestamp start_date = 1 [(buf.validate.field).required = true];
-  google.protobuf.Timestamp end_date = 2 [(buf.validate.field).required = true];
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  google.protobuf.Timestamp start_date = 2 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp end_date = 3 [(buf.validate.field).required = true];
 }
 
 message ExportTransactionsResponse {
