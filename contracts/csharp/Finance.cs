@@ -82,56 +82,57 @@ namespace Contracts.Wallet {
             "KAlCCrpIB3IFEAEY/wFSC2Rlc2NyaXB0aW9uEoABCgZhbW91bnQYBSABKAsy",
             "FC5nb29nbGUudHlwZS5EZWNpbWFsQlK6SE+6AUwKDmFtb3VudF9ndF96ZXJv",
             "EiBhbW91bnQgbXVzdCBiZSBncmVhdGVyIHRoYW4gemVybxoYZG91YmxlKHRo",
-            "aXMudmFsdWUpID4gMC4wUgZhbW91bnQiugIKGUV4cG9ydFRyYW5zYWN0aW9u",
-            "c1JlcXVlc3QSQQoKc3RhcnRfZGF0ZRgBIAEoCzIaLmdvb2dsZS5wcm90b2J1",
-            "Zi5UaW1lc3RhbXBCBrpIA8gBAVIJc3RhcnREYXRlEj0KCGVuZF9kYXRlGAIg",
-            "ASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBUgdlbmRE",
-            "YXRlOpoBukiWARqTAQoQZGF0ZV9yYW5nZV92YWxpZBItZW5kIGRhdGUgbXVz",
-            "dCBiZSBhZnRlciBvciBlcXVhbCB0byBzdGFydCBkYXRlGlAhaGFzKHRoaXMu",
-            "c3RhcnRfZGF0ZSkgfHwgIWhhcyh0aGlzLmVuZF9kYXRlKSB8fCB0aGlzLmVu",
-            "ZF9kYXRlID49IHRoaXMuc3RhcnRfZGF0ZSJ5ChpFeHBvcnRUcmFuc2FjdGlv",
-            "bnNSZXNwb25zZRIbCglmaWxlX2RhdGEYASABKAxSCGZpbGVEYXRhEhsKCWZp",
-            "bGVfbmFtZRgCIAEoCVIIZmlsZU5hbWUSIQoMY29udGVudF90eXBlGAMgASgJ",
-            "Ugtjb250ZW50VHlwZSLQAwoZVHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9yeRIO",
-            "CgJpZBgBIAEoBVICaWQSRAoRcHJldmlvdXNfY2F0ZWdvcnkYAiABKAsyFy53",
-            "YWxsZXQuQ2F0ZWdvcnlTdW1tYXJ5UhBwcmV2aW91c0NhdGVnb3J5EkIKEGN1",
-            "cnJlbnRfY2F0ZWdvcnkYAyABKAsyFy53YWxsZXQuQ2F0ZWdvcnlTdW1tYXJ5",
-            "Ug9jdXJyZW50Q2F0ZWdvcnkSMQoUcHJldmlvdXNfZGVzY3JpcHRpb24YBCAB",
-            "KAlSE3ByZXZpb3VzRGVzY3JpcHRpb24SLwoTY3VycmVudF9kZXNjcmlwdGlv",
-            "bhgFIAEoCVISY3VycmVudERlc2NyaXB0aW9uEj0KD3ByZXZpb3VzX2Ftb3Vu",
-            "dBgGIAEoCzIULmdvb2dsZS50eXBlLkRlY2ltYWxSDnByZXZpb3VzQW1vdW50",
-            "EjsKDmN1cnJlbnRfYW1vdW50GAcgASgLMhQuZ29vZ2xlLnR5cGUuRGVjaW1h",
-            "bFINY3VycmVudEFtb3VudBI5CgpjcmVhdGVkX2F0GAggASgLMhouZ29vZ2xl",
-            "LnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0IncKI0dldFRyYW5zYWN0",
-            "aW9uc1VwZGF0ZUhpc3RvcnlSZXF1ZXN0EiAKB3VzZXJfaWQYASABKAVCB7pI",
-            "BBoCIABSBnVzZXJJZBIuCg50cmFuc2FjdGlvbl9pZBgCIAEoBUIHukgEGgIg",
-            "AFINdHJhbnNhY3Rpb25JZCJjCiRHZXRUcmFuc2FjdGlvbnNVcGRhdGVIaXN0",
-            "b3J5UmVzcG9uc2USOwoHaGlzdG9yeRgBIAMoCzIhLndhbGxldC5UcmFuc2Fj",
-            "dGlvbnNVcGRhdGVIaXN0b3J5UgdoaXN0b3J5KmIKDENhdGVnb3J5VHlwZRId",
-            "ChlDQVRFR09SWV9UWVBFX1VOU1BFQ0lGSUVEEAASGAoUQ0FURUdPUllfVFlQ",
-            "RV9JTkNPTUUQARIZChVDQVRFR09SWV9UWVBFX0VYUEVOU0UQAjK4BgoORmlu",
-            "YW5jZVNlcnZpY2USRQoNR2V0Q2F0ZWdvcmllcxIVLndhbGxldC5TaW1wbGVS",
-            "ZXF1ZXN0Gh0ud2FsbGV0LkdldENhdGVnb3JpZXNSZXNwb25zZRJHCg5DcmVh",
-            "dGVDYXRlZ29yeRIdLndhbGxldC5DcmVhdGVDYXRlZ29yeVJlcXVlc3QaFi53",
-            "YWxsZXQuU2ltcGxlUmVzcG9uc2USRwoOVXBkYXRlQ2F0ZWdvcnkSHS53YWxs",
-            "ZXQuVXBkYXRlQ2F0ZWdvcnlSZXF1ZXN0GhYud2FsbGV0LlNpbXBsZVJlc3Bv",
-            "bnNlEj8KDkRlbGV0ZUNhdGVnb3J5EhUud2FsbGV0LkRlbGV0ZVJlcXVlc3Qa",
-            "Fi53YWxsZXQuU2ltcGxlUmVzcG9uc2USUgoPR2V0VHJhbnNhY3Rpb25zEh4u",
-            "d2FsbGV0LkdldFRyYW5zYWN0aW9uc1JlcXVlc3QaHy53YWxsZXQuR2V0VHJh",
-            "bnNhY3Rpb25zUmVzcG9uc2USTQoRQ3JlYXRlVHJhbnNhY3Rpb24SIC53YWxs",
-            "ZXQuQ3JlYXRlVHJhbnNhY3Rpb25SZXF1ZXN0GhYud2FsbGV0LlNpbXBsZVJl",
-            "c3BvbnNlEk0KEVVwZGF0ZVRyYW5zYWN0aW9uEiAud2FsbGV0LlVwZGF0ZVRy",
-            "YW5zYWN0aW9uUmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRJCChFE",
-            "ZWxldGVUcmFuc2FjdGlvbhIVLndhbGxldC5EZWxldGVSZXF1ZXN0GhYud2Fs",
-            "bGV0LlNpbXBsZVJlc3BvbnNlElsKEkV4cG9ydFRyYW5zYWN0aW9ucxIhLndh",
-            "bGxldC5FeHBvcnRUcmFuc2FjdGlvbnNSZXF1ZXN0GiIud2FsbGV0LkV4cG9y",
-            "dFRyYW5zYWN0aW9uc1Jlc3BvbnNlEnkKHEdldFRyYW5zYWN0aW9uc1VwZGF0",
-            "ZUhpc3RvcnkSKy53YWxsZXQuR2V0VHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9y",
-            "eVJlcXVlc3QaLC53YWxsZXQuR2V0VHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9y",
-            "eVJlc3BvbnNlQpYBCgpjb20ud2FsbGV0QgxGaW5hbmNlUHJvdG9QAVo4Z2l0",
-            "aHViLmNvbS9BZGl0eWEtMDAxMS9jb21tb24vY29udHJhY3RzL2dvL3dhbGxl",
-            "dDt3YWxsZXSiAgNXWFiqAhBDb250cmFjdHMuV2FsbGV0ygIGV2FsbGV04gIS",
-            "V2FsbGV0XEdQQk1ldGFkYXRh6gIGV2FsbGV0YgZwcm90bzM="));
+            "aXMudmFsdWUpID4gMC4wUgZhbW91bnQi3AIKGUV4cG9ydFRyYW5zYWN0aW9u",
+            "c1JlcXVlc3QSIAoHdXNlcl9pZBgBIAEoBUIHukgEGgIgAFIGdXNlcklkEkEK",
+            "CnN0YXJ0X2RhdGUYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1w",
+            "Qga6SAPIAQFSCXN0YXJ0RGF0ZRI9CghlbmRfZGF0ZRgDIAEoCzIaLmdvb2ds",
+            "ZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBAVIHZW5kRGF0ZTqaAbpIlgEa",
+            "kwEKEGRhdGVfcmFuZ2VfdmFsaWQSLWVuZCBkYXRlIG11c3QgYmUgYWZ0ZXIg",
+            "b3IgZXF1YWwgdG8gc3RhcnQgZGF0ZRpQIWhhcyh0aGlzLnN0YXJ0X2RhdGUp",
+            "IHx8ICFoYXModGhpcy5lbmRfZGF0ZSkgfHwgdGhpcy5lbmRfZGF0ZSA+PSB0",
+            "aGlzLnN0YXJ0X2RhdGUieQoaRXhwb3J0VHJhbnNhY3Rpb25zUmVzcG9uc2US",
+            "GwoJZmlsZV9kYXRhGAEgASgMUghmaWxlRGF0YRIbCglmaWxlX25hbWUYAiAB",
+            "KAlSCGZpbGVOYW1lEiEKDGNvbnRlbnRfdHlwZRgDIAEoCVILY29udGVudFR5",
+            "cGUi0AMKGVRyYW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnkSDgoCaWQYASABKAVS",
+            "AmlkEkQKEXByZXZpb3VzX2NhdGVnb3J5GAIgASgLMhcud2FsbGV0LkNhdGVn",
+            "b3J5U3VtbWFyeVIQcHJldmlvdXNDYXRlZ29yeRJCChBjdXJyZW50X2NhdGVn",
+            "b3J5GAMgASgLMhcud2FsbGV0LkNhdGVnb3J5U3VtbWFyeVIPY3VycmVudENh",
+            "dGVnb3J5EjEKFHByZXZpb3VzX2Rlc2NyaXB0aW9uGAQgASgJUhNwcmV2aW91",
+            "c0Rlc2NyaXB0aW9uEi8KE2N1cnJlbnRfZGVzY3JpcHRpb24YBSABKAlSEmN1",
+            "cnJlbnREZXNjcmlwdGlvbhI9Cg9wcmV2aW91c19hbW91bnQYBiABKAsyFC5n",
+            "b29nbGUudHlwZS5EZWNpbWFsUg5wcmV2aW91c0Ftb3VudBI7Cg5jdXJyZW50",
+            "X2Ftb3VudBgHIAEoCzIULmdvb2dsZS50eXBlLkRlY2ltYWxSDWN1cnJlbnRB",
+            "bW91bnQSOQoKY3JlYXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5U",
+            "aW1lc3RhbXBSCWNyZWF0ZWRBdCJ3CiNHZXRUcmFuc2FjdGlvbnNVcGRhdGVI",
+            "aXN0b3J5UmVxdWVzdBIgCgd1c2VyX2lkGAEgASgFQge6SAQaAiAAUgZ1c2Vy",
+            "SWQSLgoOdHJhbnNhY3Rpb25faWQYAiABKAVCB7pIBBoCIABSDXRyYW5zYWN0",
+            "aW9uSWQiYwokR2V0VHJhbnNhY3Rpb25zVXBkYXRlSGlzdG9yeVJlc3BvbnNl",
+            "EjsKB2hpc3RvcnkYASADKAsyIS53YWxsZXQuVHJhbnNhY3Rpb25zVXBkYXRl",
+            "SGlzdG9yeVIHaGlzdG9yeSpiCgxDYXRlZ29yeVR5cGUSHQoZQ0FURUdPUllf",
+            "VFlQRV9VTlNQRUNJRklFRBAAEhgKFENBVEVHT1JZX1RZUEVfSU5DT01FEAES",
+            "GQoVQ0FURUdPUllfVFlQRV9FWFBFTlNFEAIyuAYKDkZpbmFuY2VTZXJ2aWNl",
+            "EkUKDUdldENhdGVnb3JpZXMSFS53YWxsZXQuU2ltcGxlUmVxdWVzdBodLndh",
+            "bGxldC5HZXRDYXRlZ29yaWVzUmVzcG9uc2USRwoOQ3JlYXRlQ2F0ZWdvcnkS",
+            "HS53YWxsZXQuQ3JlYXRlQ2F0ZWdvcnlSZXF1ZXN0GhYud2FsbGV0LlNpbXBs",
+            "ZVJlc3BvbnNlEkcKDlVwZGF0ZUNhdGVnb3J5Eh0ud2FsbGV0LlVwZGF0ZUNh",
+            "dGVnb3J5UmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRI/Cg5EZWxl",
+            "dGVDYXRlZ29yeRIVLndhbGxldC5EZWxldGVSZXF1ZXN0GhYud2FsbGV0LlNp",
+            "bXBsZVJlc3BvbnNlElIKD0dldFRyYW5zYWN0aW9ucxIeLndhbGxldC5HZXRU",
+            "cmFuc2FjdGlvbnNSZXF1ZXN0Gh8ud2FsbGV0LkdldFRyYW5zYWN0aW9uc1Jl",
+            "c3BvbnNlEk0KEUNyZWF0ZVRyYW5zYWN0aW9uEiAud2FsbGV0LkNyZWF0ZVRy",
+            "YW5zYWN0aW9uUmVxdWVzdBoWLndhbGxldC5TaW1wbGVSZXNwb25zZRJNChFV",
+            "cGRhdGVUcmFuc2FjdGlvbhIgLndhbGxldC5VcGRhdGVUcmFuc2FjdGlvblJl",
+            "cXVlc3QaFi53YWxsZXQuU2ltcGxlUmVzcG9uc2USQgoRRGVsZXRlVHJhbnNh",
+            "Y3Rpb24SFS53YWxsZXQuRGVsZXRlUmVxdWVzdBoWLndhbGxldC5TaW1wbGVS",
+            "ZXNwb25zZRJbChJFeHBvcnRUcmFuc2FjdGlvbnMSIS53YWxsZXQuRXhwb3J0",
+            "VHJhbnNhY3Rpb25zUmVxdWVzdBoiLndhbGxldC5FeHBvcnRUcmFuc2FjdGlv",
+            "bnNSZXNwb25zZRJ5ChxHZXRUcmFuc2FjdGlvbnNVcGRhdGVIaXN0b3J5Eisu",
+            "d2FsbGV0LkdldFRyYW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlSZXF1ZXN0Giwu",
+            "d2FsbGV0LkdldFRyYW5zYWN0aW9uc1VwZGF0ZUhpc3RvcnlSZXNwb25zZUKW",
+            "AQoKY29tLndhbGxldEIMRmluYW5jZVByb3RvUAFaOGdpdGh1Yi5jb20vQWRp",
+            "dHlhLTAwMTEvY29tbW9uL2NvbnRyYWN0cy9nby93YWxsZXQ7d2FsbGV0ogID",
+            "V1hYqgIQQ29udHJhY3RzLldhbGxldMoCBldhbGxldOICEldhbGxldFxHUEJN",
+            "ZXRhZGF0YeoCBldhbGxldGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Buf.Validate.ValidateReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Type.DecimalReflection.Descriptor, global::Contracts.Wallet.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Contracts.Wallet.CategoryType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -145,7 +146,7 @@ namespace Contracts.Wallet {
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetTransactionsResponse), global::Contracts.Wallet.GetTransactionsResponse.Parser, new[]{ "Transactions" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.CreateTransactionRequest), global::Contracts.Wallet.CreateTransactionRequest.Parser, new[]{ "UserId", "CategoryId", "Description", "Amount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.UpdateTransactionRequest), global::Contracts.Wallet.UpdateTransactionRequest.Parser, new[]{ "UserId", "CategoryId", "Id", "Description", "Amount" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.ExportTransactionsRequest), global::Contracts.Wallet.ExportTransactionsRequest.Parser, new[]{ "StartDate", "EndDate" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.ExportTransactionsRequest), global::Contracts.Wallet.ExportTransactionsRequest.Parser, new[]{ "UserId", "StartDate", "EndDate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.ExportTransactionsResponse), global::Contracts.Wallet.ExportTransactionsResponse.Parser, new[]{ "FileData", "FileName", "ContentType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.TransactionsUpdateHistory), global::Contracts.Wallet.TransactionsUpdateHistory.Parser, new[]{ "Id", "PreviousCategory", "CurrentCategory", "PreviousDescription", "CurrentDescription", "PreviousAmount", "CurrentAmount", "CreatedAt" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Contracts.Wallet.GetTransactionsUpdateHistoryRequest), global::Contracts.Wallet.GetTransactionsUpdateHistoryRequest.Parser, new[]{ "UserId", "TransactionId" }, null, null, null, null),
@@ -3501,6 +3502,7 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ExportTransactionsRequest(ExportTransactionsRequest other) : this() {
+      userId_ = other.userId_;
       startDate_ = other.startDate_ != null ? other.startDate_.Clone() : null;
       endDate_ = other.endDate_ != null ? other.endDate_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -3512,8 +3514,20 @@ namespace Contracts.Wallet {
       return new ExportTransactionsRequest(this);
     }
 
+    /// <summary>Field number for the "user_id" field.</summary>
+    public const int UserIdFieldNumber = 1;
+    private int userId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UserId {
+      get { return userId_; }
+      set {
+        userId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "start_date" field.</summary>
-    public const int StartDateFieldNumber = 1;
+    public const int StartDateFieldNumber = 2;
     private global::Google.Protobuf.WellKnownTypes.Timestamp startDate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3525,7 +3539,7 @@ namespace Contracts.Wallet {
     }
 
     /// <summary>Field number for the "end_date" field.</summary>
-    public const int EndDateFieldNumber = 2;
+    public const int EndDateFieldNumber = 3;
     private global::Google.Protobuf.WellKnownTypes.Timestamp endDate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3551,6 +3565,7 @@ namespace Contracts.Wallet {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (UserId != other.UserId) return false;
       if (!object.Equals(StartDate, other.StartDate)) return false;
       if (!object.Equals(EndDate, other.EndDate)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -3560,6 +3575,7 @@ namespace Contracts.Wallet {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (UserId != 0) hash ^= UserId.GetHashCode();
       if (startDate_ != null) hash ^= StartDate.GetHashCode();
       if (endDate_ != null) hash ^= EndDate.GetHashCode();
       if (_unknownFields != null) {
@@ -3580,12 +3596,16 @@ namespace Contracts.Wallet {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (UserId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(UserId);
+      }
       if (startDate_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteMessage(StartDate);
       }
       if (endDate_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(EndDate);
       }
       if (_unknownFields != null) {
@@ -3598,12 +3618,16 @@ namespace Contracts.Wallet {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (UserId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(UserId);
+      }
       if (startDate_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteMessage(StartDate);
       }
       if (endDate_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(EndDate);
       }
       if (_unknownFields != null) {
@@ -3616,6 +3640,9 @@ namespace Contracts.Wallet {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (UserId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
+      }
       if (startDate_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StartDate);
       }
@@ -3633,6 +3660,9 @@ namespace Contracts.Wallet {
     public void MergeFrom(ExportTransactionsRequest other) {
       if (other == null) {
         return;
+      }
+      if (other.UserId != 0) {
+        UserId = other.UserId;
       }
       if (other.startDate_ != null) {
         if (startDate_ == null) {
@@ -3665,14 +3695,18 @@ namespace Contracts.Wallet {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            UserId = input.ReadInt32();
+            break;
+          }
+          case 18: {
             if (startDate_ == null) {
               StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(StartDate);
             break;
           }
-          case 18: {
+          case 26: {
             if (endDate_ == null) {
               EndDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
@@ -3698,14 +3732,18 @@ namespace Contracts.Wallet {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 8: {
+            UserId = input.ReadInt32();
+            break;
+          }
+          case 18: {
             if (startDate_ == null) {
               StartDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(StartDate);
             break;
           }
-          case 18: {
+          case 26: {
             if (endDate_ == null) {
               EndDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
