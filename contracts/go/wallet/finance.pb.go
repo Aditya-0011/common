@@ -501,7 +501,7 @@ type GetTransactionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
-	Offset        int32                  `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	Page          int32                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
 	Type          *CategoryType          `protobuf:"varint,4,opt,name=type,proto3,enum=wallet.CategoryType,oneof" json:"type,omitempty"`
 	CategoryId    *int32                 `protobuf:"varint,5,opt,name=category_id,json=categoryId,proto3,oneof" json:"category_id,omitempty"`
 	StartDate     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3,oneof" json:"start_date,omitempty"`
@@ -554,9 +554,9 @@ func (x *GetTransactionsRequest) GetLimit() int32 {
 	return 0
 }
 
-func (x *GetTransactionsRequest) GetOffset() int32 {
+func (x *GetTransactionsRequest) GetPage() int32 {
 	if x != nil {
-		return x.Offset
+		return x.Page
 	}
 	return 0
 }
@@ -779,8 +779,9 @@ func (x *UpdateTransactionRequest) GetAmount() *decimal.Decimal {
 
 type ExportTransactionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	StartDate     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	EndDate       *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	StartDate     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	EndDate       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -813,6 +814,13 @@ func (x *ExportTransactionsRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ExportTransactionsRequest.ProtoReflect.Descriptor instead.
 func (*ExportTransactionsRequest) Descriptor() ([]byte, []int) {
 	return file_wallet_finance_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ExportTransactionsRequest) GetUserId() int32 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
 }
 
 func (x *ExportTransactionsRequest) GetStartDate() *timestamppb.Timestamp {
@@ -1129,18 +1137,18 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xfd\x03\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xac\x04\n" +
 	"\x16GetTransactionsRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1d\n" +
-	"\x05limit\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x05limit\x12\x1f\n" +
-	"\x06offset\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06offset\x127\n" +
+	"\x05limit\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x05limit\x12\x1b\n" +
+	"\x04page\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x127\n" +
 	"\x04type\x18\x04 \x01(\x0e2\x14.wallet.CategoryTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04type\x88\x01\x01\x12-\n" +
 	"\vcategory_id\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00H\x01R\n" +
 	"categoryId\x88\x01\x01\x12>\n" +
 	"\n" +
 	"start_date\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampH\x02R\tstartDate\x88\x01\x01\x12:\n" +
-	"\bend_date\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x03R\aendDate\x88\x01\x01:h\xbaHe\x1ac\n" +
-	"\x10date_range_valid\x12-end date must be after or equal to start date\x1a this.end_date >= this.start_dateB\a\n" +
+	"\bend_date\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x03R\aendDate\x88\x01\x01:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
+	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_dateB\a\n" +
 	"\x05_typeB\x0e\n" +
 	"\f_category_idB\r\n" +
 	"\v_start_dateB\v\n" +
@@ -1163,12 +1171,13 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdescription\x12\x80\x01\n" +
 	"\x06amount\x18\x05 \x01(\v2\x14.google.type.DecimalBR\xbaHO\xba\x01L\n" +
-	"\x0eamount_gt_zero\x12 amount must be greater than zero\x1a\x18double(this.value) > 0.0R\x06amount\"\x87\x02\n" +
-	"\x19ExportTransactionsRequest\x12A\n" +
+	"\x0eamount_gt_zero\x12 amount must be greater than zero\x1a\x18double(this.value) > 0.0R\x06amount\"\xdc\x02\n" +
+	"\x19ExportTransactionsRequest\x12 \n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12A\n" +
 	"\n" +
-	"start_date\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartDate\x12=\n" +
-	"\bend_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:h\xbaHe\x1ac\n" +
-	"\x10date_range_valid\x12-end date must be after or equal to start date\x1a this.end_date >= this.start_date\"y\n" +
+	"start_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartDate\x12=\n" +
+	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
+	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_date\"y\n" +
 	"\x1aExportTransactionsResponse\x12\x1b\n" +
 	"\tfile_data\x18\x01 \x01(\fR\bfileData\x12\x1b\n" +
 	"\tfile_name\x18\x02 \x01(\tR\bfileName\x12!\n" +
