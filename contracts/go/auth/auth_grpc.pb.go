@@ -38,7 +38,6 @@ type AuthServiceClient interface {
 	ValidateKey(ctx context.Context, in *ValidateKeyRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 	GenerateRecoveryCodes(ctx context.Context, in *GenerateRecoveryCodesRequest, opts ...grpc.CallOption) (*GenerateRecoveryCodesResponse, error)
-	// Unauthenticated: proves identity with a one-time recovery code. Returns the account so callers can revoke sessions.
 	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
@@ -130,7 +129,6 @@ type AuthServiceServer interface {
 	ValidateKey(context.Context, *ValidateKeyRequest) (*LoginResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*SimpleResponse, error)
 	GenerateRecoveryCodes(context.Context, *GenerateRecoveryCodesRequest) (*GenerateRecoveryCodesResponse, error)
-	// Unauthenticated: proves identity with a one-time recovery code. Returns the account so callers can revoke sessions.
 	ResetPassword(context.Context, *ResetPasswordRequest) (*LoginResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }

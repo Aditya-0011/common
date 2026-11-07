@@ -171,12 +171,10 @@ func (x *KeyRequest) GetUserId() int32 {
 	return 0
 }
 
-// The full API key is never stored, so it can only be read once, from RotateKeyResponse.
 type GetKeyResponse struct {
-	state     protoimpl.MessageState `protogen:"open.v1"`
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// First characters of the key, enough to recognise which key is deployed.
-	KeyHint       string `protobuf:"bytes,3,opt,name=key_hint,json=keyHint,proto3" json:"key_hint,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	KeyHint       string                 `protobuf:"bytes,3,opt,name=key_hint,json=keyHint,proto3" json:"key_hint,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -226,12 +224,10 @@ func (x *GetKeyResponse) GetKeyHint() string {
 }
 
 type RotateKeyResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The new plaintext key. Returned exactly once.
-	Key       string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// SHA-256 (hex) of the key that was replaced, so callers can evict caches. Never exposed to browsers.
-	PreviousKeyHash string `protobuf:"bytes,3,opt,name=previous_key_hash,json=previousKeyHash,proto3" json:"previous_key_hash,omitempty"`
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Key             string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	PreviousKeyHash string                 `protobuf:"bytes,3,opt,name=previous_key_hash,json=previousKeyHash,proto3" json:"previous_key_hash,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -444,9 +440,8 @@ func (x *GenerateRecoveryCodesRequest) GetPassword() string {
 }
 
 type GenerateRecoveryCodesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Plaintext one-time codes. Returned exactly once; only hashes are stored.
-	Codes         []string `protobuf:"bytes,1,rep,name=codes,proto3" json:"codes,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Codes         []string               `protobuf:"bytes,1,rep,name=codes,proto3" json:"codes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
