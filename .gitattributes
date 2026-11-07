@@ -3,5 +3,3 @@ contracts/csharp/**/*.cs linguist-generated=true
 contracts/csharp/Contracts.csproj linguist-generated=true
 
 **/*.proto linguist-detectable=true
-
-contracts/go/grpcx/** linguist-generated=false

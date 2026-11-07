@@ -24,6 +24,7 @@ This section explains the technologies and physical layout of the contracts repo
 - `contracts/go/`: Generated Go packages (`github.com/Aditya-0011/common/contracts/go`)
 - `contracts/go/grpcx/`: Hand-written gRPC plumbing shared by the Go services and the gateway: server setup (recovery, logging, service-token auth, deadline and validation interceptors, health checks, optional TLS, graceful shutdown) and an authenticated client dialer
 - `contracts/csharp/`: Generated C# contracts
+- `contracts/csharp/Grpcx/`: Hand-written gRPC plumbing for C# services, the counterpart of `grpcx` in Go: `AddGrpcxServer` (Kestrel on `INTERNAL_BIND_IP`, optional TLS, JSON logging, service-token auth, logging/error mapping and validation interceptors, health checks, shutdown timeout), `RpcTimeout`, `IRequestValidator` for custom validation, and `GrpcxClient` for authenticated channels. Shipped in the `Contracts` NuGet package
 - `protos/auth/`: Auth service definitions
 - `protos/manager/`: Manager service definitions
 - `protos/wallet/`: Wallet service definitions
