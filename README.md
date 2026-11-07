@@ -22,6 +22,7 @@ This section explains the technologies and physical layout of the contracts repo
 ### Project structure
 
 - `contracts/go/`: Generated Go packages (`github.com/Aditya-0011/common/contracts/go`)
+- `contracts/go/grpcx/`: Hand-written gRPC plumbing shared by the Go services and the gateway: server setup (recovery, logging, service-token auth, deadline and validation interceptors, health checks, optional TLS, graceful shutdown) and an authenticated client dialer
 - `contracts/csharp/`: Generated C# contracts
 - `protos/auth/`: Auth service definitions
 - `protos/manager/`: Manager service definitions

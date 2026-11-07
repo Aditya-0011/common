@@ -19,10 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_Login_FullMethodName       = "/auth.AuthService/Login"
-	AuthService_RotateKey_FullMethodName   = "/auth.AuthService/RotateKey"
-	AuthService_GetKey_FullMethodName      = "/auth.AuthService/GetKey"
-	AuthService_ValidateKey_FullMethodName = "/auth.AuthService/ValidateKey"
+	AuthService_Login_FullMethodName                 = "/auth.AuthService/Login"
+	AuthService_RotateKey_FullMethodName             = "/auth.AuthService/RotateKey"
+	AuthService_GetKey_FullMethodName                = "/auth.AuthService/GetKey"
+	AuthService_ValidateKey_FullMethodName           = "/auth.AuthService/ValidateKey"
+	AuthService_ChangePassword_FullMethodName        = "/auth.AuthService/ChangePassword"
+	AuthService_GenerateRecoveryCodes_FullMethodName = "/auth.AuthService/GenerateRecoveryCodes"
+	AuthService_ResetPassword_FullMethodName         = "/auth.AuthService/ResetPassword"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -30,9 +33,13 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
-	RotateKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	RotateKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*RotateKeyResponse, error)
 	GetKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*GetKeyResponse, error)
 	ValidateKey(ctx context.Context, in *ValidateKeyRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	GenerateRecoveryCodes(ctx context.Context, in *GenerateRecoveryCodesRequest, opts ...grpc.CallOption) (*GenerateRecoveryCodesResponse, error)
+	// Unauthenticated: proves identity with a one-time recovery code. Returns the account so callers can revoke sessions.
+	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
 type authServiceClient struct {
@@ -53,9 +60,9 @@ func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) RotateKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+func (c *authServiceClient) RotateKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*RotateKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SimpleResponse)
+	out := new(RotateKeyResponse)
 	err := c.cc.Invoke(ctx, AuthService_RotateKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -83,14 +90,48 @@ func (c *authServiceClient) ValidateKey(ctx context.Context, in *ValidateKeyRequ
 	return out, nil
 }
 
+func (c *authServiceClient) ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, AuthService_ChangePassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) GenerateRecoveryCodes(ctx context.Context, in *GenerateRecoveryCodesRequest, opts ...grpc.CallOption) (*GenerateRecoveryCodesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GenerateRecoveryCodesResponse)
+	err := c.cc.Invoke(ctx, AuthService_GenerateRecoveryCodes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, AuthService_ResetPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
 type AuthServiceServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	RotateKey(context.Context, *KeyRequest) (*SimpleResponse, error)
+	RotateKey(context.Context, *KeyRequest) (*RotateKeyResponse, error)
 	GetKey(context.Context, *KeyRequest) (*GetKeyResponse, error)
 	ValidateKey(context.Context, *ValidateKeyRequest) (*LoginResponse, error)
+	ChangePassword(context.Context, *ChangePasswordRequest) (*SimpleResponse, error)
+	GenerateRecoveryCodes(context.Context, *GenerateRecoveryCodesRequest) (*GenerateRecoveryCodesResponse, error)
+	// Unauthenticated: proves identity with a one-time recovery code. Returns the account so callers can revoke sessions.
+	ResetPassword(context.Context, *ResetPasswordRequest) (*LoginResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -104,7 +145,7 @@ type UnimplementedAuthServiceServer struct{}
 func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedAuthServiceServer) RotateKey(context.Context, *KeyRequest) (*SimpleResponse, error) {
+func (UnimplementedAuthServiceServer) RotateKey(context.Context, *KeyRequest) (*RotateKeyResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RotateKey not implemented")
 }
 func (UnimplementedAuthServiceServer) GetKey(context.Context, *KeyRequest) (*GetKeyResponse, error) {
@@ -112,6 +153,15 @@ func (UnimplementedAuthServiceServer) GetKey(context.Context, *KeyRequest) (*Get
 }
 func (UnimplementedAuthServiceServer) ValidateKey(context.Context, *ValidateKeyRequest) (*LoginResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ValidateKey not implemented")
+}
+func (UnimplementedAuthServiceServer) ChangePassword(context.Context, *ChangePasswordRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ChangePassword not implemented")
+}
+func (UnimplementedAuthServiceServer) GenerateRecoveryCodes(context.Context, *GenerateRecoveryCodesRequest) (*GenerateRecoveryCodesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GenerateRecoveryCodes not implemented")
+}
+func (UnimplementedAuthServiceServer) ResetPassword(context.Context, *ResetPasswordRequest) (*LoginResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ResetPassword not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -206,6 +256,60 @@ func _AuthService_ValidateKey_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ChangePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ChangePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ChangePassword(ctx, req.(*ChangePasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_GenerateRecoveryCodes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateRecoveryCodesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GenerateRecoveryCodes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GenerateRecoveryCodes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GenerateRecoveryCodes(ctx, req.(*GenerateRecoveryCodesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ResetPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ResetPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ResetPassword(ctx, req.(*ResetPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +332,18 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ValidateKey",
 			Handler:    _AuthService_ValidateKey_Handler,
+		},
+		{
+			MethodName: "ChangePassword",
+			Handler:    _AuthService_ChangePassword_Handler,
+		},
+		{
+			MethodName: "GenerateRecoveryCodes",
+			Handler:    _AuthService_GenerateRecoveryCodes_Handler,
+		},
+		{
+			MethodName: "ResetPassword",
+			Handler:    _AuthService_ResetPassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

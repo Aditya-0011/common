@@ -14,7 +14,7 @@ message LoginRequest {
   ];
   string password = 2 [
     (buf.validate.field).string.min_len = 8,
-    (buf.validate.field).string.max_len = 100
+    (buf.validate.field).string.max_len = 128
   ];
 }
 
@@ -28,12 +28,62 @@ message KeyRequest {
 }
 
 message GetKeyResponse {
+  reserved 1;
+  reserved "key";
+  google.protobuf.Timestamp updated_at = 2;
+  string key_hint = 3;
+}
+
+message RotateKeyResponse {
   string key = 1;
   google.protobuf.Timestamp updated_at = 2;
+  string previous_key_hash = 3;
 }
 
 message ValidateKeyRequest {
-  string key = 1;
+  string key = 1 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 256
+  ];
+}
+
+message ChangePasswordRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string current_password = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 128
+  ];
+  string new_password = 3 [
+    (buf.validate.field).string.min_len = 12,
+    (buf.validate.field).string.max_len = 128
+  ];
+}
+
+message GenerateRecoveryCodesRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string password = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 128
+  ];
+}
+
+message GenerateRecoveryCodesResponse {
+  repeated string codes = 1;
+}
+
+message ResetPasswordRequest {
+  string email = 1 [
+    (buf.validate.field).string.email = true,
+    (buf.validate.field).string.max_len = 100
+  ];
+  string recovery_code = 2 [
+    (buf.validate.field).string.min_len = 16,
+    (buf.validate.field).string.max_len = 32
+  ];
+  string new_password = 3 [
+    (buf.validate.field).string.min_len = 12,
+    (buf.validate.field).string.max_len = 128
+  ];
 }
 
 message SimpleResponse {
@@ -42,7 +92,10 @@ message SimpleResponse {
 
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
-  rpc RotateKey(KeyRequest) returns (SimpleResponse);
+  rpc RotateKey(KeyRequest) returns (RotateKeyResponse);
   rpc GetKey(KeyRequest) returns (GetKeyResponse);
   rpc ValidateKey(ValidateKeyRequest) returns (LoginResponse);
+  rpc ChangePassword(ChangePasswordRequest) returns (SimpleResponse);
+  rpc GenerateRecoveryCodes(GenerateRecoveryCodesRequest) returns (GenerateRecoveryCodesResponse);
+  rpc ResetPassword(ResetPasswordRequest) returns (LoginResponse);
 }
