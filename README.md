@@ -64,6 +64,21 @@ To consume the generated Go contracts in a Go service:
 go get github.com/Aditya-0011/common/contracts/go
 ```
 
+### Local development against unpublished contracts
+
+From the workspace root (the folder containing `Contracts/`, `Gateway/` and `Services/`), run:
+
+```bash
+bun run contracts
+```
+
+This regenerates the Go and C# code from the local protos and writes a workspace `go.work`.
+
+- **Go services** (Gateway, Auth, Manager) then build against `Contracts/contracts/go` instead of the version pinned in their `go.mod`.
+- **Wallet** references `Contracts/contracts/csharp/Contracts.csproj` directly whenever that folder exists and `CI` is not `true`.
+
+Production is unaffected. Each Docker build only receives its own service folder, so it never sees `go.work` or the local C# project, and it uses the published module or package. After pushing contract changes, bump the pins: `go get github.com/Aditya-0011/common/contracts/go@<sha>` in each Go service, and the `Contracts` version in `wallet.csproj`.
+
 ### Linting and validation
 
 To check for linting errors or breaking changes:

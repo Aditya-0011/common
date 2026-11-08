@@ -48,8 +48,23 @@ jobs:
         run: |
           go mod tidy
 
+      - name: Vet and build Go contracts
+        working-directory: contracts/go
+        run: |
+          go vet ./...
+          go build ./...
+
       - name: Generate C# Code
         run: buf generate protos/wallet --template protos/buf.gen.csharp.yaml
+
+      - name: Check generated code is committed
+        if: github.event_name == 'push'
+        run: |
+          if [ -n "$(git status --porcelain -- contracts/go/)" ]; then
+            git status --short -- contracts/go/
+            echo "::error::Generated contracts are out of date. Run 'bun run contracts' locally and commit the result."
+            exit 1
+          fi
 
       - name: Pack and Publish C# NuGet Package
         working-directory: contracts/csharp

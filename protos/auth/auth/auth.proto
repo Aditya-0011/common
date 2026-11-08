@@ -7,6 +7,41 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/Aditya-0011/common/contracts/go/auth;auth";
 
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_ADMIN = 1;
+  ROLE_TENANT = 2;
+}
+
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;
+  USER_STATUS_ACTIVE = 1;
+  USER_STATUS_DISABLED = 2;
+}
+
+enum ProjectStatus {
+  PROJECT_STATUS_UNSPECIFIED = 0;
+  PROJECT_STATUS_ACTIVE = 1;
+  PROJECT_STATUS_MAINTENANCE = 2;
+  PROJECT_STATUS_HIDDEN = 3;
+}
+
+message Identity {
+  int32 user_id = 1;
+  string email = 2;
+  Role role = 3;
+  bool must_change_password = 4;
+  repeated string projects = 5;
+}
+
+message UserRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+}
+
+message SimpleResponse {
+  string message = 1;
+}
+
 message LoginRequest {
   string email = 1 [
     (buf.validate.field).string.email = true,
@@ -18,13 +53,11 @@ message LoginRequest {
   ];
 }
 
-message LoginResponse {
-  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
-  string user_email = 2 [(buf.validate.field).string.email = true];
-}
-
-message KeyRequest {
-  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+message ValidateKeyRequest {
+  string key = 1 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 256
+  ];
 }
 
 message GetKeyResponse {
@@ -32,7 +65,33 @@ message GetKeyResponse {
   reserved "key";
   google.protobuf.Timestamp updated_at = 2;
   string key_hint = 3;
+  repeated string origins = 4;
 }
+
+message ApiKeyIdentity {
+  Identity identity = 1;
+  repeated string origins = 2;
+}
+
+message RevokeKeyResponse {
+  string previous_key_hash = 1;
+}
+
+message SetKeyOriginsRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  repeated string origins = 2 [
+    (buf.validate.field).repeated.max_items = 10,
+    (buf.validate.field).repeated.unique = true,
+    (buf.validate.field).repeated.items.string.max_len = 255,
+    (buf.validate.field).repeated.items.string.pattern = "^(https://[a-z0-9]([a-z0-9-]*[a-z0-9])?(\\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+|http://(localhost|127\\.0\\.0\\.1))(:[0-9]{1,5})?$"
+  ];
+}
+
+message KeyOriginsResponse {
+  repeated string origins = 1;
+}
+
+message ListKeyOriginsRequest {}
 
 message RotateKeyResponse {
   string key = 1;
@@ -40,10 +99,11 @@ message RotateKeyResponse {
   string previous_key_hash = 3;
 }
 
-message ValidateKeyRequest {
-  string key = 1 [
-    (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.max_len = 256
+message CompleteFirstLoginRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string new_password = 2 [
+    (buf.validate.field).string.min_len = 12,
+    (buf.validate.field).string.max_len = 128
   ];
 }
 
@@ -57,18 +117,6 @@ message ChangePasswordRequest {
     (buf.validate.field).string.min_len = 12,
     (buf.validate.field).string.max_len = 128
   ];
-}
-
-message GenerateRecoveryCodesRequest {
-  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
-  string password = 2 [
-    (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.max_len = 128
-  ];
-}
-
-message GenerateRecoveryCodesResponse {
-  repeated string codes = 1;
 }
 
 message ResetPasswordRequest {
@@ -86,16 +134,147 @@ message ResetPasswordRequest {
   ];
 }
 
-message SimpleResponse {
-  string message = 1;
+message PasswordConfirmRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string password = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 128
+  ];
+}
+
+message RecoveryCodesResponse {
+  repeated string codes = 1;
+}
+
+message RecoveryCodeStatusResponse {
+  int32 remaining = 1;
+  optional google.protobuf.Timestamp generated_at = 2;
+}
+
+message Project {
+  int32 id = 1;
+  string slug = 2;
+  string name = 3;
+  string description = 4;
+  string url = 5;
+  string icon = 6;
+  ProjectStatus status = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message ProjectsResponse {
+  repeated Project projects = 1;
+}
+
+message SaveProjectRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 id = 2 [(buf.validate.field).int32.gte = 0];
+  string slug = 3 [(buf.validate.field).string.pattern = "^[a-z][a-z0-9-]{1,49}$"];
+  string name = 4 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 100
+  ];
+  string description = 5 [(buf.validate.field).string.max_len = 500];
+  string url = 6 [
+    (buf.validate.field).string.uri = true,
+    (buf.validate.field).string.max_len = 255,
+    (buf.validate.field).string.pattern = "^https?://"
+  ];
+  string icon = 7 [(buf.validate.field).string.pattern = "^[a-z0-9-]{1,32}$"];
+  ProjectStatus status = 8 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
+}
+
+message DeleteProjectRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 id = 2 [(buf.validate.field).int32.gt = 0];
+}
+
+message User {
+  int32 id = 1;
+  string email = 2;
+  Role role = 3;
+  UserStatus status = 4;
+  bool must_change_password = 5;
+  repeated int32 project_ids = 6;
+  google.protobuf.Timestamp created_at = 7;
+  optional google.protobuf.Timestamp last_login_at = 8;
+}
+
+message UsersResponse {
+  repeated User users = 1;
+}
+
+message CreateUserRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string email = 2 [
+    (buf.validate.field).string.email = true,
+    (buf.validate.field).string.max_len = 100
+  ];
+  repeated int32 project_ids = 3 [(buf.validate.field).repeated.items.int32.gt = 0];
+}
+
+message CreateUserResponse {
+  User user = 1;
+  string temporary_password = 2;
+}
+
+message TargetUserRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 target_user_id = 2 [(buf.validate.field).int32.gt = 0];
+}
+
+message TemporaryPasswordResponse {
+  string temporary_password = 1;
+}
+
+message SetUserStatusRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 target_user_id = 2 [(buf.validate.field).int32.gt = 0];
+  UserStatus status = 3 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
+}
+
+message SetUserProjectsRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  int32 target_user_id = 2 [(buf.validate.field).int32.gt = 0];
+  repeated int32 project_ids = 3 [(buf.validate.field).repeated.items.int32.gt = 0];
 }
 
 service AuthService {
-  rpc Login(LoginRequest) returns (LoginResponse);
-  rpc RotateKey(KeyRequest) returns (RotateKeyResponse);
-  rpc GetKey(KeyRequest) returns (GetKeyResponse);
-  rpc ValidateKey(ValidateKeyRequest) returns (LoginResponse);
+  rpc Login(LoginRequest) returns (Identity);
+  rpc ValidateKey(ValidateKeyRequest) returns (ApiKeyIdentity);
+  rpc GetIdentity(UserRequest) returns (Identity);
+
+  rpc CompleteFirstLogin(CompleteFirstLoginRequest) returns (RecoveryCodesResponse);
   rpc ChangePassword(ChangePasswordRequest) returns (SimpleResponse);
-  rpc GenerateRecoveryCodes(GenerateRecoveryCodesRequest) returns (GenerateRecoveryCodesResponse);
-  rpc ResetPassword(ResetPasswordRequest) returns (LoginResponse);
+  rpc ResetPassword(ResetPasswordRequest) returns (Identity);
+
+  rpc GetRecoveryCodeStatus(UserRequest) returns (RecoveryCodeStatusResponse);
+  rpc GenerateRecoveryCodes(PasswordConfirmRequest) returns (RecoveryCodesResponse);
+  rpc DeleteRecoveryCodes(PasswordConfirmRequest) returns (SimpleResponse);
+
+  rpc GetKey(UserRequest) returns (GetKeyResponse);
+  rpc RotateKey(UserRequest) returns (RotateKeyResponse);
+  rpc RevokeKey(UserRequest) returns (RevokeKeyResponse);
+  rpc SetKeyOrigins(SetKeyOriginsRequest) returns (KeyOriginsResponse);
+  rpc ListKeyOrigins(ListKeyOriginsRequest) returns (KeyOriginsResponse);
+
+  rpc ListMyProjects(UserRequest) returns (ProjectsResponse);
+
+  rpc ListProjects(UserRequest) returns (ProjectsResponse);
+  rpc SaveProject(SaveProjectRequest) returns (SimpleResponse);
+  rpc DeleteProject(DeleteProjectRequest) returns (SimpleResponse);
+
+  rpc ListUsers(UserRequest) returns (UsersResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc ResetUserPassword(TargetUserRequest) returns (TemporaryPasswordResponse);
+  rpc SetUserStatus(SetUserStatusRequest) returns (SimpleResponse);
+  rpc SetUserProjects(SetUserProjectsRequest) returns (SimpleResponse);
+  rpc DeleteUser(TargetUserRequest) returns (SimpleResponse);
 }

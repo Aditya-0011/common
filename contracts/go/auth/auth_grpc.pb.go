@@ -20,25 +20,59 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	AuthService_Login_FullMethodName                 = "/auth.AuthService/Login"
-	AuthService_RotateKey_FullMethodName             = "/auth.AuthService/RotateKey"
-	AuthService_GetKey_FullMethodName                = "/auth.AuthService/GetKey"
 	AuthService_ValidateKey_FullMethodName           = "/auth.AuthService/ValidateKey"
+	AuthService_GetIdentity_FullMethodName           = "/auth.AuthService/GetIdentity"
+	AuthService_CompleteFirstLogin_FullMethodName    = "/auth.AuthService/CompleteFirstLogin"
 	AuthService_ChangePassword_FullMethodName        = "/auth.AuthService/ChangePassword"
-	AuthService_GenerateRecoveryCodes_FullMethodName = "/auth.AuthService/GenerateRecoveryCodes"
 	AuthService_ResetPassword_FullMethodName         = "/auth.AuthService/ResetPassword"
+	AuthService_GetRecoveryCodeStatus_FullMethodName = "/auth.AuthService/GetRecoveryCodeStatus"
+	AuthService_GenerateRecoveryCodes_FullMethodName = "/auth.AuthService/GenerateRecoveryCodes"
+	AuthService_DeleteRecoveryCodes_FullMethodName   = "/auth.AuthService/DeleteRecoveryCodes"
+	AuthService_GetKey_FullMethodName                = "/auth.AuthService/GetKey"
+	AuthService_RotateKey_FullMethodName             = "/auth.AuthService/RotateKey"
+	AuthService_RevokeKey_FullMethodName             = "/auth.AuthService/RevokeKey"
+	AuthService_SetKeyOrigins_FullMethodName         = "/auth.AuthService/SetKeyOrigins"
+	AuthService_ListKeyOrigins_FullMethodName        = "/auth.AuthService/ListKeyOrigins"
+	AuthService_ListMyProjects_FullMethodName        = "/auth.AuthService/ListMyProjects"
+	AuthService_ListProjects_FullMethodName          = "/auth.AuthService/ListProjects"
+	AuthService_SaveProject_FullMethodName           = "/auth.AuthService/SaveProject"
+	AuthService_DeleteProject_FullMethodName         = "/auth.AuthService/DeleteProject"
+	AuthService_ListUsers_FullMethodName             = "/auth.AuthService/ListUsers"
+	AuthService_CreateUser_FullMethodName            = "/auth.AuthService/CreateUser"
+	AuthService_ResetUserPassword_FullMethodName     = "/auth.AuthService/ResetUserPassword"
+	AuthService_SetUserStatus_FullMethodName         = "/auth.AuthService/SetUserStatus"
+	AuthService_SetUserProjects_FullMethodName       = "/auth.AuthService/SetUserProjects"
+	AuthService_DeleteUser_FullMethodName            = "/auth.AuthService/DeleteUser"
 )
 
 // AuthServiceClient is the client API for AuthService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
-	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
-	RotateKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*RotateKeyResponse, error)
-	GetKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*GetKeyResponse, error)
-	ValidateKey(ctx context.Context, in *ValidateKeyRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*Identity, error)
+	ValidateKey(ctx context.Context, in *ValidateKeyRequest, opts ...grpc.CallOption) (*ApiKeyIdentity, error)
+	GetIdentity(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*Identity, error)
+	CompleteFirstLogin(ctx context.Context, in *CompleteFirstLoginRequest, opts ...grpc.CallOption) (*RecoveryCodesResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
-	GenerateRecoveryCodes(ctx context.Context, in *GenerateRecoveryCodesRequest, opts ...grpc.CallOption) (*GenerateRecoveryCodesResponse, error)
-	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*Identity, error)
+	GetRecoveryCodeStatus(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*RecoveryCodeStatusResponse, error)
+	GenerateRecoveryCodes(ctx context.Context, in *PasswordConfirmRequest, opts ...grpc.CallOption) (*RecoveryCodesResponse, error)
+	DeleteRecoveryCodes(ctx context.Context, in *PasswordConfirmRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	GetKey(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*GetKeyResponse, error)
+	RotateKey(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*RotateKeyResponse, error)
+	RevokeKey(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*RevokeKeyResponse, error)
+	SetKeyOrigins(ctx context.Context, in *SetKeyOriginsRequest, opts ...grpc.CallOption) (*KeyOriginsResponse, error)
+	ListKeyOrigins(ctx context.Context, in *ListKeyOriginsRequest, opts ...grpc.CallOption) (*KeyOriginsResponse, error)
+	ListMyProjects(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*ProjectsResponse, error)
+	ListProjects(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*ProjectsResponse, error)
+	SaveProject(ctx context.Context, in *SaveProjectRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	ListUsers(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UsersResponse, error)
+	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
+	ResetUserPassword(ctx context.Context, in *TargetUserRequest, opts ...grpc.CallOption) (*TemporaryPasswordResponse, error)
+	SetUserStatus(ctx context.Context, in *SetUserStatusRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	SetUserProjects(ctx context.Context, in *SetUserProjectsRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	DeleteUser(ctx context.Context, in *TargetUserRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
 }
 
 type authServiceClient struct {
@@ -49,9 +83,9 @@ func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
 	return &authServiceClient{cc}
 }
 
-func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*Identity, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LoginResponse)
+	out := new(Identity)
 	err := c.cc.Invoke(ctx, AuthService_Login_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -59,30 +93,30 @@ func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) RotateKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*RotateKeyResponse, error) {
+func (c *authServiceClient) ValidateKey(ctx context.Context, in *ValidateKeyRequest, opts ...grpc.CallOption) (*ApiKeyIdentity, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RotateKeyResponse)
-	err := c.cc.Invoke(ctx, AuthService_RotateKey_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) GetKey(ctx context.Context, in *KeyRequest, opts ...grpc.CallOption) (*GetKeyResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetKeyResponse)
-	err := c.cc.Invoke(ctx, AuthService_GetKey_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) ValidateKey(ctx context.Context, in *ValidateKeyRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LoginResponse)
+	out := new(ApiKeyIdentity)
 	err := c.cc.Invoke(ctx, AuthService_ValidateKey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) GetIdentity(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*Identity, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Identity)
+	err := c.cc.Invoke(ctx, AuthService_GetIdentity_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) CompleteFirstLogin(ctx context.Context, in *CompleteFirstLoginRequest, opts ...grpc.CallOption) (*RecoveryCodesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RecoveryCodesResponse)
+	err := c.cc.Invoke(ctx, AuthService_CompleteFirstLogin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,9 +133,29 @@ func (c *authServiceClient) ChangePassword(ctx context.Context, in *ChangePasswo
 	return out, nil
 }
 
-func (c *authServiceClient) GenerateRecoveryCodes(ctx context.Context, in *GenerateRecoveryCodesRequest, opts ...grpc.CallOption) (*GenerateRecoveryCodesResponse, error) {
+func (c *authServiceClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*Identity, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GenerateRecoveryCodesResponse)
+	out := new(Identity)
+	err := c.cc.Invoke(ctx, AuthService_ResetPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) GetRecoveryCodeStatus(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*RecoveryCodeStatusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RecoveryCodeStatusResponse)
+	err := c.cc.Invoke(ctx, AuthService_GetRecoveryCodeStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) GenerateRecoveryCodes(ctx context.Context, in *PasswordConfirmRequest, opts ...grpc.CallOption) (*RecoveryCodesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RecoveryCodesResponse)
 	err := c.cc.Invoke(ctx, AuthService_GenerateRecoveryCodes_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -109,10 +163,160 @@ func (c *authServiceClient) GenerateRecoveryCodes(ctx context.Context, in *Gener
 	return out, nil
 }
 
-func (c *authServiceClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+func (c *authServiceClient) DeleteRecoveryCodes(ctx context.Context, in *PasswordConfirmRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LoginResponse)
-	err := c.cc.Invoke(ctx, AuthService_ResetPassword_FullMethodName, in, out, cOpts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, AuthService_DeleteRecoveryCodes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) GetKey(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*GetKeyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKeyResponse)
+	err := c.cc.Invoke(ctx, AuthService_GetKey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) RotateKey(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*RotateKeyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RotateKeyResponse)
+	err := c.cc.Invoke(ctx, AuthService_RotateKey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) RevokeKey(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*RevokeKeyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RevokeKeyResponse)
+	err := c.cc.Invoke(ctx, AuthService_RevokeKey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) SetKeyOrigins(ctx context.Context, in *SetKeyOriginsRequest, opts ...grpc.CallOption) (*KeyOriginsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(KeyOriginsResponse)
+	err := c.cc.Invoke(ctx, AuthService_SetKeyOrigins_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ListKeyOrigins(ctx context.Context, in *ListKeyOriginsRequest, opts ...grpc.CallOption) (*KeyOriginsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(KeyOriginsResponse)
+	err := c.cc.Invoke(ctx, AuthService_ListKeyOrigins_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ListMyProjects(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*ProjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProjectsResponse)
+	err := c.cc.Invoke(ctx, AuthService_ListMyProjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ListProjects(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*ProjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProjectsResponse)
+	err := c.cc.Invoke(ctx, AuthService_ListProjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) SaveProject(ctx context.Context, in *SaveProjectRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, AuthService_SaveProject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, AuthService_DeleteProject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ListUsers(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UsersResponse)
+	err := c.cc.Invoke(ctx, AuthService_ListUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateUserResponse)
+	err := c.cc.Invoke(ctx, AuthService_CreateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ResetUserPassword(ctx context.Context, in *TargetUserRequest, opts ...grpc.CallOption) (*TemporaryPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(TemporaryPasswordResponse)
+	err := c.cc.Invoke(ctx, AuthService_ResetUserPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) SetUserStatus(ctx context.Context, in *SetUserStatusRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, AuthService_SetUserStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) SetUserProjects(ctx context.Context, in *SetUserProjectsRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, AuthService_SetUserProjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) DeleteUser(ctx context.Context, in *TargetUserRequest, opts ...grpc.CallOption) (*SimpleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SimpleResponse)
+	err := c.cc.Invoke(ctx, AuthService_DeleteUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -123,13 +327,30 @@ func (c *authServiceClient) ResetPassword(ctx context.Context, in *ResetPassword
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
 type AuthServiceServer interface {
-	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	RotateKey(context.Context, *KeyRequest) (*RotateKeyResponse, error)
-	GetKey(context.Context, *KeyRequest) (*GetKeyResponse, error)
-	ValidateKey(context.Context, *ValidateKeyRequest) (*LoginResponse, error)
+	Login(context.Context, *LoginRequest) (*Identity, error)
+	ValidateKey(context.Context, *ValidateKeyRequest) (*ApiKeyIdentity, error)
+	GetIdentity(context.Context, *UserRequest) (*Identity, error)
+	CompleteFirstLogin(context.Context, *CompleteFirstLoginRequest) (*RecoveryCodesResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*SimpleResponse, error)
-	GenerateRecoveryCodes(context.Context, *GenerateRecoveryCodesRequest) (*GenerateRecoveryCodesResponse, error)
-	ResetPassword(context.Context, *ResetPasswordRequest) (*LoginResponse, error)
+	ResetPassword(context.Context, *ResetPasswordRequest) (*Identity, error)
+	GetRecoveryCodeStatus(context.Context, *UserRequest) (*RecoveryCodeStatusResponse, error)
+	GenerateRecoveryCodes(context.Context, *PasswordConfirmRequest) (*RecoveryCodesResponse, error)
+	DeleteRecoveryCodes(context.Context, *PasswordConfirmRequest) (*SimpleResponse, error)
+	GetKey(context.Context, *UserRequest) (*GetKeyResponse, error)
+	RotateKey(context.Context, *UserRequest) (*RotateKeyResponse, error)
+	RevokeKey(context.Context, *UserRequest) (*RevokeKeyResponse, error)
+	SetKeyOrigins(context.Context, *SetKeyOriginsRequest) (*KeyOriginsResponse, error)
+	ListKeyOrigins(context.Context, *ListKeyOriginsRequest) (*KeyOriginsResponse, error)
+	ListMyProjects(context.Context, *UserRequest) (*ProjectsResponse, error)
+	ListProjects(context.Context, *UserRequest) (*ProjectsResponse, error)
+	SaveProject(context.Context, *SaveProjectRequest) (*SimpleResponse, error)
+	DeleteProject(context.Context, *DeleteProjectRequest) (*SimpleResponse, error)
+	ListUsers(context.Context, *UserRequest) (*UsersResponse, error)
+	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
+	ResetUserPassword(context.Context, *TargetUserRequest) (*TemporaryPasswordResponse, error)
+	SetUserStatus(context.Context, *SetUserStatusRequest) (*SimpleResponse, error)
+	SetUserProjects(context.Context, *SetUserProjectsRequest) (*SimpleResponse, error)
+	DeleteUser(context.Context, *TargetUserRequest) (*SimpleResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -140,26 +361,77 @@ type AuthServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAuthServiceServer struct{}
 
-func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*Identity, error) {
 	return nil, status.Error(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedAuthServiceServer) RotateKey(context.Context, *KeyRequest) (*RotateKeyResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method RotateKey not implemented")
-}
-func (UnimplementedAuthServiceServer) GetKey(context.Context, *KeyRequest) (*GetKeyResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetKey not implemented")
-}
-func (UnimplementedAuthServiceServer) ValidateKey(context.Context, *ValidateKeyRequest) (*LoginResponse, error) {
+func (UnimplementedAuthServiceServer) ValidateKey(context.Context, *ValidateKeyRequest) (*ApiKeyIdentity, error) {
 	return nil, status.Error(codes.Unimplemented, "method ValidateKey not implemented")
+}
+func (UnimplementedAuthServiceServer) GetIdentity(context.Context, *UserRequest) (*Identity, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetIdentity not implemented")
+}
+func (UnimplementedAuthServiceServer) CompleteFirstLogin(context.Context, *CompleteFirstLoginRequest) (*RecoveryCodesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CompleteFirstLogin not implemented")
 }
 func (UnimplementedAuthServiceServer) ChangePassword(context.Context, *ChangePasswordRequest) (*SimpleResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ChangePassword not implemented")
 }
-func (UnimplementedAuthServiceServer) GenerateRecoveryCodes(context.Context, *GenerateRecoveryCodesRequest) (*GenerateRecoveryCodesResponse, error) {
+func (UnimplementedAuthServiceServer) ResetPassword(context.Context, *ResetPasswordRequest) (*Identity, error) {
+	return nil, status.Error(codes.Unimplemented, "method ResetPassword not implemented")
+}
+func (UnimplementedAuthServiceServer) GetRecoveryCodeStatus(context.Context, *UserRequest) (*RecoveryCodeStatusResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetRecoveryCodeStatus not implemented")
+}
+func (UnimplementedAuthServiceServer) GenerateRecoveryCodes(context.Context, *PasswordConfirmRequest) (*RecoveryCodesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GenerateRecoveryCodes not implemented")
 }
-func (UnimplementedAuthServiceServer) ResetPassword(context.Context, *ResetPasswordRequest) (*LoginResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method ResetPassword not implemented")
+func (UnimplementedAuthServiceServer) DeleteRecoveryCodes(context.Context, *PasswordConfirmRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteRecoveryCodes not implemented")
+}
+func (UnimplementedAuthServiceServer) GetKey(context.Context, *UserRequest) (*GetKeyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetKey not implemented")
+}
+func (UnimplementedAuthServiceServer) RotateKey(context.Context, *UserRequest) (*RotateKeyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RotateKey not implemented")
+}
+func (UnimplementedAuthServiceServer) RevokeKey(context.Context, *UserRequest) (*RevokeKeyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RevokeKey not implemented")
+}
+func (UnimplementedAuthServiceServer) SetKeyOrigins(context.Context, *SetKeyOriginsRequest) (*KeyOriginsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetKeyOrigins not implemented")
+}
+func (UnimplementedAuthServiceServer) ListKeyOrigins(context.Context, *ListKeyOriginsRequest) (*KeyOriginsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListKeyOrigins not implemented")
+}
+func (UnimplementedAuthServiceServer) ListMyProjects(context.Context, *UserRequest) (*ProjectsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListMyProjects not implemented")
+}
+func (UnimplementedAuthServiceServer) ListProjects(context.Context, *UserRequest) (*ProjectsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListProjects not implemented")
+}
+func (UnimplementedAuthServiceServer) SaveProject(context.Context, *SaveProjectRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SaveProject not implemented")
+}
+func (UnimplementedAuthServiceServer) DeleteProject(context.Context, *DeleteProjectRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteProject not implemented")
+}
+func (UnimplementedAuthServiceServer) ListUsers(context.Context, *UserRequest) (*UsersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListUsers not implemented")
+}
+func (UnimplementedAuthServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateUser not implemented")
+}
+func (UnimplementedAuthServiceServer) ResetUserPassword(context.Context, *TargetUserRequest) (*TemporaryPasswordResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ResetUserPassword not implemented")
+}
+func (UnimplementedAuthServiceServer) SetUserStatus(context.Context, *SetUserStatusRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetUserStatus not implemented")
+}
+func (UnimplementedAuthServiceServer) SetUserProjects(context.Context, *SetUserProjectsRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetUserProjects not implemented")
+}
+func (UnimplementedAuthServiceServer) DeleteUser(context.Context, *TargetUserRequest) (*SimpleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteUser not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -200,42 +472,6 @@ func _AuthService_Login_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_RotateKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(KeyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).RotateKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_RotateKey_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).RotateKey(ctx, req.(*KeyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_GetKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(KeyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).GetKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_GetKey_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetKey(ctx, req.(*KeyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AuthService_ValidateKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ValidateKeyRequest)
 	if err := dec(in); err != nil {
@@ -250,6 +486,42 @@ func _AuthService_ValidateKey_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).ValidateKey(ctx, req.(*ValidateKeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_GetIdentity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GetIdentity(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GetIdentity_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GetIdentity(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_CompleteFirstLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompleteFirstLoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).CompleteFirstLogin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_CompleteFirstLogin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).CompleteFirstLogin(ctx, req.(*CompleteFirstLoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -272,24 +544,6 @@ func _AuthService_ChangePassword_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_GenerateRecoveryCodes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GenerateRecoveryCodesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).GenerateRecoveryCodes(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_GenerateRecoveryCodes_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GenerateRecoveryCodes(ctx, req.(*GenerateRecoveryCodesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AuthService_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ResetPasswordRequest)
 	if err := dec(in); err != nil {
@@ -308,6 +562,330 @@ func _AuthService_ResetPassword_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_GetRecoveryCodeStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GetRecoveryCodeStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GetRecoveryCodeStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GetRecoveryCodeStatus(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_GenerateRecoveryCodes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PasswordConfirmRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GenerateRecoveryCodes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GenerateRecoveryCodes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GenerateRecoveryCodes(ctx, req.(*PasswordConfirmRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_DeleteRecoveryCodes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PasswordConfirmRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).DeleteRecoveryCodes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_DeleteRecoveryCodes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).DeleteRecoveryCodes(ctx, req.(*PasswordConfirmRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_GetKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GetKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GetKey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GetKey(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_RotateKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).RotateKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_RotateKey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).RotateKey(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_RevokeKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).RevokeKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_RevokeKey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).RevokeKey(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_SetKeyOrigins_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetKeyOriginsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).SetKeyOrigins(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_SetKeyOrigins_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).SetKeyOrigins(ctx, req.(*SetKeyOriginsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ListKeyOrigins_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKeyOriginsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ListKeyOrigins(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ListKeyOrigins_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ListKeyOrigins(ctx, req.(*ListKeyOriginsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ListMyProjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ListMyProjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ListMyProjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ListMyProjects(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ListProjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ListProjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ListProjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ListProjects(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_SaveProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveProjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).SaveProject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_SaveProject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).SaveProject(ctx, req.(*SaveProjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_DeleteProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteProjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).DeleteProject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_DeleteProject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).DeleteProject(ctx, req.(*DeleteProjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ListUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ListUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ListUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ListUsers(ctx, req.(*UserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).CreateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_CreateUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ResetUserPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TargetUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ResetUserPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ResetUserPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ResetUserPassword(ctx, req.(*TargetUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_SetUserStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetUserStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).SetUserStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_SetUserStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).SetUserStatus(ctx, req.(*SetUserStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_SetUserProjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetUserProjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).SetUserProjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_SetUserProjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).SetUserProjects(ctx, req.(*SetUserProjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TargetUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).DeleteUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_DeleteUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).DeleteUser(ctx, req.(*TargetUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -320,28 +898,96 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AuthService_Login_Handler,
 		},
 		{
-			MethodName: "RotateKey",
-			Handler:    _AuthService_RotateKey_Handler,
-		},
-		{
-			MethodName: "GetKey",
-			Handler:    _AuthService_GetKey_Handler,
-		},
-		{
 			MethodName: "ValidateKey",
 			Handler:    _AuthService_ValidateKey_Handler,
+		},
+		{
+			MethodName: "GetIdentity",
+			Handler:    _AuthService_GetIdentity_Handler,
+		},
+		{
+			MethodName: "CompleteFirstLogin",
+			Handler:    _AuthService_CompleteFirstLogin_Handler,
 		},
 		{
 			MethodName: "ChangePassword",
 			Handler:    _AuthService_ChangePassword_Handler,
 		},
 		{
+			MethodName: "ResetPassword",
+			Handler:    _AuthService_ResetPassword_Handler,
+		},
+		{
+			MethodName: "GetRecoveryCodeStatus",
+			Handler:    _AuthService_GetRecoveryCodeStatus_Handler,
+		},
+		{
 			MethodName: "GenerateRecoveryCodes",
 			Handler:    _AuthService_GenerateRecoveryCodes_Handler,
 		},
 		{
-			MethodName: "ResetPassword",
-			Handler:    _AuthService_ResetPassword_Handler,
+			MethodName: "DeleteRecoveryCodes",
+			Handler:    _AuthService_DeleteRecoveryCodes_Handler,
+		},
+		{
+			MethodName: "GetKey",
+			Handler:    _AuthService_GetKey_Handler,
+		},
+		{
+			MethodName: "RotateKey",
+			Handler:    _AuthService_RotateKey_Handler,
+		},
+		{
+			MethodName: "RevokeKey",
+			Handler:    _AuthService_RevokeKey_Handler,
+		},
+		{
+			MethodName: "SetKeyOrigins",
+			Handler:    _AuthService_SetKeyOrigins_Handler,
+		},
+		{
+			MethodName: "ListKeyOrigins",
+			Handler:    _AuthService_ListKeyOrigins_Handler,
+		},
+		{
+			MethodName: "ListMyProjects",
+			Handler:    _AuthService_ListMyProjects_Handler,
+		},
+		{
+			MethodName: "ListProjects",
+			Handler:    _AuthService_ListProjects_Handler,
+		},
+		{
+			MethodName: "SaveProject",
+			Handler:    _AuthService_SaveProject_Handler,
+		},
+		{
+			MethodName: "DeleteProject",
+			Handler:    _AuthService_DeleteProject_Handler,
+		},
+		{
+			MethodName: "ListUsers",
+			Handler:    _AuthService_ListUsers_Handler,
+		},
+		{
+			MethodName: "CreateUser",
+			Handler:    _AuthService_CreateUser_Handler,
+		},
+		{
+			MethodName: "ResetUserPassword",
+			Handler:    _AuthService_ResetUserPassword_Handler,
+		},
+		{
+			MethodName: "SetUserStatus",
+			Handler:    _AuthService_SetUserStatus_Handler,
+		},
+		{
+			MethodName: "SetUserProjects",
+			Handler:    _AuthService_SetUserProjects_Handler,
+		},
+		{
+			MethodName: "DeleteUser",
+			Handler:    _AuthService_DeleteUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

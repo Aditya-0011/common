@@ -4,9 +4,9 @@ inputs:
   - directory: protos/manager
   - directory: protos/wallet
 plugins:
-  - remote: buf.build/protocolbuffers/go
+  - remote: buf.build/protocolbuffers/go:v1.36.12
     out: contracts/go
     opt: module=github.com/Aditya-0011/common/contracts/go
-  - remote: buf.build/grpc/go
+  - remote: buf.build/grpc/go:v1.6.2
     out: contracts/go
     opt: module=github.com/Aditya-0011/common/contracts/go

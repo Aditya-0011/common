@@ -18,6 +18,9 @@ import (
 )
 
 const (
+	errMissingServiceCredentials = "missing service credentials"
+	errInvalidServiceCredentials = "invalid service credentials"
+
 	authMetadataKey = "authorization"
 	bearerPrefix    = "Bearer "
 	healthPrefix    = "/grpc.health.v1.Health/"
@@ -81,12 +84,12 @@ func authInterceptor(token string) grpc.UnaryServerInterceptor {
 		md, _ := metadata.FromIncomingContext(ctx)
 		values := md.Get(authMetadataKey)
 		if len(values) != 1 || !strings.HasPrefix(values[0], bearerPrefix) {
-			return nil, status.Error(codes.PermissionDenied, "missing service credentials")
+			return nil, status.Error(codes.PermissionDenied, errMissingServiceCredentials)
 		}
 
 		got := sha256.Sum256([]byte(strings.TrimPrefix(values[0], bearerPrefix)))
 		if subtle.ConstantTimeCompare(got[:], want[:]) != 1 {
-			return nil, status.Error(codes.PermissionDenied, "invalid service credentials")
+			return nil, status.Error(codes.PermissionDenied, errInvalidServiceCredentials)
 		}
 		return handler(ctx, req)
 	}
@@ -109,4 +112,12 @@ func validationInterceptor(validator protovalidate.Validator) grpc.UnaryServerIn
 		}
 		return handler(ctx, req)
 	}
+}
+
+func IsServiceCredentialsError(err error) bool {
+	st, ok := status.FromError(err)
+	if !ok || st.Code() != codes.PermissionDenied {
+		return false
+	}
+	return st.Message() == errMissingServiceCredentials || st.Message() == errInvalidServiceCredentials
 }
