@@ -28,6 +28,7 @@ type GetUserDetailsResponse struct {
 	About         string                 `protobuf:"bytes,1,opt,name=about,proto3" json:"about,omitempty"`
 	CoverImage    string                 `protobuf:"bytes,2,opt,name=cover_image,json=coverImage,proto3" json:"cover_image,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	ChatModel     string                 `protobuf:"bytes,4,opt,name=chat_model,json=chatModel,proto3" json:"chat_model,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -83,11 +84,19 @@ func (x *GetUserDetailsResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *GetUserDetailsResponse) GetChatModel() string {
+	if x != nil {
+		return x.ChatModel
+	}
+	return ""
+}
+
 type EditUserDetailsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	About         string                 `protobuf:"bytes,2,opt,name=about,proto3" json:"about,omitempty"`
 	CoverImage    string                 `protobuf:"bytes,3,opt,name=cover_image,json=coverImage,proto3" json:"cover_image,omitempty"`
+	ChatModel     string                 `protobuf:"bytes,4,opt,name=chat_model,json=chatModel,proto3" json:"chat_model,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -143,25 +152,138 @@ func (x *EditUserDetailsRequest) GetCoverImage() string {
 	return ""
 }
 
+func (x *EditUserDetailsRequest) GetChatModel() string {
+	if x != nil {
+		return x.ChatModel
+	}
+	return ""
+}
+
+type ChatModel struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChatModel) Reset() {
+	*x = ChatModel{}
+	mi := &file_manager_user_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChatModel) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChatModel) ProtoMessage() {}
+
+func (x *ChatModel) ProtoReflect() protoreflect.Message {
+	mi := &file_manager_user_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChatModel.ProtoReflect.Descriptor instead.
+func (*ChatModel) Descriptor() ([]byte, []int) {
+	return file_manager_user_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ChatModel) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *ChatModel) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type GetChatModelsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Models        []*ChatModel           `protobuf:"bytes,1,rep,name=models,proto3" json:"models,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetChatModelsResponse) Reset() {
+	*x = GetChatModelsResponse{}
+	mi := &file_manager_user_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetChatModelsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetChatModelsResponse) ProtoMessage() {}
+
+func (x *GetChatModelsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_manager_user_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetChatModelsResponse.ProtoReflect.Descriptor instead.
+func (*GetChatModelsResponse) Descriptor() ([]byte, []int) {
+	return file_manager_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetChatModelsResponse) GetModels() []*ChatModel {
+	if x != nil {
+		return x.Models
+	}
+	return nil
+}
+
 var File_manager_user_proto protoreflect.FileDescriptor
 
 const file_manager_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12manager/user.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\x1a\x14manager/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x01\n" +
+	"\x12manager/user.proto\x12\amanager\x1a\x1bbuf/validate/validate.proto\x1a\x14manager/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa9\x01\n" +
 	"\x16GetUserDetailsResponse\x12\x14\n" +
 	"\x05about\x18\x01 \x01(\tR\x05about\x12\x1f\n" +
 	"\vcover_image\x18\x02 \x01(\tR\n" +
 	"coverImage\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x87\x01\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"chat_model\x18\x04 \x01(\tR\tchatModel\"\xaf\x01\n" +
 	"\x16EditUserDetailsRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1d\n" +
 	"\x05about\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05about\x12,\n" +
 	"\vcover_image\x18\x03 \x01(\tB\v\xbaH\br\x06\x18\xfa\x01\x88\x01\x01R\n" +
-	"coverImage2\xa5\x01\n" +
+	"coverImage\x12&\n" +
+	"\n" +
+	"chat_model\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18dR\tchatModel\"/\n" +
+	"\tChatModel\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"C\n" +
+	"\x15GetChatModelsResponse\x12*\n" +
+	"\x06models\x18\x01 \x03(\v2\x12.manager.ChatModelR\x06models2\xee\x01\n" +
 	"\vUserService\x12I\n" +
 	"\x0eGetUserDetails\x12\x16.manager.SimpleRequest\x1a\x1f.manager.GetUserDetailsResponse\x12K\n" +
-	"\x0fEditUserDetails\x12\x1f.manager.EditUserDetailsRequest\x1a\x17.manager.SimpleResponseB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
+	"\x0fEditUserDetails\x12\x1f.manager.EditUserDetailsRequest\x1a\x17.manager.SimpleResponse\x12G\n" +
+	"\rGetChatModels\x12\x16.manager.SimpleRequest\x1a\x1e.manager.GetChatModelsResponseB<Z:github.com/Aditya-0011/common/contracts/go/manager;managerb\x06proto3"
 
 var (
 	file_manager_user_proto_rawDescOnce sync.Once
@@ -175,25 +297,30 @@ func file_manager_user_proto_rawDescGZIP() []byte {
 	return file_manager_user_proto_rawDescData
 }
 
-var file_manager_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_manager_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_manager_user_proto_goTypes = []any{
 	(*GetUserDetailsResponse)(nil), // 0: manager.GetUserDetailsResponse
 	(*EditUserDetailsRequest)(nil), // 1: manager.EditUserDetailsRequest
-	(*timestamppb.Timestamp)(nil),  // 2: google.protobuf.Timestamp
-	(*SimpleRequest)(nil),          // 3: manager.SimpleRequest
-	(*SimpleResponse)(nil),         // 4: manager.SimpleResponse
+	(*ChatModel)(nil),              // 2: manager.ChatModel
+	(*GetChatModelsResponse)(nil),  // 3: manager.GetChatModelsResponse
+	(*timestamppb.Timestamp)(nil),  // 4: google.protobuf.Timestamp
+	(*SimpleRequest)(nil),          // 5: manager.SimpleRequest
+	(*SimpleResponse)(nil),         // 6: manager.SimpleResponse
 }
 var file_manager_user_proto_depIdxs = []int32{
-	2, // 0: manager.GetUserDetailsResponse.updated_at:type_name -> google.protobuf.Timestamp
-	3, // 1: manager.UserService.GetUserDetails:input_type -> manager.SimpleRequest
-	1, // 2: manager.UserService.EditUserDetails:input_type -> manager.EditUserDetailsRequest
-	0, // 3: manager.UserService.GetUserDetails:output_type -> manager.GetUserDetailsResponse
-	4, // 4: manager.UserService.EditUserDetails:output_type -> manager.SimpleResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: manager.GetUserDetailsResponse.updated_at:type_name -> google.protobuf.Timestamp
+	2, // 1: manager.GetChatModelsResponse.models:type_name -> manager.ChatModel
+	5, // 2: manager.UserService.GetUserDetails:input_type -> manager.SimpleRequest
+	1, // 3: manager.UserService.EditUserDetails:input_type -> manager.EditUserDetailsRequest
+	5, // 4: manager.UserService.GetChatModels:input_type -> manager.SimpleRequest
+	0, // 5: manager.UserService.GetUserDetails:output_type -> manager.GetUserDetailsResponse
+	6, // 6: manager.UserService.EditUserDetails:output_type -> manager.SimpleResponse
+	3, // 7: manager.UserService.GetChatModels:output_type -> manager.GetChatModelsResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_manager_user_proto_init() }
@@ -208,7 +335,7 @@ func file_manager_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_manager_user_proto_rawDesc), len(file_manager_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

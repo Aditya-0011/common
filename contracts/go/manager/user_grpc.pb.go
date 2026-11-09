@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	UserService_GetUserDetails_FullMethodName  = "/manager.UserService/GetUserDetails"
 	UserService_EditUserDetails_FullMethodName = "/manager.UserService/EditUserDetails"
+	UserService_GetChatModels_FullMethodName   = "/manager.UserService/GetChatModels"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -29,6 +30,7 @@ const (
 type UserServiceClient interface {
 	GetUserDetails(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetUserDetailsResponse, error)
 	EditUserDetails(ctx context.Context, in *EditUserDetailsRequest, opts ...grpc.CallOption) (*SimpleResponse, error)
+	GetChatModels(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetChatModelsResponse, error)
 }
 
 type userServiceClient struct {
@@ -59,12 +61,23 @@ func (c *userServiceClient) EditUserDetails(ctx context.Context, in *EditUserDet
 	return out, nil
 }
 
+func (c *userServiceClient) GetChatModels(ctx context.Context, in *SimpleRequest, opts ...grpc.CallOption) (*GetChatModelsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetChatModelsResponse)
+	err := c.cc.Invoke(ctx, UserService_GetChatModels_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
 type UserServiceServer interface {
 	GetUserDetails(context.Context, *SimpleRequest) (*GetUserDetailsResponse, error)
 	EditUserDetails(context.Context, *EditUserDetailsRequest) (*SimpleResponse, error)
+	GetChatModels(context.Context, *SimpleRequest) (*GetChatModelsResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedUserServiceServer) GetUserDetails(context.Context, *SimpleReq
 }
 func (UnimplementedUserServiceServer) EditUserDetails(context.Context, *EditUserDetailsRequest) (*SimpleResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method EditUserDetails not implemented")
+}
+func (UnimplementedUserServiceServer) GetChatModels(context.Context, *SimpleRequest) (*GetChatModelsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetChatModels not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -138,6 +154,24 @@ func _UserService_EditUserDetails_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetChatModels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SimpleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetChatModels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetChatModels_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetChatModels(ctx, req.(*SimpleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "EditUserDetails",
 			Handler:    _UserService_EditUserDetails_Handler,
+		},
+		{
+			MethodName: "GetChatModels",
+			Handler:    _UserService_GetChatModels_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

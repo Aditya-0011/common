@@ -12,6 +12,7 @@ message GetUserDetailsResponse {
   string about = 1;
   string cover_image = 2;
   google.protobuf.Timestamp updated_at = 3;
+  string chat_model = 4;
 }
 
 message EditUserDetailsRequest {
@@ -23,9 +24,20 @@ message EditUserDetailsRequest {
     (buf.validate.field).string.uri = true,
     (buf.validate.field).string.max_len = 250
   ];
+  string chat_model = 4 [(buf.validate.field).string.max_len = 100];
+}
+
+message ChatModel {
+  string id = 1;
+  string name = 2;
+}
+
+message GetChatModelsResponse {
+  repeated ChatModel models = 1;
 }
 
 service UserService {
   rpc GetUserDetails(SimpleRequest) returns (GetUserDetailsResponse);
   rpc EditUserDetails(EditUserDetailsRequest) returns (SimpleResponse);
+  rpc GetChatModels(SimpleRequest) returns (GetChatModelsResponse);
 }
