@@ -2,7 +2,7 @@
 
 A single source of truth for inter-service communication schemas.
 
-[![Protobuf](https://img.shields.io/badge/Protobuf-3.21-00add8?style=flat-square)](https://protobuf.dev/)
+[![Protobuf](https://img.shields.io/badge/Protobuf-proto3-00add8?style=flat-square)](https://protobuf.dev/)
 [![Buf](https://img.shields.io/badge/Buf-Build-244c5a?style=flat-square)](https://buf.build/)
 [![gRPC](https://img.shields.io/badge/gRPC-Contracts-244c5a?style=flat-square&logo=grpc)](https://grpc.io/)
 
@@ -38,7 +38,7 @@ This section outlines the capabilities of the schema registry.
 - **Centralized schema**: Prevents duplication across the microservices infrastructure.
 - **Built-in validation**: Defines payload constraints using `protovalidate` annotations.
 - **Automated generation**: Compiles contracts into usable code packages for multiple languages.
-- **Safe evolution**: Uses `buf breaking` to prevent breaking changes to internal APIs.
+- **Safe evolution**: `buf breaking` rules are configured in `protos/buf.yaml` for manual checks against internal APIs; CI runs lint only.
 
 ## Getting started
 
@@ -50,12 +50,11 @@ This section explains how to compile the schemas locally.
 
 ### Generating contracts
 
-To compile the schemas locally for Go and C#, navigate to the `protos` directory:
+To compile the schemas locally for Go and C# (only the wallet protos have C# output), run these from the repository root:
 
 ```bash
-cd protos
-buf generate --template buf.gen.yaml
-buf generate --template buf.gen.csharp.yaml
+buf generate protos --template protos/buf.gen.yaml
+buf generate protos/wallet --template protos/buf.gen.csharp.yaml
 ```
 
 To consume the generated Go contracts in a Go service:
@@ -81,10 +80,9 @@ Production is unaffected. Each Docker build only receives its own service folder
 
 ### Linting and validation
 
-To check for linting errors or breaking changes:
+To check for linting errors or breaking changes, from the repository root:
 
 ```bash
-cd protos
-buf lint
-buf breaking --against '.git#branch=main'
+buf lint protos
+buf breaking protos --against '.git#branch=master,subdir=protos'
 ```
