@@ -73,6 +73,104 @@ func (CategoryType) EnumDescriptor() ([]byte, []int) {
 	return file_wallet_finance_proto_rawDescGZIP(), []int{0}
 }
 
+type TransactionSortField int32
+
+const (
+	TransactionSortField_TRANSACTION_SORT_FIELD_UNSPECIFIED TransactionSortField = 0
+	TransactionSortField_TRANSACTION_SORT_FIELD_CREATED_AT  TransactionSortField = 1
+	TransactionSortField_TRANSACTION_SORT_FIELD_UPDATED_AT  TransactionSortField = 2
+)
+
+// Enum value maps for TransactionSortField.
+var (
+	TransactionSortField_name = map[int32]string{
+		0: "TRANSACTION_SORT_FIELD_UNSPECIFIED",
+		1: "TRANSACTION_SORT_FIELD_CREATED_AT",
+		2: "TRANSACTION_SORT_FIELD_UPDATED_AT",
+	}
+	TransactionSortField_value = map[string]int32{
+		"TRANSACTION_SORT_FIELD_UNSPECIFIED": 0,
+		"TRANSACTION_SORT_FIELD_CREATED_AT":  1,
+		"TRANSACTION_SORT_FIELD_UPDATED_AT":  2,
+	}
+)
+
+func (x TransactionSortField) Enum() *TransactionSortField {
+	p := new(TransactionSortField)
+	*p = x
+	return p
+}
+
+func (x TransactionSortField) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TransactionSortField) Descriptor() protoreflect.EnumDescriptor {
+	return file_wallet_finance_proto_enumTypes[1].Descriptor()
+}
+
+func (TransactionSortField) Type() protoreflect.EnumType {
+	return &file_wallet_finance_proto_enumTypes[1]
+}
+
+func (x TransactionSortField) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TransactionSortField.Descriptor instead.
+func (TransactionSortField) EnumDescriptor() ([]byte, []int) {
+	return file_wallet_finance_proto_rawDescGZIP(), []int{1}
+}
+
+type SortDirection int32
+
+const (
+	SortDirection_SORT_DIRECTION_UNSPECIFIED SortDirection = 0
+	SortDirection_SORT_DIRECTION_DESC        SortDirection = 1
+	SortDirection_SORT_DIRECTION_ASC         SortDirection = 2
+)
+
+// Enum value maps for SortDirection.
+var (
+	SortDirection_name = map[int32]string{
+		0: "SORT_DIRECTION_UNSPECIFIED",
+		1: "SORT_DIRECTION_DESC",
+		2: "SORT_DIRECTION_ASC",
+	}
+	SortDirection_value = map[string]int32{
+		"SORT_DIRECTION_UNSPECIFIED": 0,
+		"SORT_DIRECTION_DESC":        1,
+		"SORT_DIRECTION_ASC":         2,
+	}
+)
+
+func (x SortDirection) Enum() *SortDirection {
+	p := new(SortDirection)
+	*p = x
+	return p
+}
+
+func (x SortDirection) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SortDirection) Descriptor() protoreflect.EnumDescriptor {
+	return file_wallet_finance_proto_enumTypes[2].Descriptor()
+}
+
+func (SortDirection) Type() protoreflect.EnumType {
+	return &file_wallet_finance_proto_enumTypes[2]
+}
+
+func (x SortDirection) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SortDirection.Descriptor instead.
+func (SortDirection) EnumDescriptor() ([]byte, []int) {
+	return file_wallet_finance_proto_rawDescGZIP(), []int{2}
+}
+
 type Category struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -506,6 +604,8 @@ type GetTransactionsRequest struct {
 	CategoryId    *int32                 `protobuf:"varint,5,opt,name=category_id,json=categoryId,proto3,oneof" json:"category_id,omitempty"`
 	StartDate     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3,oneof" json:"start_date,omitempty"`
 	EndDate       *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3,oneof" json:"end_date,omitempty"`
+	SortBy        *TransactionSortField  `protobuf:"varint,8,opt,name=sort_by,json=sortBy,proto3,enum=wallet.TransactionSortField,oneof" json:"sort_by,omitempty"`
+	SortDirection *SortDirection         `protobuf:"varint,9,opt,name=sort_direction,json=sortDirection,proto3,enum=wallet.SortDirection,oneof" json:"sort_direction,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -587,6 +687,20 @@ func (x *GetTransactionsRequest) GetEndDate() *timestamppb.Timestamp {
 		return x.EndDate
 	}
 	return nil
+}
+
+func (x *GetTransactionsRequest) GetSortBy() TransactionSortField {
+	if x != nil && x.SortBy != nil {
+		return *x.SortBy
+	}
+	return TransactionSortField_TRANSACTION_SORT_FIELD_UNSPECIFIED
+}
+
+func (x *GetTransactionsRequest) GetSortDirection() SortDirection {
+	if x != nil && x.SortDirection != nil {
+		return *x.SortDirection
+	}
+	return SortDirection_SORT_DIRECTION_UNSPECIFIED
 }
 
 type GetTransactionsResponse struct {
@@ -1115,20 +1229,20 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\x15GetCategoriesResponse\x120\n" +
 	"\n" +
 	"categories\x18\x01 \x03(\v2\x10.wallet.CategoryR\n" +
-	"categories\"\x87\x02\n" +
+	"categories\"\x8a\x02\n" +
 	"\x15CreateCategoryRequest\x12 \n" +
-	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12x\n" +
-	"\x04icon\x18\x03 \x01(\tBd\xbaHar_2]^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$R\x04icon\x122\n" +
-	"\x04type\x18\x04 \x01(\x0e2\x14.wallet.CategoryTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\"\xa0\x02\n" +
+	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1d\n" +
+	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x04name\x12z\n" +
+	"\x04icon\x18\x03 \x01(\tBf\xbaHcra\x18\x142]^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$R\x04icon\x124\n" +
+	"\x04type\x18\x04 \x01(\x0e2\x14.wallet.CategoryTypeB\n" +
+	"\xbaH\a\x82\x01\x04\x10\x01 \x00R\x04type\"\xa3\x02\n" +
 	"\x15UpdateCategoryRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x17\n" +
-	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\x12\x1e\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12x\n" +
-	"\x04icon\x18\x04 \x01(\tBd\xbaHar_2]^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$R\x04icon\x122\n" +
-	"\x04type\x18\x05 \x01(\x0e2\x14.wallet.CategoryTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\"\x98\x02\n" +
+	"\x02id\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\x12\x1d\n" +
+	"\x04name\x18\x03 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x04name\x12z\n" +
+	"\x04icon\x18\x04 \x01(\tBf\xbaHcra\x18\x142]^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$R\x04icon\x124\n" +
+	"\x04type\x18\x05 \x01(\x0e2\x14.wallet.CategoryTypeB\n" +
+	"\xbaH\a\x82\x01\x04\x10\x01 \x00R\x04type\"\x98\x02\n" +
 	"\vTransaction\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12,\n" +
@@ -1137,22 +1251,28 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xac\x04\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xe0\x05\n" +
 	"\x16GetTransactionsRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12\x1d\n" +
 	"\x05limit\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x05limit\x12\x1b\n" +
-	"\x04page\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x127\n" +
-	"\x04type\x18\x04 \x01(\x0e2\x14.wallet.CategoryTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04type\x88\x01\x01\x12-\n" +
+	"\x04page\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x129\n" +
+	"\x04type\x18\x04 \x01(\x0e2\x14.wallet.CategoryTypeB\n" +
+	"\xbaH\a\x82\x01\x04\x10\x01 \x00H\x00R\x04type\x88\x01\x01\x12-\n" +
 	"\vcategory_id\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00H\x01R\n" +
 	"categoryId\x88\x01\x01\x12>\n" +
 	"\n" +
 	"start_date\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampH\x02R\tstartDate\x88\x01\x01\x12:\n" +
-	"\bend_date\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x03R\aendDate\x88\x01\x01:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
+	"\bend_date\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x03R\aendDate\x88\x01\x01\x12D\n" +
+	"\asort_by\x18\b \x01(\x0e2\x1c.wallet.TransactionSortFieldB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\x06sortBy\x88\x01\x01\x12K\n" +
+	"\x0esort_direction\x18\t \x01(\x0e2\x15.wallet.SortDirectionB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\rsortDirection\x88\x01\x01:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
 	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_dateB\a\n" +
 	"\x05_typeB\x0e\n" +
 	"\f_category_idB\r\n" +
 	"\v_start_dateB\v\n" +
-	"\t_end_date\"R\n" +
+	"\t_end_dateB\n" +
+	"\n" +
+	"\b_sort_byB\x11\n" +
+	"\x0f_sort_direction\"R\n" +
 	"\x17GetTransactionsResponse\x127\n" +
 	"\ftransactions\x18\x01 \x03(\v2\x13.wallet.TransactionR\ftransactions\"\xa5\x03\n" +
 	"\x18CreateTransactionRequest\x12 \n" +
@@ -1173,13 +1293,14 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdescription\x12\x8e\x02\n" +
 	"\x06amount\x18\x05 \x01(\v2\x14.google.type.DecimalB\xdf\x01\xbaH\xdb\x01\xba\x01L\n" +
 	"\x0eamount_gt_zero\x12 amount must be greater than zero\x1a\x18double(this.value) > 0.0\xba\x01\x85\x01\n" +
-	"\ramount_format\x12?amount must have at most 13 integer digits and 2 decimal places\x1a3this.value.matches('^[0-9]{1,13}([.][0-9]{1,2})?$')\xc8\x01\x01R\x06amount\"\xdc\x02\n" +
+	"\ramount_format\x12?amount must have at most 13 integer digits and 2 decimal places\x1a3this.value.matches('^[0-9]{1,13}([.][0-9]{1,2})?$')\xc8\x01\x01R\x06amount\"\xfc\x03\n" +
 	"\x19ExportTransactionsRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x06userId\x12A\n" +
 	"\n" +
 	"start_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartDate\x12=\n" +
-	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:\x9a\x01\xbaH\x96\x01\x1a\x93\x01\n" +
-	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_date\"y\n" +
+	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\aendDate:\xba\x02\xbaH\xb6\x02\x1a\x93\x01\n" +
+	"\x10date_range_valid\x12-end date must be after or equal to start date\x1aP!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_date\x1a\x9d\x01\n" +
+	"\x0edate_range_max\x12$export range can be at most 366 days\x1ae!has(this.start_date) || !has(this.end_date) || int(this.end_date) - int(this.start_date) <= 31622400\"y\n" +
 	"\x1aExportTransactionsResponse\x12\x1b\n" +
 	"\tfile_data\x18\x01 \x01(\fR\bfileData\x12\x1b\n" +
 	"\tfile_name\x18\x02 \x01(\tR\bfileName\x12!\n" +
@@ -1202,7 +1323,15 @@ const file_wallet_finance_proto_rawDesc = "" +
 	"\fCategoryType\x12\x1d\n" +
 	"\x19CATEGORY_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
 	"\x14CATEGORY_TYPE_INCOME\x10\x01\x12\x19\n" +
-	"\x15CATEGORY_TYPE_EXPENSE\x10\x022\xb8\x06\n" +
+	"\x15CATEGORY_TYPE_EXPENSE\x10\x02*\x8c\x01\n" +
+	"\x14TransactionSortField\x12&\n" +
+	"\"TRANSACTION_SORT_FIELD_UNSPECIFIED\x10\x00\x12%\n" +
+	"!TRANSACTION_SORT_FIELD_CREATED_AT\x10\x01\x12%\n" +
+	"!TRANSACTION_SORT_FIELD_UPDATED_AT\x10\x02*`\n" +
+	"\rSortDirection\x12\x1e\n" +
+	"\x1aSORT_DIRECTION_UNSPECIFIED\x10\x00\x12\x17\n" +
+	"\x13SORT_DIRECTION_DESC\x10\x01\x12\x16\n" +
+	"\x12SORT_DIRECTION_ASC\x10\x022\xb8\x06\n" +
 	"\x0eFinanceService\x12E\n" +
 	"\rGetCategories\x12\x15.wallet.SimpleRequest\x1a\x1d.wallet.GetCategoriesResponse\x12G\n" +
 	"\x0eCreateCategory\x12\x1d.wallet.CreateCategoryRequest\x1a\x16.wallet.SimpleResponse\x12G\n" +
@@ -1227,82 +1356,86 @@ func file_wallet_finance_proto_rawDescGZIP() []byte {
 	return file_wallet_finance_proto_rawDescData
 }
 
-var file_wallet_finance_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_wallet_finance_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_wallet_finance_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_wallet_finance_proto_goTypes = []any{
 	(CategoryType)(0),                            // 0: wallet.CategoryType
-	(*Category)(nil),                             // 1: wallet.Category
-	(*CategorySummary)(nil),                      // 2: wallet.CategorySummary
-	(*GetCategoriesResponse)(nil),                // 3: wallet.GetCategoriesResponse
-	(*CreateCategoryRequest)(nil),                // 4: wallet.CreateCategoryRequest
-	(*UpdateCategoryRequest)(nil),                // 5: wallet.UpdateCategoryRequest
-	(*Transaction)(nil),                          // 6: wallet.Transaction
-	(*GetTransactionsRequest)(nil),               // 7: wallet.GetTransactionsRequest
-	(*GetTransactionsResponse)(nil),              // 8: wallet.GetTransactionsResponse
-	(*CreateTransactionRequest)(nil),             // 9: wallet.CreateTransactionRequest
-	(*UpdateTransactionRequest)(nil),             // 10: wallet.UpdateTransactionRequest
-	(*ExportTransactionsRequest)(nil),            // 11: wallet.ExportTransactionsRequest
-	(*ExportTransactionsResponse)(nil),           // 12: wallet.ExportTransactionsResponse
-	(*TransactionsUpdateHistory)(nil),            // 13: wallet.TransactionsUpdateHistory
-	(*GetTransactionsUpdateHistoryRequest)(nil),  // 14: wallet.GetTransactionsUpdateHistoryRequest
-	(*GetTransactionsUpdateHistoryResponse)(nil), // 15: wallet.GetTransactionsUpdateHistoryResponse
-	(*timestamppb.Timestamp)(nil),                // 16: google.protobuf.Timestamp
-	(*decimal.Decimal)(nil),                      // 17: google.type.Decimal
-	(*SimpleRequest)(nil),                        // 18: wallet.SimpleRequest
-	(*DeleteRequest)(nil),                        // 19: wallet.DeleteRequest
-	(*SimpleResponse)(nil),                       // 20: wallet.SimpleResponse
+	(TransactionSortField)(0),                    // 1: wallet.TransactionSortField
+	(SortDirection)(0),                           // 2: wallet.SortDirection
+	(*Category)(nil),                             // 3: wallet.Category
+	(*CategorySummary)(nil),                      // 4: wallet.CategorySummary
+	(*GetCategoriesResponse)(nil),                // 5: wallet.GetCategoriesResponse
+	(*CreateCategoryRequest)(nil),                // 6: wallet.CreateCategoryRequest
+	(*UpdateCategoryRequest)(nil),                // 7: wallet.UpdateCategoryRequest
+	(*Transaction)(nil),                          // 8: wallet.Transaction
+	(*GetTransactionsRequest)(nil),               // 9: wallet.GetTransactionsRequest
+	(*GetTransactionsResponse)(nil),              // 10: wallet.GetTransactionsResponse
+	(*CreateTransactionRequest)(nil),             // 11: wallet.CreateTransactionRequest
+	(*UpdateTransactionRequest)(nil),             // 12: wallet.UpdateTransactionRequest
+	(*ExportTransactionsRequest)(nil),            // 13: wallet.ExportTransactionsRequest
+	(*ExportTransactionsResponse)(nil),           // 14: wallet.ExportTransactionsResponse
+	(*TransactionsUpdateHistory)(nil),            // 15: wallet.TransactionsUpdateHistory
+	(*GetTransactionsUpdateHistoryRequest)(nil),  // 16: wallet.GetTransactionsUpdateHistoryRequest
+	(*GetTransactionsUpdateHistoryResponse)(nil), // 17: wallet.GetTransactionsUpdateHistoryResponse
+	(*timestamppb.Timestamp)(nil),                // 18: google.protobuf.Timestamp
+	(*decimal.Decimal)(nil),                      // 19: google.type.Decimal
+	(*SimpleRequest)(nil),                        // 20: wallet.SimpleRequest
+	(*DeleteRequest)(nil),                        // 21: wallet.DeleteRequest
+	(*SimpleResponse)(nil),                       // 22: wallet.SimpleResponse
 }
 var file_wallet_finance_proto_depIdxs = []int32{
 	0,  // 0: wallet.Category.type:type_name -> wallet.CategoryType
-	16, // 1: wallet.Category.created_at:type_name -> google.protobuf.Timestamp
-	16, // 2: wallet.Category.updated_at:type_name -> google.protobuf.Timestamp
+	18, // 1: wallet.Category.created_at:type_name -> google.protobuf.Timestamp
+	18, // 2: wallet.Category.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: wallet.CategorySummary.type:type_name -> wallet.CategoryType
-	1,  // 4: wallet.GetCategoriesResponse.categories:type_name -> wallet.Category
+	3,  // 4: wallet.GetCategoriesResponse.categories:type_name -> wallet.Category
 	0,  // 5: wallet.CreateCategoryRequest.type:type_name -> wallet.CategoryType
 	0,  // 6: wallet.UpdateCategoryRequest.type:type_name -> wallet.CategoryType
-	17, // 7: wallet.Transaction.amount:type_name -> google.type.Decimal
-	2,  // 8: wallet.Transaction.category:type_name -> wallet.CategorySummary
-	16, // 9: wallet.Transaction.created_at:type_name -> google.protobuf.Timestamp
-	16, // 10: wallet.Transaction.updated_at:type_name -> google.protobuf.Timestamp
+	19, // 7: wallet.Transaction.amount:type_name -> google.type.Decimal
+	4,  // 8: wallet.Transaction.category:type_name -> wallet.CategorySummary
+	18, // 9: wallet.Transaction.created_at:type_name -> google.protobuf.Timestamp
+	18, // 10: wallet.Transaction.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 11: wallet.GetTransactionsRequest.type:type_name -> wallet.CategoryType
-	16, // 12: wallet.GetTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
-	16, // 13: wallet.GetTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
-	6,  // 14: wallet.GetTransactionsResponse.transactions:type_name -> wallet.Transaction
-	17, // 15: wallet.CreateTransactionRequest.amount:type_name -> google.type.Decimal
-	17, // 16: wallet.UpdateTransactionRequest.amount:type_name -> google.type.Decimal
-	16, // 17: wallet.ExportTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
-	16, // 18: wallet.ExportTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
-	2,  // 19: wallet.TransactionsUpdateHistory.previous_category:type_name -> wallet.CategorySummary
-	2,  // 20: wallet.TransactionsUpdateHistory.current_category:type_name -> wallet.CategorySummary
-	17, // 21: wallet.TransactionsUpdateHistory.previous_amount:type_name -> google.type.Decimal
-	17, // 22: wallet.TransactionsUpdateHistory.current_amount:type_name -> google.type.Decimal
-	16, // 23: wallet.TransactionsUpdateHistory.created_at:type_name -> google.protobuf.Timestamp
-	13, // 24: wallet.GetTransactionsUpdateHistoryResponse.history:type_name -> wallet.TransactionsUpdateHistory
-	18, // 25: wallet.FinanceService.GetCategories:input_type -> wallet.SimpleRequest
-	4,  // 26: wallet.FinanceService.CreateCategory:input_type -> wallet.CreateCategoryRequest
-	5,  // 27: wallet.FinanceService.UpdateCategory:input_type -> wallet.UpdateCategoryRequest
-	19, // 28: wallet.FinanceService.DeleteCategory:input_type -> wallet.DeleteRequest
-	7,  // 29: wallet.FinanceService.GetTransactions:input_type -> wallet.GetTransactionsRequest
-	9,  // 30: wallet.FinanceService.CreateTransaction:input_type -> wallet.CreateTransactionRequest
-	10, // 31: wallet.FinanceService.UpdateTransaction:input_type -> wallet.UpdateTransactionRequest
-	19, // 32: wallet.FinanceService.DeleteTransaction:input_type -> wallet.DeleteRequest
-	11, // 33: wallet.FinanceService.ExportTransactions:input_type -> wallet.ExportTransactionsRequest
-	14, // 34: wallet.FinanceService.GetTransactionsUpdateHistory:input_type -> wallet.GetTransactionsUpdateHistoryRequest
-	3,  // 35: wallet.FinanceService.GetCategories:output_type -> wallet.GetCategoriesResponse
-	20, // 36: wallet.FinanceService.CreateCategory:output_type -> wallet.SimpleResponse
-	20, // 37: wallet.FinanceService.UpdateCategory:output_type -> wallet.SimpleResponse
-	20, // 38: wallet.FinanceService.DeleteCategory:output_type -> wallet.SimpleResponse
-	8,  // 39: wallet.FinanceService.GetTransactions:output_type -> wallet.GetTransactionsResponse
-	20, // 40: wallet.FinanceService.CreateTransaction:output_type -> wallet.SimpleResponse
-	20, // 41: wallet.FinanceService.UpdateTransaction:output_type -> wallet.SimpleResponse
-	20, // 42: wallet.FinanceService.DeleteTransaction:output_type -> wallet.SimpleResponse
-	12, // 43: wallet.FinanceService.ExportTransactions:output_type -> wallet.ExportTransactionsResponse
-	15, // 44: wallet.FinanceService.GetTransactionsUpdateHistory:output_type -> wallet.GetTransactionsUpdateHistoryResponse
-	35, // [35:45] is the sub-list for method output_type
-	25, // [25:35] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	18, // 12: wallet.GetTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
+	18, // 13: wallet.GetTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
+	1,  // 14: wallet.GetTransactionsRequest.sort_by:type_name -> wallet.TransactionSortField
+	2,  // 15: wallet.GetTransactionsRequest.sort_direction:type_name -> wallet.SortDirection
+	8,  // 16: wallet.GetTransactionsResponse.transactions:type_name -> wallet.Transaction
+	19, // 17: wallet.CreateTransactionRequest.amount:type_name -> google.type.Decimal
+	19, // 18: wallet.UpdateTransactionRequest.amount:type_name -> google.type.Decimal
+	18, // 19: wallet.ExportTransactionsRequest.start_date:type_name -> google.protobuf.Timestamp
+	18, // 20: wallet.ExportTransactionsRequest.end_date:type_name -> google.protobuf.Timestamp
+	4,  // 21: wallet.TransactionsUpdateHistory.previous_category:type_name -> wallet.CategorySummary
+	4,  // 22: wallet.TransactionsUpdateHistory.current_category:type_name -> wallet.CategorySummary
+	19, // 23: wallet.TransactionsUpdateHistory.previous_amount:type_name -> google.type.Decimal
+	19, // 24: wallet.TransactionsUpdateHistory.current_amount:type_name -> google.type.Decimal
+	18, // 25: wallet.TransactionsUpdateHistory.created_at:type_name -> google.protobuf.Timestamp
+	15, // 26: wallet.GetTransactionsUpdateHistoryResponse.history:type_name -> wallet.TransactionsUpdateHistory
+	20, // 27: wallet.FinanceService.GetCategories:input_type -> wallet.SimpleRequest
+	6,  // 28: wallet.FinanceService.CreateCategory:input_type -> wallet.CreateCategoryRequest
+	7,  // 29: wallet.FinanceService.UpdateCategory:input_type -> wallet.UpdateCategoryRequest
+	21, // 30: wallet.FinanceService.DeleteCategory:input_type -> wallet.DeleteRequest
+	9,  // 31: wallet.FinanceService.GetTransactions:input_type -> wallet.GetTransactionsRequest
+	11, // 32: wallet.FinanceService.CreateTransaction:input_type -> wallet.CreateTransactionRequest
+	12, // 33: wallet.FinanceService.UpdateTransaction:input_type -> wallet.UpdateTransactionRequest
+	21, // 34: wallet.FinanceService.DeleteTransaction:input_type -> wallet.DeleteRequest
+	13, // 35: wallet.FinanceService.ExportTransactions:input_type -> wallet.ExportTransactionsRequest
+	16, // 36: wallet.FinanceService.GetTransactionsUpdateHistory:input_type -> wallet.GetTransactionsUpdateHistoryRequest
+	5,  // 37: wallet.FinanceService.GetCategories:output_type -> wallet.GetCategoriesResponse
+	22, // 38: wallet.FinanceService.CreateCategory:output_type -> wallet.SimpleResponse
+	22, // 39: wallet.FinanceService.UpdateCategory:output_type -> wallet.SimpleResponse
+	22, // 40: wallet.FinanceService.DeleteCategory:output_type -> wallet.SimpleResponse
+	10, // 41: wallet.FinanceService.GetTransactions:output_type -> wallet.GetTransactionsResponse
+	22, // 42: wallet.FinanceService.CreateTransaction:output_type -> wallet.SimpleResponse
+	22, // 43: wallet.FinanceService.UpdateTransaction:output_type -> wallet.SimpleResponse
+	22, // 44: wallet.FinanceService.DeleteTransaction:output_type -> wallet.SimpleResponse
+	14, // 45: wallet.FinanceService.ExportTransactions:output_type -> wallet.ExportTransactionsResponse
+	17, // 46: wallet.FinanceService.GetTransactionsUpdateHistory:output_type -> wallet.GetTransactionsUpdateHistoryResponse
+	37, // [37:47] is the sub-list for method output_type
+	27, // [27:37] is the sub-list for method input_type
+	27, // [27:27] is the sub-list for extension type_name
+	27, // [27:27] is the sub-list for extension extendee
+	0,  // [0:27] is the sub-list for field type_name
 }
 
 func init() { file_wallet_finance_proto_init() }
@@ -1317,7 +1450,7 @@ func file_wallet_finance_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_wallet_finance_proto_rawDesc), len(file_wallet_finance_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      3,
 			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,

@@ -16,6 +16,18 @@ enum CategoryType {
   CATEGORY_TYPE_EXPENSE = 2;
 }
 
+enum TransactionSortField {
+  TRANSACTION_SORT_FIELD_UNSPECIFIED = 0;
+  TRANSACTION_SORT_FIELD_CREATED_AT = 1;
+  TRANSACTION_SORT_FIELD_UPDATED_AT = 2;
+}
+
+enum SortDirection {
+  SORT_DIRECTION_UNSPECIFIED = 0;
+  SORT_DIRECTION_DESC = 1;
+  SORT_DIRECTION_ASC = 2;
+}
+
 message Category {
   int32 id = 1;
   string name = 2;
@@ -40,10 +52,16 @@ message CreateCategoryRequest {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
   string name = 2 [
     (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.max_len = 255
+    (buf.validate.field).string.max_len = 100
   ];
-  string icon = 3 [(buf.validate.field).string.pattern = "^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$"];
-  CategoryType type = 4 [(buf.validate.field).enum.defined_only = true];
+  string icon = 3 [
+    (buf.validate.field).string.max_len = 20,
+    (buf.validate.field).string.pattern = "^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$"
+  ];
+  CategoryType type = 4 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
 }
 
 message UpdateCategoryRequest {
@@ -51,10 +69,16 @@ message UpdateCategoryRequest {
   int32 id = 2 [(buf.validate.field).int32.gt = 0];
   string name = 3 [
     (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.max_len = 255
+    (buf.validate.field).string.max_len = 100
   ];
-  string icon = 4 [(buf.validate.field).string.pattern = "^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$"];
-  CategoryType type = 5 [(buf.validate.field).enum.defined_only = true];
+  string icon = 4 [
+    (buf.validate.field).string.max_len = 20,
+    (buf.validate.field).string.pattern = "^[\\x{1F300}-\\x{1FAD6}\\x{2600}-\\x{26FF}\\x{2700}-\\x{27BF}\\x{1F1E6}-\\x{1F1FF}\\x{200D}\\x{FE0F}]+$"
+  ];
+  CategoryType type = 5 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
 }
 
 message Transaction {
@@ -76,10 +100,15 @@ message GetTransactionsRequest {
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
   int32 limit = 2 [(buf.validate.field).int32.gt = 0];
   int32 page = 3 [(buf.validate.field).int32.gt = 0];
-  optional CategoryType type = 4 [(buf.validate.field).enum.defined_only = true];
+  optional CategoryType type = 4 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
   optional int32 category_id = 5 [(buf.validate.field).int32.gt = 0];
   optional google.protobuf.Timestamp start_date = 6;
   optional google.protobuf.Timestamp end_date = 7;
+  optional TransactionSortField sort_by = 8 [(buf.validate.field).enum.defined_only = true];
+  optional SortDirection sort_direction = 9 [(buf.validate.field).enum.defined_only = true];
 }
 
 message GetTransactionsResponse {
@@ -128,6 +157,11 @@ message ExportTransactionsRequest {
     id: "date_range_valid"
     message: "end date must be after or equal to start date"
     expression: "!has(this.start_date) || !has(this.end_date) || this.end_date >= this.start_date"
+  };
+  option (buf.validate.message).cel = {
+    id: "date_range_max"
+    message: "export range can be at most 366 days"
+    expression: "!has(this.start_date) || !has(this.end_date) || int(this.end_date) - int(this.start_date) <= 31622400"
   };
   int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
   google.protobuf.Timestamp start_date = 2 [(buf.validate.field).required = true];

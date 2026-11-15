@@ -22,7 +22,7 @@ This section explains the technologies and physical layout of the contracts repo
 ### Project structure
 
 - `contracts/go/`: Generated Go packages (`github.com/Aditya-0011/common/contracts/go`)
-- `contracts/go/grpcx/`: Hand-written gRPC plumbing shared by the Go services and the gateway: server setup (recovery, logging, service-token auth, deadline and validation interceptors, health checks, optional TLS, graceful shutdown) and an authenticated client dialer
+- `contracts/go/grpcx/`: Hand-written gRPC plumbing shared by the Go services and the gateway: server setup (recovery, logging, service-token auth, deadline and validation interceptors, health checks, optional TLS, graceful shutdown) and an authenticated client dialer (32 MiB receive limit, so large responses such as Wallet exports fit)
 - `contracts/csharp/`: Generated C# contracts
 - `contracts/csharp/Grpcx/`: Hand-written gRPC plumbing for C# services, the counterpart of `grpcx` in Go: `AddGrpcxServer` (Kestrel on `INTERNAL_BIND_IP`, optional TLS, JSON logging, service-token auth, logging/error mapping and validation interceptors, health checks, shutdown timeout), `RpcTimeout`, `IRequestValidator` for custom validation, and `GrpcxClient` for authenticated channels. Shipped in the `Contracts` NuGet package
 - `protos/auth/`: Auth service definitions
@@ -38,7 +38,7 @@ This section outlines the capabilities of the schema registry.
 - **Centralized schema**: Prevents duplication across the microservices infrastructure.
 - **Built-in validation**: Defines payload constraints using `protovalidate` annotations.
 - **Automated generation**: Compiles contracts into usable code packages for multiple languages.
-- **Safe evolution**: `buf breaking` rules are configured in `protos/buf.yaml` for manual checks against internal APIs; CI runs lint only.
+- **Safe evolution**: `buf breaking` rules are configured in `protos/buf.yaml`; CI runs lint on every run and the breaking-change check against the base branch on pull requests.
 
 ## Getting started
 

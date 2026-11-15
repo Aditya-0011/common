@@ -7,42 +7,44 @@ on:
     branches: [ "master" ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: contracts-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build-and-verify:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write
-      pull-requests: write 
-      packages: write 
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
           ref: ${{ github.head_ref }}
+          persist-credentials: ${{ github.event_name == 'pull_request' }}
 
       - name: Setup Go
         uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
         with:
           go-version: '1.26.x'
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1
-        with:
-          dotnet-version: '10.0.x'
-
       - name: Buf Checks
         uses: bufbuild/buf-action@37ac33d8960807670a6e9719080e885197b09cc6
         with:
           input: protos
           push: false
-          format: false 
-          breaking: false
+          format: false
+          breaking: ${{ github.event_name == 'pull_request' }}
+          breaking_against: "${{ github.event.repository.clone_url }}#format=git,commit=${{ github.event.pull_request.base.sha }},subdir=protos"
 
       - name: Generate Go Code
         run: buf generate protos --template protos/buf.gen.yaml
-        
+
       - name: Update Go dependencies
         working-directory: contracts/go
         run: |
@@ -66,17 +68,48 @@ jobs:
             exit 1
           fi
 
-      - name: Pack and Publish C# NuGet Package
-        working-directory: contracts/csharp
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
-          dotnet pack -c Release
-          dotnet nuget push bin/Release/*.nupkg --source github --skip-duplicate
-
       - name: Auto-commit Generated Code to PR
         if: github.event_name == 'pull_request'
         uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c
         with:
           commit_message: "chore: auto-generate protobuf contracts"
           file_pattern: "contracts/"
+
+  publish:
+    needs: build-and-verify
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Setup Buf
+        uses: bufbuild/buf-action@37ac33d8960807670a6e9719080e885197b09cc6
+        with:
+          setup_only: true
+
+      - name: Generate C# Code
+        run: buf generate protos/wallet --template protos/buf.gen.csharp.yaml
+
+      - name: Pack and Publish C# NuGet Package
+        working-directory: contracts/csharp
+        env:
+          NUGET_USER: ${{ github.actor }}
+          NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_FEED: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+        run: |
+          dotnet nuget add source --username "$NUGET_USER" --password "$NUGET_TOKEN" --store-password-in-clear-text --name github "$NUGET_FEED"
+          dotnet pack -c Release
+          dotnet nuget push bin/Release/*.nupkg --source github --skip-duplicate

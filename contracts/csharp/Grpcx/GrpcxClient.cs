@@ -1,3 +1,4 @@
+using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using Grpc.Core;
 using Grpc.Net.Client;
@@ -28,13 +29,17 @@ public static class GrpcxClient
         if (secure)
         {
             var ca = X509CertificateLoader.LoadCertificateFromFile(options.TlsCaFile!);
-            handler.SslOptions.RemoteCertificateValidationCallback = (_, cert, chain, errors) =>
+            handler.SslOptions.RemoteCertificateValidationCallback = (_, cert, _, errors) =>
             {
-                if (cert is null || chain is null) return false;
-                if (errors == System.Net.Security.SslPolicyErrors.None) return true;
+                if (cert is null) return false;
+                if ((errors & (SslPolicyErrors.RemoteCertificateNameMismatch | SslPolicyErrors.RemoteCertificateNotAvailable)) != 0)
+                    return false;
+                using var chain = new X509Chain();
                 chain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
+                chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
                 chain.ChainPolicy.CustomTrustStore.Add(ca);
-                return chain.Build(new X509Certificate2(cert));
+                using var leaf = new X509Certificate2(cert);
+                return chain.Build(leaf);
             };
         }
 

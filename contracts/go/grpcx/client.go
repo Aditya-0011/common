@@ -12,6 +12,8 @@ import (
 	"google.golang.org/grpc/keepalive"
 )
 
+const maxRecvMsgSize = 32 << 20
+
 type ClientConfig struct {
 	Addr          string
 	AuthToken     string
@@ -42,6 +44,7 @@ func Dial(cfg ClientConfig) (*grpc.ClientConn, error) {
 		cfg.Addr,
 		grpc.WithTransportCredentials(transport),
 		grpc.WithPerRPCCredentials(bearerToken{token: cfg.AuthToken, secure: secure}),
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(maxRecvMsgSize)),
 		grpc.WithKeepaliveParams(keepalive.ClientParameters{
 			Time:                5 * time.Minute,
 			Timeout:             3 * time.Second,
